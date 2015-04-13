@@ -8,7 +8,8 @@
  * Page qui permet à un utilisateur de se connecter.
  */
 
-<!DOCTYPE html>
+?>
+
 <html lang="fr">
 <head>
     <meta charset="utf-8">
