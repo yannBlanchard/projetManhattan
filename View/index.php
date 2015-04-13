@@ -6,5 +6,5 @@
  * Time: 10:45
  */
 
-echo 'test';
+echo 'test'
 ?>
