@@ -1,4 +1,4 @@
-/*Pas finit manque cle etrangere  v0.1.130415*/
+/*v0.1.130415*/
 
 /*==================================================================*/
 /* Table : membre                                                   */
@@ -27,6 +27,7 @@ create table article
 	titreArticle varchar(150) not null,
 	corpsArticle TEXT not null,
   date_Aticle DATE not null,
+  imageArticle varchar(50) not null,
   Mem_id_Membre int not null,
 	primary key(id_article)
 );
@@ -65,8 +66,8 @@ create table compteurVisiteur
 (
 	date_Compteur DATE not null,
 	ipUser varchar(50) not null,
-	TitreArticle varchar(150) not null,
-	primary key(ipUser,TitreArticle)
+  Art_id_article int not null,
+	primary key(ipUser,Art_id_article)
 );
 
 
