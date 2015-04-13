@@ -22,3 +22,4 @@
         </nav>
     </div>
 </div>
+<img src="../img/Manhattans-blog.png" height="900px" width="100%">
