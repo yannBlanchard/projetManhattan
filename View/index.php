@@ -6,4 +6,6 @@
  * Time: 10:45
  */
 echo "coucou";
+
+echo"salut tout le monde";
 ?>
