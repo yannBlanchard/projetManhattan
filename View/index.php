@@ -28,6 +28,17 @@
             <a class="blog-nav-item" href="#">New features</a>
             <a class="blog-nav-item" href="#">About</a>
             <a class="blog-nav-item" href="connexion.php">Espace membre</a>
+            <a class="blog-nav-item navbar-right" href="">S'Inscrire</a>
+            <div class="navbar-right">
+                <button class="blog-nav-item" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Connexion
+
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li>tutu</li>
+                </ul>
+            </div>
+
         </nav>
     </div>
 </div>
