@@ -15,7 +15,7 @@ try {
     }
 
 catch (PDOException $e) {
-    print "Erreur ! :" . $e->getMessage() . "<br/>";
+    print "Erreur dans la base de données ! :" . $e->getMessage() . "<br/>";
     die();
 
 }
