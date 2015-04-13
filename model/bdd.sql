@@ -1,4 +1,4 @@
-/*Pas finit manque cle etrangere  v0.0.130415*/
+/*Pas finit manque cle etrangere  v0.1.130415*/
 
 /*==================================================================*/
 /* Table : membre                                                   */
@@ -18,7 +18,7 @@ create table membre
 );
 
 /*==================================================================*/
-/* Table : article                                                   */
+/* Table : article                                                  */
 /*==================================================================*/
 
 create table article
@@ -32,7 +32,7 @@ create table article
 );
 
 /*==================================================================*/
-/* Table : commentaire                                                   */
+/* Table : commentaire                                               */
 /*==================================================================*/
 
 create table commentaire
@@ -47,7 +47,7 @@ create table commentaire
 );
 
 /*==================================================================*/
-/* Table : categorie                                                   */
+/* Table : categorie                                                */
 /*==================================================================*/
 
 create table categorie
@@ -58,7 +58,7 @@ create table categorie
 );
 
 /*==================================================================*/
-/* Table : compteurVisiteur                                                   */
+/* Table : compteurVisiteur                                         */
 /*==================================================================*/
 
 create table compteurVisiteur
