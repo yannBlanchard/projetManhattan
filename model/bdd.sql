@@ -1,4 +1,4 @@
-/*Pas finit manque cle etrangere  v0.0.130415*/
+/*v0.1.130415*/
 
 /*==================================================================*/
 /* Table : membre                                                   */
@@ -18,7 +18,7 @@ create table membre
 );
 
 /*==================================================================*/
-/* Table : article                                                   */
+/* Table : article                                                  */
 /*==================================================================*/
 
 create table article
@@ -27,11 +27,13 @@ create table article
 	titreArticle varchar(150) not null,
 	corpsArticle TEXT not null,
   date_Aticle DATE not null,
+  imageArticle varchar(50) not null,
+  Mem_id_Membre int not null,
 	primary key(id_article)
 );
 
 /*==================================================================*/
-/* Table : commentaire                                                   */
+/* Table : commentaire                                               */
 /*==================================================================*/
 
 create table commentaire
@@ -41,30 +43,31 @@ create table commentaire
 	corpsCommentaire TEXT not null,
   date_commentaire DATE not null,
   etat int not null,
+  Art_id_article int not null,
 	primary key(id_commentaire)
 );
 
 /*==================================================================*/
-/* Table : categorie                                                   */
+/* Table : categorie                                                */
 /*==================================================================*/
 
 create table categorie
 (
 	nomCategorie varchar(100) not null,
+  Art_id_article int not null,
 	primary key(nomCategorie)
 );
 
 /*==================================================================*/
-/* Table : compteurVisiteur                                                   */
+/* Table : compteurVisiteur                                         */
 /*==================================================================*/
 
 create table compteurVisiteur
 (
-	pseudoUser varchar(100) not null,
 	date_Compteur DATE not null,
 	ipUser varchar(50) not null,
-	TitreArticle varchar(150) not null,
-	primary key(ipUser,TitreArticle)
+  Art_id_article int not null,
+	primary key(ipUser,Art_id_article)
 );
 
 
@@ -76,6 +79,7 @@ create table Likes
 (
 	idLikes int not null,
 	pseudo varchar(50) not null,
+  Art_id_article int not null,
 	primary key(idLikes)
 );
 
@@ -87,5 +91,6 @@ create table Dislike
 (
 	idDislike int not null,
 	pseudo varchar(50) not null,
+  Art_id_article int not null,
 	primary key(idDislike)
 );
