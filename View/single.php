@@ -48,6 +48,10 @@ require_once('navigation.php');
                 </div>
             </div>
 
+            <?php
+            require_once('comments.php');
+            ?>
+
         </div><!-- /.blog-main -->
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
