@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/model/article_modele.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/model/bdd.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/model/categorie_modele.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/model/commentaire_modele.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/model/connexion_modele.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/model/deconnexion_modele.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/model/manhattan_model.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/model/membre_modele.php" dialect="MySQL" />
   </component>
 </project>

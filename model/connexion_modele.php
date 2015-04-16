@@ -13,11 +13,9 @@
 try {
     $bdd = new PDO('mysql:hostlocalhost;dbname=manhattan;charset=utf8', 'root', 'root');
     }
-
 catch (PDOException $e) {
     print "Erreur dans la base de données ! :" . $e->getMessage() . "<br/>";
     die();
-
 }
 
 ?>

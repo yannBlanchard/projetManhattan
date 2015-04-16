@@ -26,9 +26,9 @@ class Membre{
 
     }
 
-    public function InscriptionUti ($nom, $premon, $email,$pseudo, $mdp, $mdp2)
+    public function InscriptionUti ($nom, $prenom, $email,$pseudo, $mdp, $mdp2)
     {
-        include "connexion_modele.php";
+        include_once("connexion_modele.php");
         function VerifierAdresseMail($email)
         {
             $Syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
