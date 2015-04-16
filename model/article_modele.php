@@ -26,11 +26,11 @@ class article {
         $req = $bdd->prepare("insert into article (id_article,titreArticle,corpsArticle,date_Aticle,imageArticle)
                                   value(:id_article,:titreArticle,:corpsArticle,:date_Aticle,:imageArticle)");
         $req->execute(array
-        ('id_article' => $this->id_article,
-            'titreArticle' => $this->titreArticle,
-            'corpsArticle' => $this->corpsArticle,
-            'date_Aticle' => $this->date_Aticle,
-            'imageArticle' => $this->imageArticle
+        (':id_article' => $this->id_article,
+            ':titreArticle' => $this->titreArticle,
+            ':corpsArticle' => $this->corpsArticle,
+            ':date_Aticle' => $this->date_Aticle,
+            ':imageArticle' => $this->imageArticle
         ));
     }
 
@@ -39,11 +39,11 @@ class article {
         $req = $bdd->prepare("update article set titreArticle = :titreArticle,
                               corpsArticle = :corpsArticle,date_Aticle = :date_Aticle,imageArticle = :imageArticle where id_article = ':id_article'");
         $req->execute(array
-        ('titreArticle' => $this->titreArticle,
-            'corpsArticle' => $this->corpsArticle,
-            'date_Aticle' => $this->date_Aticle,
-            'imageArticle' => $this->imageArticle,
-            'id_article' => $id_article,
+        (':titreArticle' => $this->titreArticle,
+            ':corpsArticle' => $this->corpsArticle,
+            ':date_Aticle' => $this->date_Aticle,
+            ':imageArticle' => $this->imageArticle,
+            ':id_article' => $id_article,
         ));
     }
 
@@ -52,7 +52,7 @@ class article {
         $req = $bdd->prepare("delete From article where id_article = ':id_article'");
         $req->execute(array
         (
-            'id_article' => $this->id_article,
+            ':id_article' => $this->id_article,
         ));
     }
 }

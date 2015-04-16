@@ -28,12 +28,12 @@ class commentaire {
         $req = $bdd->prepare("insert into commentaire (id_commentaire,titreCommentaire,corpsCommentaire,date_commentaire,etat,Art_id_article)
                                   value(:id_commentaire,:titreCommentaire,:corpsCommentaire,:date_commentaire,:etat,:Art_id_article)");
         $req->execute(array
-        ('id_commentaire' => $this->id_commentaire,
-            'titreCommentaire' => $this->titreCommentaire,
-            'corpsCommentaire' => $this->corpsCommentaire,
-            'date_commentaire' => $this->date_commentaire,
-            'etat' => $this->etat,
-            'Art_id_article' => $this->Art_id_article
+        (':id_commentaire' => $this->id_commentaire,
+            ':titreCommentaire' => $this->titreCommentaire,
+            ':corpsCommentaire' => $this->corpsCommentaire,
+            ':date_commentaire' => $this->date_commentaire,
+            ':etat' => $this->etat,
+            ':Art_id_article' => $this->Art_id_article
         ));
     }
 
@@ -43,11 +43,11 @@ class commentaire {
                               corpsCommentaire = :corpsCommentaire,date_commentaire = :date_commentaire,etat = :etat where id_commentaire = ':id_commentaire'");
         $req->execute(array
         (
-            'titreCommentaire' => $this->titreCommentaire,
-            'corpsCommentaire' => $this->corpsCommentaire,
-            'date_commentaire' => $this->date_commentaire,
-            'etat' => $this->etat,
-            'id_commentaire' => $this->id_commentaire
+            ':titreCommentaire' => $this->titreCommentaire,
+            ':corpsCommentaire' => $this->corpsCommentaire,
+            ':date_commentaire' => $this->date_commentaire,
+            ':etat' => $this->etat,
+            ':id_commentaire' => $this->id_commentaire
         ));
     }
 
@@ -56,7 +56,7 @@ class commentaire {
         $req = $bdd->prepare("delete From commentaire where id_commentaire = ':id_commentaire'");
         $req->execute(array
         (
-            'id_commentaire' => $this->id_commentaire,
+            ':id_commentaire' => $this->id_commentaire,
         ));
     }
 

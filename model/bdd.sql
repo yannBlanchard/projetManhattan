@@ -77,10 +77,10 @@ create table compteurVisiteur
 
 create table Likes
 (
-	idLikes int not null,
-	pseudo varchar(50) not null,
+  idLikes int not null,
+  pseudo varchar(50) not null,
   Art_id_article int not null,
-	primary key(idLikes)
+  primary key(idLikes)
 );
 
 /*==================================================================*/
