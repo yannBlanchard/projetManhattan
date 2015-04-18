@@ -16,9 +16,9 @@ class Likes {
         $req = $bdd->prepare("insert into Likes (idLikes,pseudo,Art_id_article)
                                   value(:idLikes,:pseudo,:Art_id_article)");
         $req->execute(array
-        (':idLikes' => $this->idLikes,
-            ':pseudo' => $this->pseudo,
-            ':Art_id_article' => $this->Art_id_article
+        ('idLikes' => $this->idLikes,
+            'pseudo' => $this->pseudo,
+            'Art_id_article' => $this->Art_id_article
         ));
     }
 
@@ -28,9 +28,9 @@ class Likes {
                               where idLikes = ':idLikes'");
         $req->execute(array
         (
-            ':pseudo' => $this->pseudo,
-            ':Art_id_article' => $this->Art_id_article,
-            ':idLikes' => $this->idLikes
+            'pseudo' => $this->pseudo,
+            'Art_id_article' => $this->Art_id_article,
+            'idLikes' => $this->idLikes
         ));
     }
 
@@ -39,7 +39,7 @@ class Likes {
         $req = $bdd->prepare("delete From Likes where idLikes = ':idLikes'");
         $req->execute(array
         (
-            ':idLikes' => $this->idLikes,
+            'idLikes' => $this->idLikes,
         ));
     }
 }

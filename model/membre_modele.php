@@ -45,46 +45,44 @@ class Membre{
     function VerificationExistancePseudo($pseudo){
         include_once "connexion_modele.php";
         $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo');
-        $req->execute(array(':pseudo' => $pseudo));
+        $req->execute(array('pseudo' => $pseudo));
         $count = $req->rowCount();
         if($count==0){
-            return 1;
+            return true;
         }
         else{
-            return 0;
+            return false;
         }
     }
 
     function VerificationExistanceEmail($pseudo){
         include_once "connexion_modele.php";
         $req = $bdd->prepare('SELECT * FROM membre WHERE email = :email');
-        $req->execute(array(':email' => email));
+        $req->execute(array('email' => email));
         $count = $req->rowCount();
         if($count==0){
-            return 1;
+            return true;
         }
         else{
-            return 0;
+            return false;
         }
     }
 
     public function Connexion($pseudo, $mdp) {
         include_once "connexion_modele.php";
         $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo AND mdp= :mdp ');
-        $req->execute(array(':pseudo' => $pseudo, ':pwd' => sha1($mdp)));
+        $req->execute(array('pseudo' => $pseudo, 'mdp' => sha1($mdp)));
 
-        $count = $req->rowCount();
+        $data = $req->fetch();
 
         // Cas où la requête renvoit aucun résultat
-        if ($count != 1) {
+        if (!$data) {
             $_SESSION['result'] = "<p style=\"font-size:13px;"
                 . " color:red;font-style:italic;\">"
                 . "Une erreur s'est produite.</p>";
             header('location:  ../index.php?p=connexion');
         } else {
-            $_SESSION['id'] = $data['id_utilisateur'];
             $_SESSION['login'] = $data['login'];
-            $_SESSION['nom'] = $data['nom'];
             $_SESSION['email'] = $data['email'];
             header('location:  ../index.php');
         }

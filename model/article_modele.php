@@ -52,18 +52,29 @@ class article {
         $req = $bdd->prepare("delete From article where id_article = ':id_article'");
         $req->execute(array
         (
-            ':id_article' => $this->id_article,
+            ':id_article' => $this->id_article
         ));
     }
 
-    public function recupererArticle(){
+    public function recupererArticle($limite){
         include_once "connexion_modele.php";
-        $req = $bdd->query("select * From article ORDER BY date_Aticle LIMIT 20");
+        $req = $bdd->query("select * From article ORDER BY date_Aticle LIMIT :limite");
+        $req->execute(array
+        (
+            'limite' => $limite
+        ));
+        $res->fetchAll();
     }
 
-    public function recupererArticleParMois($mois){
+    public function recupererArticleParMois($mois,$limite){
         include_once "connexion_modele.php";
-        $req = $bdd->query("select * From article where date_Aticle like '%/$mois/%' ORDER BY date_Aticle LIMIT 20");
+        $req = $bdd->query("select * From article where date_Aticle like '%/:mois/%' ORDER BY date_Aticle LIMIT :limite");
+        $req->execute(array
+        (
+            'mois' => $mois,
+            'limite' => $limite
+        ));
+        $res->fetchAll();
     }
 
 }
