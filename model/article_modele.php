@@ -55,4 +55,15 @@ class article {
             ':id_article' => $this->id_article,
         ));
     }
+
+    public function recupererArticle(){
+        include_once "connexion_modele.php";
+        $req = $bdd->query("select * From article ORDER BY date_Aticle LIMIT 20");
+    }
+
+    public function recupererArticleParMois($mois){
+        include_once "connexion_modele.php";
+        $req = $bdd->query("select * From article where date_Aticle like '%/$mois/%' ORDER BY date_Aticle LIMIT 20");
+    }
+
 }

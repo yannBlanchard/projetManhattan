@@ -38,29 +38,45 @@ class Membre{
                 return false;
             }
         }
+
+
     }
-          /*  $req = $bdd->prepare('SELECT * FROM WHERE pseudo = :login or email = :email');
-            $req->execute(array
-            ('login' => $login,
-                'email' => $email
-            ));
-            $data = $req->fetch();*/
-            //Controle du formulaire (mot de passes identiques, cases renseignées, disponibilité des identifiants)
 
-               /*             // Le membre peut être ajouter dans la bdd
-                            $bdd->exec('INSERT INTO ...() VALUES("' . $login . '", "' . sha1($password) . '",NOW(), "' . $email . '","'.$nom.'")');
-                            $_SESSION['addMemberResult'] = "<p style=\"font-size:13px; color:green;font-style:italic;\">Le membre \"" . $login . "\" a été ajouté avec succès.</p>";
+    function VerificationExistancePseudo($pseudo){
+        include_once "connexion_modele.php";
+        $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo');
+        $req->execute(array(':pseudo' => $pseudo));
+        $count = $req->rowCount();
+        if($count==0){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
 
-                        }*/
-
+    function VerificationExistanceEmail($pseudo){
+        include_once "connexion_modele.php";
+        $req = $bdd->prepare('SELECT * FROM membre WHERE email = :email');
+        $req->execute(array(':email' => email));
+        $count = $req->rowCount();
+        if($count==0){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
 
     public function Connexion($pseudo, $mdp) {
-        include"connexion_modele.php";
+        include_once "connexion_modele.php";
         $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo AND mdp= :mdp ');
-        $req->execute(array('pseudo' => $pseudo, 'pwd' => sha1($mdp)));
-        $data = $req->fetch();
+        $req->execute(array(':pseudo' => $pseudo, ':pwd' => sha1($mdp)));
+
+        $count = $req->rowCount();
+
         // Cas où la requête renvoit aucun résultat
-        if (!$data) {
+        if ($count != 1) {
             $_SESSION['result'] = "<p style=\"font-size:13px;"
                 . " color:red;font-style:italic;\">"
                 . "Une erreur s'est produite.</p>";
