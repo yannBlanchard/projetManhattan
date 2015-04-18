@@ -68,7 +68,7 @@ class Membre{
         }
     }
 
-    public function Connexion($pseudo, $mdp) {
+    public function connexionMembre($pseudo, $mdp) {
         include_once "connexion_modele.php";
         $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo AND mdp= :mdp ');
         $req->execute(array('pseudo' => $pseudo, 'mdp' => sha1($mdp)));

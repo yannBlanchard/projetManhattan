@@ -7,3 +7,11 @@
  */
 
 include_once "../model/membre_modele.php";
+
+$test = connexionMembre($pseudo, $mdp);
+if($test == true){
+
+}
+else{
+
+}
