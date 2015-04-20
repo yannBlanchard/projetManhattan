@@ -82,7 +82,6 @@ require_once('navigation.php');
 
 </div><!-- /.container -->
 <?php
-require_once('footer.php');
 require_once('script.php');
 ?>
 
