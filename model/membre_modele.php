@@ -26,7 +26,7 @@ class Membre{
 
     }
 
-    public function InscriptionUti ($nom, $prenom, $email,$pseudo, $droit, $avatar, $mdp, $mdp2)
+    public function InscriptionUti ($nom, $prenom, $email,$pseudo, $droit, $avatar, $mdp)
     {
 
         $req = $bdd->prepare('INSERT INTO membre (nom, prenom, pseudo, email, droit, avatar, mdp) VALUES (:nom, :prenom, :pseudo, :email, :droit, :avatar, :mdp)');
