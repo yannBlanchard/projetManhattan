@@ -26,21 +26,11 @@ class Membre{
 
     }
 
-    public function InscriptionUti ($nom, $prenom, $email,$pseudo, $droit, $avatar, $mdp, $mdp2)
+    public function InscriptionUti ($nom, $prenom, $email,$pseudo, $droit, $avatar, $mdp)
     {
 
         $req = $bdd->prepare('INSERT INTO membre (nom, prenom, pseudo, email, droit, avatar, mdp) VALUES (:nom, :prenom, :pseudo, :email, :droit, :avatar, :mdp)');
         $req->execute(array('nom' => $nom, 'prenom' => $prenom, 'pseudo' => $pseudo, 'email' => $email, 'droit' => $droit, 'avatar' => $avatar, 'mdp' => $mdp));
-
-        function VerifierAdresseMail($email)
-        {
-            $Syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
-            if (preg_match($Syntaxe, $email)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
 
 
     }
