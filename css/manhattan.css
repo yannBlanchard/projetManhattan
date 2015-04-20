@@ -34,6 +34,12 @@ h6, .h6 {
 /*
  * Masthead for nav
  */
+.alert-purple {
+    color: #8e44ad;
+    background-color: #F3EAF6;
+    border-color: #E7D6ED;
+}
+
 .btn-empty{
     color: transparent;
     background-color: transparent;

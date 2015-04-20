@@ -9,8 +9,13 @@
 ?>
 
 <div class="sidebar-module sidebar-module-inset">
-    <h4>About</h4>
-    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+    <h4>Rechercher</h4>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="rechercher ...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+      </span>
+    </div><!-- /input-group -->
 </div>
 <div class="sidebar-module">
     <h4>Archives</h4>
