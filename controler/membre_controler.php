@@ -1,17 +1,17 @@
 <?php
+
 /**
+ *
  * Created by PhpStorm.
- * User: Yann
- * Date: 18/04/2015
- * Time: 16:34
+ * User: austepha
+ * Date: 20/04/2015
+ * Time: 09:13
+ *
  */
 
+session_start();
 include_once "../model/membre_modele.php";
 
-$test = connexionMembre($pseudo, $mdp);
-if($test == true){
-
-}
-else{
-
-}
+$MLK= new Membre($_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["pseudo"], $_POST["mdp"],$_POST["droit"]);
+$MLK->connexionMembre($_POST["pseudo"], $_POST["mdp"]);
+header('location:  ../index.php');
