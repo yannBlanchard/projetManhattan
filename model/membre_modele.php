@@ -50,24 +50,14 @@ class Membre{
         $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo');
         $req->execute(array('pseudo' => $pseudo));
         $count = $req->rowCount();
-        if($count==0){
-            return true;
-        }
-        else{
-            return false;
-        }
+       return $count;
     }
 
     function VerificationExistanceEmail($pseudo){
         $req = $bdd->prepare('SELECT * FROM membre WHERE email = :email');
         $req->execute(array('email' => email));
         $count = $req->rowCount();
-        if($count==0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return $count;
     }
 
     public function connexionMembre($pseudo, $mdp) {

@@ -80,4 +80,8 @@ class article {
         $res->fetchAll();
     }
 
+
+    public function rechercherArticle($titreArticle, $date_Article){
+
+    }
 }
