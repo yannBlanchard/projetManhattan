@@ -48,6 +48,18 @@ create table commentaire
 );
 
 /*==================================================================*/
+/* Table : catArt                                                */
+/*==================================================================*/
+
+create table catArt
+(
+  Cat_nomCategorie varchar(100) not null,
+  Art_id_article int not null
+  primary key(Art_id_article,Cat_nomCategorie)
+);
+
+
+/*==================================================================*/
 /* Table : categorie                                                */
 /*==================================================================*/
 

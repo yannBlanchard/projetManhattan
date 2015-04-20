@@ -5,7 +5,7 @@
  * Date: 16/04/2015
  * Time: 20:10
  */
-
+include_once "connexion_modele.php";
 class commentaire {
     public $id_commentaire;
     public $titreCommentaire;
@@ -24,7 +24,7 @@ class commentaire {
     }
 
     public function insertCommentaire(){
-        include_once "connexion_modele.php";
+
         $req = $bdd->prepare("insert into commentaire (id_commentaire,titreCommentaire,corpsCommentaire,date_commentaire,etat,Art_id_article)
                                   value(:id_commentaire,:titreCommentaire,:corpsCommentaire,:date_commentaire,:etat,:Art_id_article)");
         $req->execute(array
@@ -38,7 +38,6 @@ class commentaire {
     }
 
     public function updateCommentaire($id_commentaire){
-        include_once "connexion_modele.php";
         $req = $bdd->prepare("update commentaire set titreCommentaire = :titreCommentaire,
                               corpsCommentaire = :corpsCommentaire,date_commentaire = :date_commentaire,etat = :etat where id_commentaire = ':id_commentaire'");
         $req->execute(array
@@ -52,7 +51,6 @@ class commentaire {
     }
 
     public function deleteArticle($id_commentaire){
-        include_once "connexion_modele.php";
         $req = $bdd->prepare("delete From commentaire where id_commentaire = ':id_commentaire'");
         $req->execute(array
         (

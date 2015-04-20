@@ -7,7 +7,7 @@
  *
  * Classe membre en orienté objet. Elle prend en compte les différentes fonction qui sont en lien avec l'utilisateur.
  */
-
+include_once "connexion_modele.php";
 class Membre{
 
     public $nom;
@@ -28,7 +28,6 @@ class Membre{
 
     public function InscriptionUti ($nom, $prenom, $email,$pseudo, $mdp, $mdp2)
     {
-        include_once("connexion_modele.php");
         function VerifierAdresseMail($email)
         {
             $Syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
@@ -43,7 +42,7 @@ class Membre{
     }
 
     function VerificationExistancePseudo($pseudo){
-        include_once "connexion_modele.php";
+
         $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo');
         $req->execute(array('pseudo' => $pseudo));
         $count = $req->rowCount();
@@ -56,7 +55,6 @@ class Membre{
     }
 
     function VerificationExistanceEmail($pseudo){
-        include_once "connexion_modele.php";
         $req = $bdd->prepare('SELECT * FROM membre WHERE email = :email');
         $req->execute(array('email' => email));
         $count = $req->rowCount();
@@ -69,7 +67,6 @@ class Membre{
     }
 
     public function connexionMembre($pseudo, $mdp) {
-        include_once "connexion_modele.php";
         $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo AND mdp= :mdp ');
         $req->execute(array('pseudo' => $pseudo, 'mdp' => sha1($mdp)));
 
@@ -87,4 +84,10 @@ class Membre{
             header('location:  ../index.php');
         }
     }
+
+    public function updateAvatar($lien){
+        $_req = $bdd->prepare('UPDATE membre set avatar = $lien');
+
+    }
+
 }

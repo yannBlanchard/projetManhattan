@@ -22,7 +22,7 @@ class Dislike {
         ));
     }
 
-    public function updateDislike($Dislike){
+    /*public function updateDislike($Dislike){
         include_once "connexion_modele.php";
         $req = $bdd->prepare("update Dislike set pseudo = :pseudo,Art_id_article = :Art_id_article
                               where idDislike = ':idDislike'");
@@ -32,7 +32,7 @@ class Dislike {
             'Art_id_article' => $this->Art_id_article,
             'idDislike' => $this->idLikes
         ));
-    }
+    }*/
 
     public function deleteDislike($Dislike){
         include_once "connexion_modele.php";

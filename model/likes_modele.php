@@ -21,7 +21,7 @@ class Likes {
             'Art_id_article' => $this->Art_id_article
         ));
     }
-
+/*
     public function updateLikes($idLikes){
         include_once "connexion_modele.php";
         $req = $bdd->prepare("update Likes set pseudo = :pseudo,Art_id_article = :Art_id_article
@@ -33,7 +33,7 @@ class Likes {
             'idLikes' => $this->idLikes
         ));
     }
-
+*/
     public function deleteLikes($idLikes){
         include_once "connexion_modele.php";
         $req = $bdd->prepare("delete From Likes where idLikes = ':idLikes'");
