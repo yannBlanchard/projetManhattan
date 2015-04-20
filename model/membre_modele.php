@@ -29,14 +29,8 @@ class Membre{
     public function InscriptionUti ($nom, $prenom, $email,$pseudo, $mdp, $mdp2)
     {
 
-        $req = $bdd->prepare('SELECT * FROM membre WHERE nom = :nom or prenom = :prenom or email = :email or pseudo = :pseudo or mdp = :mdp');
-        $req->execute(array
-        ('nom' => $nom,
-            'prenom' => $prenom,
-            'email' => $email,
-            'pseudo' => $pseudo,
-            'mdp' => $mdp
-        ));
+        $req = $bdd->prepare('INSERT INTO membre (nom, prenom, pseudo, email, droit, avatar, mdp) VALUES (:nom, :prenom, :pseudo, :email, :droit, :avatar, :mdp)');
+
 
         function VerifierAdresseMail($email)
         {
