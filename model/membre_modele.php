@@ -23,12 +23,8 @@ class Membre{
         $this->email = $email;
         $this->pseudo = $pseudo;
         $this->mdp = $mdp;
-    }
 
-   /* public function __construct($pseudo, $mdp){
-        $this->pseudo = $pseudo;
-        $this->mdp = $mdp;
-    }*/
+    }
 
     public function InscriptionUti ($nom, $prenom, $email,$pseudo, $droit, $avatar, $mdp, $mdp2)
     {
@@ -75,12 +71,12 @@ class Membre{
     }
 
     public function connexionMembre($pseudo, $mdp) {
-        $req = $bdd->prepare('SELECT pseudo FROM membre WHERE pseudo = :pseudo AND mdp= :mdp ');
+        $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo AND mdp= :mdp ');
         $req->execute(array('pseudo' => $pseudo, 'mdp' => sha1($mdp)));
 
-        return $count = $req->rowCount();
+        $data = $req->fetch();
 
-       /* // Cas où la requête renvoit aucun résultat
+        // Cas où la requête renvoit aucun résultat
         if (!$data) {
             $_SESSION['result'] = "<p style=\"font-size:13px;"
                 . " color:red;font-style:italic;\">"
@@ -90,7 +86,7 @@ class Membre{
             $_SESSION['login'] = $data['pseudo'];
             $_SESSION['email'] = $data['email'];
             header('location:  ../index.php');
-        }*/
+        }
     }
 
     public function updateAvatar($lien,$pseudo){
