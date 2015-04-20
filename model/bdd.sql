@@ -6,7 +6,6 @@
 
 create table membre
 (
-	id_membre int not null auto_increment,
 	nom varchar(50) not null,
 	prenom varchar(50) not null,
 	pseudo varchar(50) not null,
@@ -14,7 +13,7 @@ create table membre
 	droit int not null,
 	avatar varchar(50) not null,
 	mdp varchar(50) not null,
-	primary key(id_membre)
+	primary key(pseudo)
 );
 
 /*==================================================================*/
@@ -28,7 +27,7 @@ create table article
 	corpsArticle TEXT not null,
   date_Aticle DATE not null,
   imageArticle varchar(50) not null,
-  Mem_id_Membre int not null,
+  Mem_pseudo varchar(50) not null,
 	primary key(id_article)
 );
 
