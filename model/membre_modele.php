@@ -32,6 +32,16 @@ class Membre{
         $req = $bdd->prepare('INSERT INTO membre (nom, prenom, pseudo, email, droit, avatar, mdp) VALUES (:nom, :prenom, :pseudo, :email, :droit, :avatar, :mdp)');
         $req->execute(array('nom' => $nom, 'prenom' => $prenom, 'pseudo' => $pseudo, 'email' => $email, 'droit' => $droit, 'avatar' => $avatar, 'mdp' => $mdp));
 
+        function VerifierAdresseMail($email)
+        {
+            $Syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
+            if (preg_match($Syntaxe, $email)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
 
     }
 
@@ -64,9 +74,9 @@ class Membre{
         $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo AND mdp= :mdp ');
         $req->execute(array('pseudo' => $pseudo, 'mdp' => sha1($mdp)));
 
-        $data = $req->fetch();
-
-        // Cas où la requête renvoit aucun résultat
+        $data = $req->rowCount();
+        return $data;
+        /*// Cas où la requête renvoit aucun résultat
         if (!$data) {
             $_SESSION['result'] = "<p style=\"font-size:13px;"
                 . " color:red;font-style:italic;\">"
@@ -76,7 +86,7 @@ class Membre{
             $_SESSION['login'] = $data['pseudo'];
             $_SESSION['email'] = $data['email'];
             header('location:  ../index.php');
-        }
+        }*/
     }
 
     public function updateAvatar($lien,$pseudo){
