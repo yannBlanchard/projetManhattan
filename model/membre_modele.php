@@ -83,15 +83,15 @@ class Membre{
                 . "Une erreur s'est produite.</p>";
             header('location:  ../index.php?p=connexion');
         } else {
-            $_SESSION['login'] = $data['login'];
+            $_SESSION['login'] = $data['pseudo'];
             $_SESSION['email'] = $data['email'];
             header('location:  ../index.php');
         }
     }
 
-    public function updateAvatar($lien){
-        $req = $bdd->prepare('UPDATE membre set avatar = :lien');
-        $req->execute(array('lien => $lien'));
+    public function updateAvatar($lien,$pseudo){
+        $req = $bdd->prepare('UPDATE membre set avatar = :lien where pseudo = :pseudo');
+        $req->execute(array('lien' => $lien,'pseudo' => $pseudo));
     }
 
 }

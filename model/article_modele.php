@@ -23,16 +23,17 @@ class article {
         $this->imageArticle = $imageArticle;
     }
 
-    public function insertArticle(){
+    public function insertArticle($pseudo){
 
-        $req = $bdd->prepare("insert into article (id_article,titreArticle,corpsArticle,date_Aticle,imageArticle)
-                                  value(:id_article,:titreArticle,:corpsArticle,:date_Aticle,:imageArticle)");
+        $req = $bdd->prepare("insert into article (id_article,titreArticle,corpsArticle,date_Aticle,imageArticle,Mem_pseudo)
+                                  value(:id_article,:titreArticle,:corpsArticle,:date_Aticle,:imageArticle,:pseudo)");
         $req->execute(array
         ('id_article' => $this->id_article,
             'titreArticle' => $this->titreArticle,
             'corpsArticle' => $this->corpsArticle,
             'date_Aticle' => $this->date_Aticle,
-            'imageArticle' => $this->imageArticle
+            'imageArticle' => $this->imageArticle,
+            'pseudo' => $pseudo
         ));
     }
 
