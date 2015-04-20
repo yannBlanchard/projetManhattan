@@ -58,9 +58,9 @@ class Membre{
         }
     }
 
-    function VerificationExistanceEmail($pseudo){
+    function VerificationExistanceEmail($email){
         $req = $bdd->prepare('SELECT * FROM membre WHERE email = :email');
-        $req->execute(array('email' => email));
+        $req->execute(array('email' => $email));
         $count = $req->rowCount();
         if($count==0){
             return true;
