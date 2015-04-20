@@ -22,9 +22,9 @@
     <title>Manhattan's Blog</title>
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/manhattan.css" rel="stylesheet">
+    <link href="css/manhattan.css" rel="stylesheet">
 
 </head>
