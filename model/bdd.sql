@@ -54,10 +54,9 @@ create table commentaire
 create table catArt
 (
   Cat_nomCategorie varchar(100) not null,
-  Art_id_article int not null
+  Art_id_article int not null,
   primary key(Art_id_article,Cat_nomCategorie)
 );
-
 
 /*==================================================================*/
 /* Table : categorie                                                */
@@ -66,7 +65,6 @@ create table catArt
 create table categorie
 (
 	nomCategorie varchar(100) not null,
-  Art_id_article int not null, /*faux*/
 	primary key(nomCategorie)
 );
 
