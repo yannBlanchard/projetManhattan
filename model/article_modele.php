@@ -40,7 +40,7 @@ class article {
     public function updateArticle($id_article){
 
         $req = $bdd->prepare("update article set titreArticle = :titreArticle,
-                              corpsArticle = :corpsArticle,date_Aticle = :date_Aticle,imageArticle = :imageArticle where id_article = ':id_article'");
+                              corpsArticle = :corpsArticle,date_Aticle = :date_Aticle,imageArticle = :imageArticle where id_article = :id_article");
         $req->execute(array
         ('titreArticle' => $this->titreArticle,
             'corpsArticle' => $this->corpsArticle,
