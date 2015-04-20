@@ -81,7 +81,10 @@ class article {
     }
 
 
-    public function rechercherArticle($titreArticle, $date_Article){
+    public function rechercherArticle($titreArticle){
 
+        $req = $bdd->query("select titreArticle from article");
+        $req->execute(array(
+        'titreArticle' => $titreArticle));
     }
 }
