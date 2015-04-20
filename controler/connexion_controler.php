@@ -23,14 +23,14 @@ if(isset($_POST['submit'])){
             header('location:  ../index.php');
         }
         else{
-
+            header("location : connexion.php?err=1002"); //erreur pseudo ou mdp invalide
         }
     }
     elseif($_POST['pseudo'] == ""){
-        header("location : connexion.php?err=1000"); //erreur pseudo mot de passe invalide
+        header("location : connexion.php?err=1000"); //erreur pseudo mot de passe vide
     }
     elseif($_POST['mdp'] == ""){
-        header("location : connexion.php?err=10001"); //erreur mot de passe invalide
+        header("location : connexion.php?err=10001"); //erreur mot de passe vide
     }
 }
 
