@@ -7,7 +7,7 @@
  */
 
 ?>
-<img src="../img/Manhattans-blog.png" height="900px" width="100%">
+<img src="img/Manhattans-blog.png" height="900px" width="100%">
 <div class="blog-masthead">
     <div class="container">
         <nav class="blog-nav">
