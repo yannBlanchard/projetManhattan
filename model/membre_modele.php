@@ -28,6 +28,16 @@ class Membre{
 
     public function InscriptionUti ($nom, $prenom, $email,$pseudo, $mdp, $mdp2)
     {
+
+        $req = $bdd->prepare('SELECT * FROM membre WHERE nom = :nom or prenom = :prenom or email = :email or pseudo = :pseudo or mdp = :mdp');
+        $req->execute(array
+        ('nom' => $nom,
+            'prenom' => $prenom,
+            'email' => $email,
+            'pseudo' => $pseudo,
+            'mdp' => $mdp
+        ));
+
         function VerifierAdresseMail($email)
         {
             $Syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
