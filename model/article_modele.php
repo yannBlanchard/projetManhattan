@@ -59,14 +59,16 @@ class article {
         ));
     }
 
-    public function recupererArticle($limite){
+    public function recupererArticle($limite,$limite2){
 
-        $req = $bdd->query("select * From article ORDER BY date_Aticle LIMIT :limite");
+        $req = $bdd->query("select * From article ORDER BY date_Aticle DESC LIMIT :limite , :limite2");
         $req->execute(array
         (
-            'limite' => $limite
+            'limite' => $limite,
+            'limite2' => $limite2
         ));
         $res->fetchAll();
+        return res;
     }
 
     public function recupererArticleParMois($mois,$limite){
