@@ -5,14 +5,14 @@
  * Date: 16/04/2015
  * Time: 21:48
  */
-
+include_once "connexion_modele.php";
 class Likes {
     public $idLikes;
     public $pseudo;
     public $Art_id_article;
 
     public function insertLikes(){
-        include_once "connexion_modele.php";
+
         $req = $bdd->prepare("insert into Likes (idLikes,pseudo,Art_id_article)
                                   value(:idLikes,:pseudo,:Art_id_article)");
         $req->execute(array
@@ -35,7 +35,6 @@ class Likes {
     }
 */
     public function deleteLikes($idLikes){
-        include_once "connexion_modele.php";
         $req = $bdd->prepare("delete From Likes where idLikes = ':idLikes'");
         $req->execute(array
         (

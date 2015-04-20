@@ -6,6 +6,8 @@
  * Time: 20:12
  */
 
+include_once "connexion_modele.php";
+
 class article {
     public $id_article;
     public $titreArticle;
@@ -22,7 +24,7 @@ class article {
     }
 
     public function insertArticle(){
-        include_once "connexion_modele.php";
+
         $req = $bdd->prepare("insert into article (id_article,titreArticle,corpsArticle,date_Aticle,imageArticle)
                                   value(:id_article,:titreArticle,:corpsArticle,:date_Aticle,:imageArticle)");
         $req->execute(array
@@ -35,7 +37,7 @@ class article {
     }
 
     public function updateArticle($id_article){
-        include_once "connexion_modele.php";
+
         $req = $bdd->prepare("update article set titreArticle = :titreArticle,
                               corpsArticle = :corpsArticle,date_Aticle = :date_Aticle,imageArticle = :imageArticle where id_article = ':id_article'");
         $req->execute(array
@@ -48,7 +50,7 @@ class article {
     }
 
     public function deleteArticle($id_article){
-        include_once "connexion_modele.php";
+
         $req = $bdd->prepare("delete From article where id_article = ':id_article'");
         $req->execute(array
         (
@@ -57,7 +59,7 @@ class article {
     }
 
     public function recupererArticle($limite){
-        include_once "connexion_modele.php";
+
         $req = $bdd->query("select * From article ORDER BY date_Aticle LIMIT :limite");
         $req->execute(array
         (
@@ -67,7 +69,7 @@ class article {
     }
 
     public function recupererArticleParMois($mois,$limite){
-        include_once "connexion_modele.php";
+
         $req = $bdd->query("select * From article where date_Aticle like '%/:mois/%' ORDER BY date_Aticle LIMIT :limite");
         $req->execute(array
         (

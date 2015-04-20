@@ -5,7 +5,9 @@
  * Date: 16/04/2015
  * Time: 20:10
  */
+
 include_once "connexion_modele.php";
+
 class commentaire {
     public $id_commentaire;
     public $titreCommentaire;
