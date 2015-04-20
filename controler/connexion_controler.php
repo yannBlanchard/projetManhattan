@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
         header("location : connexion.php?err=1000"); //erreur pseudo mot de passe vide
     }
     elseif($_POST['mdp'] == ""){
-        header("location : connexion.php?err=10001"); //erreur mot de passe vide
+        header("location : connexion.php?err=1001"); //erreur mot de passe vide
     }
 }
 
