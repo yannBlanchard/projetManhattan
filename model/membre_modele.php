@@ -86,8 +86,8 @@ class Membre{
     }
 
     public function updateAvatar($lien){
-        $_req = $bdd->prepare('UPDATE membre set avatar = $lien');
-
+        $req = $bdd->prepare('UPDATE membre set avatar = :lien');
+        $req->execute(array('lien => $lien'));
     }
 
 }
