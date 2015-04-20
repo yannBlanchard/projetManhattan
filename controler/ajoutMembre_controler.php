@@ -26,4 +26,4 @@ if(!(empty($_POST))){
 }
 
 $MEMBRE= new Membre($_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["pseudo"], $_POST["mdp"],$_POST["droit"]);
-$MEMBRE->InscriptionUti($_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["pseudo"], $_POST["mdp"], $_POST["mdp2"]);
+$MEMBRE->InscriptionUti($_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["pseudo"],$_POST['droit'], $_POST['avatar'], $_POST["mdp"]);
