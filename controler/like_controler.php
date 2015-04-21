@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: austepha
+ * User: Yann
  * Date: 20/04/2015
  * Time: 10:02
  */
@@ -9,5 +9,5 @@
 session_start();
 include_once "../model/likes_modele.php";
 
-$LIKES= new Likes($_POST["idLikes"], $_POST["pseudo"], $_POST["Art_id_article"]);
+$LIKES= new Likes('', $_SESSION["pseudo"], $_POST["Art_id_article"]);
 $LIKES->insertLikes();
