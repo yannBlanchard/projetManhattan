@@ -83,10 +83,16 @@ class article {
     }
 
 
-    public function rechercherArticle($titreArticle){
+    public function rechercherArticle($titreArticle)
+    {
 
-        $req = $bdd->query("select titreArticle from article");
+        $req = $bdd->query("SELECT titreArticle FROM article");
         $req->execute(array(
-        'titreArticle' => $titreArticle));
+            'titreArticle' => $titreArticle));
+
+        while ($row = mysql_fetch_array($req)) {
+            $titreArticle = $row['titreArticle'];
+        }
     }
+
 }
