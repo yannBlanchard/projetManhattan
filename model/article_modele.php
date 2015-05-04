@@ -69,7 +69,7 @@ class article {
             'limite' => $limite,
             'limite2' => $limite2
         ));
-        $res->fetchAll();
+        $req->fetchAll();
         return res;
     }
 
@@ -81,7 +81,7 @@ class article {
             'mois' => $mois,
             'limite' => $limite
         ));
-        $res->fetchAll();
+        $req->fetchAll();
     }
 
 
