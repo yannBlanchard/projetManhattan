@@ -8,7 +8,7 @@ require_once('header.php');
 <?php
 
 require_once('navigation.php');
-
+require_once('controler/index_controler.php');
 ?>
 
 <div class="container">
@@ -23,6 +23,45 @@ require_once('navigation.php');
         <div class="col-sm-8 blog-main">
 
             <div class="row">
+
+                <?php
+                    foreach($article as $infosArticle){
+                        echo '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">';
+                            echo '<div class="well blog">';
+                                echo '<a href="#">';
+                                    echo '<div class="date primary">';
+                                            echo '<span class="blog-date">$infosArticle["date_Aticle"]</span>';
+                                            echo '<span class="blog-number">8</span>';
+                                        echo '</div>';
+                                    echo '<div class="row">';
+                                                echo '<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">';
+                                                    echo '<div class="image">';
+                                                        echo '<img src="img/'.$infosArticle["imageArticle"].'" alt="image article">';
+                                                    echo '</div>';
+                                                echo '</div>';
+                                                echo '<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">';
+                                                    echo '<div class="blog-details">';
+                                                        echo '<h2>$infosArticle["titreArticle"]</h2>';
+                                                        echo '<p>';
+                                                            echo $infosArticle['corpsArticle'];
+                                                        echo '</p>';
+                                                    echo '</div>';
+                                                echo '</div>';
+                                    echo '</div>';
+                                echo '</a>';
+                            echo '</div>';
+                        echo '</div>';
+                }
+                    ?>
+
+
+
+
+
+
+            <!--
+
+
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="well blog">
                         <a href="#">
@@ -176,7 +215,7 @@ require_once('navigation.php');
                         </a>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
         </div><!-- /.blog-main -->
 
