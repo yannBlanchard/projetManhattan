@@ -66,32 +66,32 @@ class article {
 
     public function recupererArticle($limite,$limite2){
 
-        $req = $this->bdd->query("select * From article ORDER BY date_Aticle DESC LIMIT :limite , :limite2");
+        $req = $this->bdd->prepare("select * From article ORDER BY date_Aticle DESC LIMIT :limite , :limite2");
         /*$req->execute(array
         (
-            ':limite' => $limite,
-            ':limite2' => $limite2
+            'limite' => $limite,
+            'limite2' => $limite2
         ));*/
         $req->execute(array(':limite' => $limite, ':limite2' => $limite2));
-        $req->fetchAll();
+        //$req->fetchAll();
         return $req;
     }
 
     public function recupererArticleParMois($mois,$limite){
 
-        $req = $this->bdd->query("select * From article where date_Aticle like '%/:mois/%' ORDER BY date_Aticle LIMIT :limite");
+        $req = $this->bdd->prepare("select * From article where date_Aticle like '%/:mois/%' ORDER BY date_Aticle LIMIT :limite");
         $req->execute(array
         (
             'mois' => $mois,
             'limite' => $limite
         ));
-        return $req->fetchAll();
+        return $req;
     }
 
 
     public function rechercherArticle($titreArticle){
 
-        $req = $this->bdd->query("select titreArticle from article");
+        $req = $this->bdd->prepare("select titreArticle from article");
         $req->execute(array(
         'titreArticle' => $titreArticle));
     }

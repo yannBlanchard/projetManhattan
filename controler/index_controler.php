@@ -12,7 +12,6 @@ if(isset($_GET['page'])){
     $classArticle = new article('','','','','');
     $article = $classArticle->recupererArticle(0,10);
     //$article = recupererArticle((1*$_GET['page'])-1,20*$_GET['page']);
-    $article = recupererArticle(0,10);
     foreach($article as $cle => $infosArticle){
         $articles[$cle]['titreArticle'] = htmlspecialchars($billet['titreArticle']);
         $articles[$cle]['corpsArticle'] = htmlspecialchars($billet['corpsArticle']);
