@@ -62,7 +62,8 @@ require_once('navigation.php');
             <div class="row" >
                 <h1 class="blog-title">Mes Articles</h1>
                 <hr>
-
+                <a class="btn btn-default" href="newarticle.php"><i class="fa fa-plus"> Créer article</i></a>
+                <hr>
                 <div class="well blog">
                     <a href="#">
                         <div class="date warning">

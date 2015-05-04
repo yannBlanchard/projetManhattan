@@ -17,6 +17,24 @@
       </span>
     </div><!-- /input-group -->
 </div>
+
+<div class="sidebar-module">
+    <h4><i class="fa fa-bell"></i> Notifications</h4>
+
+    <div class="alert alert-purple" role="alert">
+        <h3>New Comment</h3>
+        <div class="pull-right">
+            <button class="btn btn-xs btn-success"><i class="fa fa-check"></i></button>
+            <button class="btn btn-xs btn-danger"><i class="fa fa-close"></i></button>
+        </div>
+        <p class="lead">Blabla</p>
+
+    </div>
+    <div class="alert alert-info" role="alert">...</div>
+    <div class="alert alert-warning" role="alert">...</div>
+    <div class="alert alert-danger" role="alert">...</div>
+
+</div>
 <div class="sidebar-module">
     <h4>Archives</h4>
     <ol class="list-unstyled">

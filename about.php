@@ -36,7 +36,7 @@ require_once('navigation.php');
                 <div class="col-lg-5">
                     <div class="media">
                         <a class="pull-left" href="#">
-                            <img class="media-object dp img-circle" src="img/defaut_user.jpg" style="width: 100px;height:100px;">
+                            <img class="media-object dp img-circle" src="img/default.jpg" style="width: 100px;height:100px;">
                         </a>
                         <div class="media-body">
                             <h4 class="media-heading">Yann Blanchard <small> Paris</small></h4>
@@ -50,7 +50,7 @@ require_once('navigation.php');
                 <div class="col-lg-5">
                     <div class="media">
                         <a class="pull-left" href="#">
-                            <img class="media-object dp img-circle" src="img/defaut_user.jpg" style="width: 100px;height:100px;">
+                            <img class="media-object dp img-circle" src="img/default.jpg" style="width: 100px;height:100px;">
                         </a>
                         <div class="media-body">
                             <h4 class="media-heading">Audrey Stephan<small> Paris</small></h4>
@@ -65,7 +65,7 @@ require_once('navigation.php');
                 <div class="col-lg-5">
                     <div class="media">
                         <a class="pull-left" href="#">
-                            <img class="media-object dp img-circle" src="img/defaut_user.jpg" style="width: 100px;height:100px;">
+                            <img class="media-object dp img-circle" src="img/default.jpg" style="width: 100px;height:100px;">
                         </a>
                         <div class="media-body">
                             <h4 class="media-heading">Thomas Aonzo <small> Paris</small></h4>
@@ -89,6 +89,5 @@ require_once('navigation.php');
 </div><!-- /.container -->
 
 <?php
-require_once('footer.php');
 require_once('script.php');
 ?>
