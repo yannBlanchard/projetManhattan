@@ -60,4 +60,18 @@ class commentaire {
         ));
     }
 
+
+    public function notificationCommentaire($titreCommentaire, $corpsCommentaire, $date_commentaire){
+
+        $req = $bdd->prepare("SELECT titreCommentaire, corpsCommentaire, date_commentaire  FROM commentaire");
+
+        $req->execute(array
+        (
+            'titreCommentaire' => $this->titreCommentaire,
+            'corpsCommentaire' => $this->corpsCommentaire,
+            'date_commentaire' => $this->date_commentaire,
+        ));
+       return $req->rowCount();
+        }
+
 }
