@@ -70,7 +70,7 @@ class article {
             'limite2' => $limite2
         ));
         $req->fetchAll();
-        return res;
+        return $req;
     }
 
     public function recupererArticleParMois($mois,$limite){
@@ -81,7 +81,7 @@ class article {
             'mois' => $mois,
             'limite' => $limite
         ));
-        $req->fetchAll();
+        return $req;
     }
 
 
