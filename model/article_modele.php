@@ -101,8 +101,7 @@ class article {
 
     public function rechercherArticle($titreArticle){
 
-        $req = $this->bdd->query("select titreArticle from article");
-        $req->execute(array(
-        'titreArticle' => $titreArticle));
+        $req = $this->bdd->query("select * from article Where titreArticle LIKE ‘%'.$titreArticle.'%’ ");
+        $req->execute();
     }
 }
