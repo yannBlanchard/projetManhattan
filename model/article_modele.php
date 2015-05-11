@@ -63,14 +63,23 @@ class article {
 
     public function recupererArticle($limite,$limite2){
 
-        $req = $this->bdd->prepare("select * From article ORDER BY date_Aticle DESC LIMIT :limite , :limite2");
-        $req->execute(array
+        $req = $this->bdd->prepare("select * From article ORDER BY date_Aticle DESC LIMIT :min , :max");
+        $req->bindParam(':min',$min);
+        $req->bindParam(':max',$max);
+
+        $min = $limite;
+        $max = $limite2;
+        $req->execute();
+
+        /*$req->execute(array
         (
             'limite' => $limite,
             'limite2' => $limite2
-        ));
-        while($row = $req->fetchAll()){
-            print_r($row);
+        ));*/
+        $row = array();
+        //$row = $req->fetch();
+        while($row = $req->fetch()){
+            //print_r($row);
         }
 
        // print_r($row);

@@ -11,13 +11,22 @@ if(isset($_GET['page'])){
 
     $classArticle = new article('','','','','');
     $article = $classArticle->recupererArticle(0,10);
-    //$article = recupererArticle((1*$_GET['page'])-1,20*$_GET['page']);
-    foreach($article as $cle => $infosArticle){
-        $articles[$cle]['titreArticle'] = htmlspecialchars($billet['titreArticle']);
-        $articles[$cle]['corpsArticle'] = htmlspecialchars($billet['corpsArticle']);
-        $articles[$cle]['date_Aticle'] = htmlspecialchars($billet['date_Aticle']);
-        $articles[$cle]['imageArticle'] = htmlspecialchars($billet['imageArticle']);
-        $articles[$cle]['Mem_pseudo'] = htmlspecialchars($billet['Mem_pseudo']);
+    print_r($article);
+    if(empty($article)){
+        header("location : connexion.php?err=1003"); //erreur pas d'article
+    }
+    else {
+        //$article = recupererArticle((1*$_GET['page'])-1,20*$_GET['page']);
+        //print_r($article);
+        echo $article[date_Aticle];
+        foreach ($article as $cle => $infosArticle) {
+            /*$articles[$cle]['titreArticle'] = htmlspecialchars($infosArticle['titreArticle']);
+            $articles[$cle]['corpsArticle'] = htmlspecialchars($infosArticle['corpsArticle']);
+            $articles[$cle]['date_Aticle'] = htmlspecialchars($infosArticle['date_Aticle']);
+            $articles[$cle]['imageArticle'] = htmlspecialchars($infosArticle['imageArticle']);
+            $articles[$cle]['Mem_pseudo'] = htmlspecialchars($infosArticle['Mem_pseudo']);*/
+
+        }
     }
 }
 else{
