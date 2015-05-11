@@ -25,7 +25,7 @@ create table article
 	id_article int not null auto_increment,
 	titreArticle varchar(150) not null,
 	corpsArticle TEXT not null,
-  date_Aticle DATE not null,
+  date_Article DATE not null,
   imageArticle varchar(50) not null,
   Mem_pseudo varchar(50) not null,
 	primary key(id_article)

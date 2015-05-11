@@ -5,7 +5,7 @@
  * Date: 13/04/2015
  * Time: 15:16
  */
-
+date_default_timezone_set("Europe/Paris");
 ?>
 
 <!DOCTYPE html>

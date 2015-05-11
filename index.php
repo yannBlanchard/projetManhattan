@@ -25,25 +25,26 @@ require_once('controler/index_controler.php');
             <div class="row">
 
                 <?php
-                    foreach($article as $infosArticle){
+                foreach($articles as $article){
+                    //foreach($article as $cle => $values){
                         echo '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">';
                             echo '<div class="well blog">';
-                                echo '<a href="#">';
+                                echo '<a href="single.php?cle='.$article["id_article"].'">';
                                     echo '<div class="date primary">';
-                                            echo '<span class="blog-date">'.$infosArticle["date_Aticle"].'</span>';
-                                            echo '<span class="blog-number">8</span>';
+                                            echo '<span class="blog-date">'.date("M",strtotime($article["date_Article"])).'</span>';
+                                            echo '<span class="blog-number">'.date("d",strtotime($article["date_Article"])).'</span>';
                                         echo '</div>';
                                     echo '<div class="row">';
                                                 echo '<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">';
                                                     echo '<div class="image">';
-                                                        echo '<img src="img/'.$infosArticle["imageArticle"].'" alt="image article">';
+                                                        echo '<img src="img/'.$article["imageArticle"].'" alt="image article">';
                                                     echo '</div>';
                                                 echo '</div>';
                                                 echo '<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">';
                                                     echo '<div class="blog-details">';
-                                                        echo '<h2>'.$infosArticle["titreArticle"].'</h2>';
+                                                        echo '<h2>'.$article["titreArticle"].'</h2>';
                                                         echo '<p>';
-                                                            echo $infosArticle['corpsArticle'];
+                                                            echo $article['corpsArticle'];
                                                         echo '</p>';
                                                     echo '</div>';
                                                 echo '</div>';

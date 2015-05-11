@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `article` (
 `id_article` int(11) NOT NULL,
   `titreArticle` varchar(150) NOT NULL,
   `corpsArticle` text NOT NULL,
-  `date_Aticle` date NOT NULL,
+  `date_Article` date NOT NULL,
   `imageArticle` varchar(50) NOT NULL,
   `Mem_pseudo` varchar(50) NOT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `article` (
 -- Contenu de la table `article`
 --
 
-INSERT INTO `article` (`id_article`, `titreArticle`, `corpsArticle`, `date_Aticle`, `imageArticle`, `Mem_pseudo`) VALUES
+INSERT INTO `article` (`id_article`, `titreArticle`, `corpsArticle`, `date_Article`, `imageArticle`, `Mem_pseudo`) VALUES
 (1, 'a', 'salut', '2001-02-03', 'a', 'a'),
 (2, 'z', 'z', '2015-04-01', 'z', 'z'),
 (3, 'e', 'e', '2015-04-07', 'e', 'e');
