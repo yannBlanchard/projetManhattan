@@ -1,4 +1,6 @@
 <?php
+if(!(isset($_SESSION)))
+    header("location: index.php");
 require_once('header.php');
 
 ?>
