@@ -22,7 +22,7 @@ require_once('navigation.php');
 
         <div class="col-sm-8 blog-main">
 
-
+            <form action = 'controler/inscription_controler.php' method = "POST">
                     <div class="container">
                         <h1>Inscription</h1>
                         <hr>
@@ -69,7 +69,7 @@ require_once('navigation.php');
                         </div>
 
             </div>
-
+            </form>
         </div><!-- /.blog-main -->
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">

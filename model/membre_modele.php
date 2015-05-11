@@ -23,23 +23,37 @@ class Membre{
         $this->email = $email;
         $this->pseudo = $pseudo;
         $this->mdp = $mdp;
+        $this->bdd = bdd();
+    }
 
+    function VerifierAdresseMail($email)
+    {
+        $Syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
+        if (preg_match($Syntaxe, $email)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function InscriptionUti ($nom, $prenom, $email,$pseudo, $droit, $avatar, $mdp)
     {
 
-        $req = $bdd->prepare('INSERT INTO membre (nom, prenom, pseudo, email, droit, avatar, mdp) VALUES (:nom, :prenom, :pseudo, :email, :droit, :avatar, :mdp)');
-        $req->execute(array('nom' => $nom, 'prenom' => $prenom, 'pseudo' => $pseudo, 'email' => $email, 'droit' => $droit, 'avatar' => $avatar, 'mdp' => $mdp));
+        if(VerifierAdresseMail($email)== true ) {
+            $req = $this->$bdd->prepare('INSERT INTO membre (nom, prenom, pseudo, email, droit, avatar, mdp) VALUES (:nom, :prenom, :pseudo, :email, :droit, :avatar, :mdp)');
+            $req->bindParam(':nom', $nom);
+            $req->bindParam(':prenom', $prenom);
+            $req->bindParam(':pseudo', $email);
+            $req->bindParam(':email', $pseudo);
+            $req->bindParam(':droit', $droit);
+            $req->bindParam(':avatar', $avatar);
+            $req->bindParam(':mdp', $mdp);
 
-        function VerifierAdresseMail($email)
-        {
-            $Syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
-            if (preg_match($Syntaxe, $email)) {
-                return true;
-            } else {
-                return false;
-            }
+            $req->execute();
+            header ("Refresh: 0; URL=index.php");
+        }
+        else{
+            header("location : inscription.php?err=1004"); //erreur pb @mail
         }
 
 
