@@ -23,10 +23,11 @@ class Membre{
         $this->email = $email;
         $this->pseudo = $pseudo;
         $this->mdp = $mdp;
+        $this->droit = $droit;
         $this->bdd = bdd();
     }
 
-    function VerifierAdresseMail($email)
+    public function VerifierAdresseMail($email)
     {
         $Syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
         if (preg_match($Syntaxe, $email)) {
@@ -38,28 +39,20 @@ class Membre{
 
     public function InscriptionUti ($nom, $prenom, $email,$pseudo, $droit, $avatar, $mdp)
     {
-
-        if(VerifierAdresseMail($email)== true ) {
-            $req = $this->$bdd->prepare('INSERT INTO membre (nom, prenom, pseudo, email, droit, avatar, mdp) VALUES (:nom, :prenom, :pseudo, :email, :droit, :avatar, :mdp)');
+            $req = $this->bdd->prepare('INSERT INTO membre (nom, prenom, pseudo, email, droit, avatar, mdp) VALUES (:nom, :prenom, :pseudo, :email, :droit, :avatar, :mdp)');
             $req->bindParam(':nom', $nom);
             $req->bindParam(':prenom', $prenom);
-            $req->bindParam(':pseudo', $email);
-            $req->bindParam(':email', $pseudo);
+            $req->bindParam(':pseudo', $pseudo);
+            $req->bindParam(':email', $email);
             $req->bindParam(':droit', $droit);
             $req->bindParam(':avatar', $avatar);
             $req->bindParam(':mdp', $mdp);
 
             $req->execute();
-            header ("Refresh: 0; URL=index.php");
-        }
-        else{
-            header("location : inscription.php?err=1004"); //erreur pb @mail
-        }
-
 
     }
 
-    function VerificationExistancePseudo($pseudo){
+    public function VerificationExistancePseudo($pseudo){
 
         $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo');
         $req->execute(array('pseudo' => $pseudo));
@@ -67,7 +60,7 @@ class Membre{
        return $count;
     }
 
-    function VerificationExistanceEmail($email){
+    public function VerificationExistanceEmail($email){
         $req = $bdd->prepare('SELECT * FROM membre WHERE email = :email');
         $req->execute(array('email' => $email));
         $count = $req->rowCount();
@@ -75,22 +68,13 @@ class Membre{
     }
 
     public function connexionMembre($pseudo, $mdp) {
-        $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo AND mdp= :mdp ');
-        $req->execute(array('pseudo' => $pseudo, 'mdp' => sha1($mdp)));
+        $req = $this->bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo AND mdp= :mdp ');
+        $req->bindParam('pseudo',$pseudo);
+        $req->bindParam('mdp',$mdp);
+        $req->execute();
 
         $data = $req->rowCount();
         return $data;
-        /*// Cas où la requête renvoit aucun résultat
-        if (!$data) {
-            $_SESSION['result'] = "<p style=\"font-size:13px;"
-                . " color:red;font-style:italic;\">"
-                . "Une erreur s'est produite.</p>";
-            header('location:  ../index.php?p=connexion');
-        } else {
-            $_SESSION['login'] = $data['pseudo'];
-            $_SESSION['email'] = $data['email'];
-            header('location:  ../index.php');
-        }*/
     }
 
     public function updateAvatar($lien,$pseudo){

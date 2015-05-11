@@ -18,7 +18,7 @@ require_once('navigation.php');
 
         <div class="col-sm-8 blog-main">
 
-
+        <form action = "controler/connexion_controler.php" method = "post">
             <div class="container">
                 <h1 class="">Connexion</h1>
                 <hr>
@@ -43,7 +43,7 @@ require_once('navigation.php');
                 </div>
 
             </div>
-
+        </form>
         </div><!-- /.blog-main -->
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">

@@ -16,10 +16,13 @@ if(isset($_POST['submit'])){
     $pseudo = addslashes($_POST['pseudo']);
     $mdp = addslashes($_POST['mdp']);
     if($pseudo != "" && $mdp != ""){
-        $MEMBRE= new Membre('', '', '', '', '', '');
-        $res = $MEMBRE->connexionMembre($pseudo, $mdp);
+        $membre= new Membre('', '', '', '', '', '');
+
+
+        $res = $membre->connexionMembre($pseudo, $mdp);
         if($res == 1){
             $_SESSION['pseudo'] = $pseudo;
+
             header('location:  ../index.php');
         }
         else{
