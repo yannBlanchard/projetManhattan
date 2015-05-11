@@ -16,6 +16,15 @@ require_once('navigation.php');
     <div class="blog-header">
         <h1 class="blog-title">Espace Membre</h1>
         <hr>
+            <div class="form-group">
+                <label>Changer Avatar</label><br>
+                <span class="btn btn-default btn-file">
+                <input id="imgInp" type="file" name="newavatar" value="img/default.jpg">Importer</input>
+                </span>
+                <p class="help-block">Preview</p>
+                <img id="blah" src="img/default.jpg" width="20%" height="20%"></img>
+            </div>
+        <hr>
         <p class="lead blog-description">Votre coin perso</p>
     </div>
 
@@ -117,9 +126,25 @@ require_once('navigation.php');
     </div><!-- /.row -->
 
 </div><!-- /.container -->
-<?php
 
+<?php
 require_once('script.php');
 ?>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function(){
+        readURL(this);
+    });
+</script>
 
