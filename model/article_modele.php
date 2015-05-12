@@ -97,11 +97,23 @@ class article {
         ));
         return $req;
     }
+    public function recupererArticleParCle($cle){
+
+        $req = $this->bdd->prepare("select * From article where id_article = :cle");
+        $req->bindParam(':cle',$key);
+
+        $key=$cle;
+        $req->execute();
+        $row = array();
+        $row = $req->fetchAll();
+        return $row;
+    }
 
 
     public function rechercherArticle($titreArticle){
 
         $req = $this->bdd->query("select * from article Where titreArticle LIKE ‘%'.$titreArticle.'%’ ");
         $req->execute();
+        return $req;
     }
 }

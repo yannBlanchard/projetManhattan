@@ -10,28 +10,14 @@
 
 include "../model/commentaire_modele.php";
 
-if($test >= 1){
-    while($resultat=mysql_fetch_array($req)){
-        if($resultat['etat']==0){
-            $titreCommentaire=$resultat['titreCommentaire'];
-        }
-        else{
-            $TitreCommentaire=$resultat['titreCommentaire'];
-            echo 'Vous etes desormais amie avec '.$pseudoExp.'.<br/>';
-        }
-    }
+if(isset($_GET['cle'])){
+
+    $classCommentaire = new commentaire('','','','','');
+    $commentaires = $classCommentaire->recupererCommentairesParArticle($_GET['cle']);
+    print_r($commentaires);
+
+
 }
 else{
-    header("location : connexion.php?err=90"); //erreur il n'y a pas de commentaire
-}
-
-if($test>=1){
-    $req=mysql_query($mysql);
-    while($resultat=mysql_fetch_array($req)){
-        header('location:  ../index.php'); //redirige vers le commentaire, a changer l'adresse!
-    }
-
-    $mysql="UPDATE commentaire SET etat='1' WHERE titreCommentaire"; // problème
-    $req=mysql_query($mysql);
-
+    header('location: index.php?page=1');
 }

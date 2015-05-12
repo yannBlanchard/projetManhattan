@@ -52,7 +52,7 @@ class commentaire {
         ));
     }
 
-    public function deleteArticle($id_commentaire){
+    public function deleteCommentaire($id_commentaire){
         $req = $bdd->prepare("delete From commentaire where id_commentaire = ':id_commentaire'");
         $req->execute(array
         (
@@ -60,6 +60,16 @@ class commentaire {
         ));
     }
 
+    public function recupererCommentairesParArticle($cle){
+        $req = $bdd->prepare("Select * From commentaire where Art_id_article = ':cle' ORDER BY date_commentaire DESC");
+        $req->bindParam(':cle',$key);
+
+        $key=$cle;
+        $req->execute();
+        $row = array();
+        $row = $req->fetchAll();
+        return $row;
+    }
 
     public function notificationCommentaire($titreCommentaire, $corpsCommentaire, $date_commentaire){
 

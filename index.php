@@ -44,7 +44,7 @@ require_once('controler/index_controler.php');
                                                     echo '<div class="blog-details">';
                                                         echo '<h2>'.$article["titreArticle"].'</h2>';
                                                         echo '<p>';
-                                                            echo $article['corpsArticle'];
+                                                            echo substr($article['corpsArticle'],0,100)."...";
                                                         echo '</p>';
                                                     echo '</div>';
                                                 echo '</div>';
