@@ -19,7 +19,7 @@ require_once('navigation.php');
         <div class="col-sm-8">
             <h1 class="blog-title">Créer un article</h1>
             <hr>
-                <form role="form" runat="server" action="controls/ControlNew.php" method="POST" enctype= "multipart/form-data">
+                <form role="form" runat="server" action="controler/article_controler.php" method="POST" enctype= "multipart/form-data">
                     <div class="box-body">
                         <div class="form-group">
                             <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
@@ -29,7 +29,7 @@ require_once('navigation.php');
                         <div class="form-group">
                             <div class="form-group">
                                 <label>Contenu</label>
-                                <textarea name="contenuarticle" class="form-control" rows="3" placeholder="..."></textarea>
+                                <textarea name="contenuarticle" class="form-control" rows="3"  id ="corps" placeholder="..."></textarea>
                                 <input type="lien" class="form-control" name="lienarticle" placeholder="Entrez lien">
                             </div>
                         </div>
@@ -43,7 +43,7 @@ require_once('navigation.php');
                     </div><!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-success">Valider</button>
+                        <button type="submit" class="btn btn-success" id="submitArticle">Valider</button>
                     </div>
                 </form>
         </div>
