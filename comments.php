@@ -48,7 +48,7 @@ include_once('controler/comment_controler.php');
                     }
                     ?>
                     <div class="tab-pane" id="add-comment">
-                        <form action="#" method="post" class="form-horizontal" id="commentForm" role="form">
+                        <form action="controler/comment_controler.php" method="post" class="form-horizontal" id="commentForm" role="form">
                             <div class="form-group">
                                 <label for="email" class="col-sm-2 control-label">Comment</label>
                                 <div class="col-sm-10">
@@ -71,6 +71,7 @@ include_once('controler/comment_controler.php');
                             </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>

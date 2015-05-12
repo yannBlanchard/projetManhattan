@@ -6,7 +6,7 @@
  * Time: 20:10
  */
 
-include_once "model/connexion_modele.php";
+include_once "../model/connexion_modele.php";
 
 class commentaire {
     public $id_commentaire;
@@ -27,26 +27,25 @@ class commentaire {
         $this->bdd = BDD();
     }
 
-    public function insertCommentaire(){
+    public function insertCommentaire($pseudo,$corps,$date,$idArticle){
 
-        $req = $this->bdd->prepare("insert into commentaire (id_commentaire,titreCommentaire,corpsCommentaire,date_commentaire,etat,Art_id_article)
-                                  value(:id_commentaire,:titreCommentaire,:corpsCommentaire,:date_commentaire,:etat,:Art_id_article)");
-        $req->execute(array
-        ('id_commentaire' => $this->id_commentaire,
-            'titreCommentaire' => $this->titreCommentaire,
-            'corpsCommentaire' => $this->corpsCommentaire,
-            'date_commentaire' => $this->date_commentaire,
-            'etat' => $this->etat,
-            'Art_id_article' => $this->Art_id_article
-        ));
+        $req = $this->bdd->prepare("insert into commentaire (titreCommentaire,corpsCommentaire,date_commentaire,etat,Art_id_article)
+                                  value(:titreCommentaire,:corpsCommentaire,:date_commentaire,'0',:Art_id_article)");
+
+        $req->bindParam(':pseudoCommentaire', $pseudo);
+        $req->bindParam(':corpsCommentaire', $corps);
+        $req->bindParam(':date_commentaire', $date);
+        $req->bindParam(':Art_id_article', $idArticle);
+
+        $req->execute();
     }
 
     public function updateCommentaire($id_commentaire){
-        $req = $this->bdd->prepare("update commentaire set titreCommentaire = :titreCommentaire,
+        $req = $this->bdd->prepare("update commentaire set pseudoCommentaire = :pseudoCommentaire,
                               corpsCommentaire = :corpsCommentaire,date_commentaire = :date_commentaire,etat = :etat where id_commentaire = ':id_commentaire'");
         $req->execute(array
         (
-            'titreCommentaire' => $this->titreCommentaire,
+            'pseudoCommentaire' => $this->pseudoCommentaire,
             'corpsCommentaire' => $this->corpsCommentaire,
             'date_commentaire' => $this->date_commentaire,
             'etat' => $this->etat,

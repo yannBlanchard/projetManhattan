@@ -9,6 +9,7 @@ require_once('header.php');
 
 require_once('navigation.php');
 require_once('controler/single_controler.php');
+
 ?>
 
 <div class="container">
