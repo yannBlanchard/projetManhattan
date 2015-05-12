@@ -11,6 +11,7 @@ if(isset($_GET['page'])){
 
     $classArticle = new article('','','','','');
     $articles = $classArticle->recupererArticle(0,10);
+    echo "ok";
     //print_r($articles);
     if(empty($articles)){
         header("location : index.php?err=1003"); //erreur pas d'article

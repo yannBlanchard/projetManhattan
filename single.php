@@ -31,7 +31,7 @@ require_once('controler/single_controler.php');
                         <a href="#">
                             <div class="date primary">
                                 <span class="blog-date">'.date("M",strtotime($article[0]["date_Article"])).'</span>
-                                <span class="blog-number">'.date("D",strtotime($article[0]["date_Article"])).'</span>
+                                <span class="blog-number">'.date("d",strtotime($article[0]["date_Article"])).'</span>
                             </div>
 
                         </a>
