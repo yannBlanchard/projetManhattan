@@ -23,7 +23,7 @@ else{
 }
 
 if(isset($_POST['submitComment'])){
-    echo "ok";
+
     if(isset($_SESSION['pseudo'])){
 
         $pseudo = $_SESSION['pseudo'];
@@ -37,7 +37,7 @@ if(isset($_POST['submitComment'])){
         if($_GET['cle'] != "" && is_numeric($_GET['cle'])){
 
             $commentaires = $classCommentaire->insertCommentaire($pseudo, $corps, NOW(), $_GET['cle']);
-            echo "ok";
+
         }
         else{
             echo "Code erreur";
