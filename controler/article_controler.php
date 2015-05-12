@@ -7,19 +7,20 @@
  */
 
 include_once "../model/article_modele.php";
-$articles = recupererArticle(20);
+/*$articleClass = new article('','','','','');
+$articles = $articleClass->recupererArticle(0,20);
 foreach($article as $cle => $article)
 {
     $articles[$cle]['titre'] = htmlspecialchars($billet['titre']);
     $articles[$cle]['contenu'] = nl2br(htmlspecialchars($billet['contenu']));
-}
-
+}*/
+echo "ok";
 if(isset($_POST['submitArticle'])){
     $titre = htmlspecialchars($_POST['titrearticle']);
     $corps = htmlspecialchars($_POST['corps']);
     $avatar=$_FILES['avatar']['name'];
      //image
-
+    echo "ok";
     $imageArticle=$_FILES['imageArticle']['name'];
     $imageArticle_tmp=$_FILES['imageArticle']['tmp_name'];
     if(!empty($imageArticle)){
@@ -29,6 +30,7 @@ if(isset($_POST['submitArticle'])){
 
             if($titre != "" && $corps != ""){
                 $articleClass = new article('','','','','');
+
                 $articleClass->insertArticle($titre,$corps,NOW(),$_FILES['imageArticle']['name'],$_SESSION['pseudo']);
             }
             else{
