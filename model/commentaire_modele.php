@@ -6,7 +6,7 @@
  * Time: 20:10
  */
 
-include_once "connexion_modele.php";
+include_once "model/connexion_modele.php";
 
 class commentaire {
     public $id_commentaire;
@@ -15,6 +15,7 @@ class commentaire {
     public $date_commentaire;
     public $etat;
     public $Art_id_article;
+    public $bdd;
 
     public function __construct($id_commentaire,$titreCommentaire,$corpsCommentaire,$date_commentaire,$etat,$Art_id_article){
         $this->id_commentaire = $id_commentaire;
@@ -23,11 +24,12 @@ class commentaire {
         $this->date_commentaire = $date_commentaire;
         $this->etat = $etat;
         $this->Art_id_article = $Art_id_article;
+        $this->bdd = BDD();
     }
 
     public function insertCommentaire(){
 
-        $req = $bdd->prepare("insert into commentaire (id_commentaire,titreCommentaire,corpsCommentaire,date_commentaire,etat,Art_id_article)
+        $req = $this->bdd->prepare("insert into commentaire (id_commentaire,titreCommentaire,corpsCommentaire,date_commentaire,etat,Art_id_article)
                                   value(:id_commentaire,:titreCommentaire,:corpsCommentaire,:date_commentaire,:etat,:Art_id_article)");
         $req->execute(array
         ('id_commentaire' => $this->id_commentaire,
@@ -40,7 +42,7 @@ class commentaire {
     }
 
     public function updateCommentaire($id_commentaire){
-        $req = $bdd->prepare("update commentaire set titreCommentaire = :titreCommentaire,
+        $req = $this->bdd->prepare("update commentaire set titreCommentaire = :titreCommentaire,
                               corpsCommentaire = :corpsCommentaire,date_commentaire = :date_commentaire,etat = :etat where id_commentaire = ':id_commentaire'");
         $req->execute(array
         (
@@ -53,7 +55,7 @@ class commentaire {
     }
 
     public function deleteCommentaire($id_commentaire){
-        $req = $bdd->prepare("delete From commentaire where id_commentaire = ':id_commentaire'");
+        $req = $this->bdd->prepare("delete From commentaire where id_commentaire = :id_commentaire");
         $req->execute(array
         (
             'id_commentaire' => $this->id_commentaire,
@@ -61,10 +63,10 @@ class commentaire {
     }
 
     public function recupererCommentairesParArticle($cle){
-        $req = $bdd->prepare("Select * From commentaire where Art_id_article = ':cle' ORDER BY date_commentaire DESC");
+        $req = $this->bdd->prepare("Select * From commentaire where Art_id_article = :cle ORDER BY date_commentaire DESC");
+        $key=$cle;
         $req->bindParam(':cle',$key);
 
-        $key=$cle;
         $req->execute();
         $row = array();
         $row = $req->fetchAll();
@@ -73,7 +75,7 @@ class commentaire {
 
     public function notificationCommentaire($titreCommentaire, $corpsCommentaire, $date_commentaire){
 
-        $req = $bdd->prepare("SELECT titreCommentaire, corpsCommentaire, date_commentaire  FROM commentaire");
+        $req = $this->bdd->prepare("SELECT titreCommentaire, corpsCommentaire, date_commentaire  FROM commentaire");
 
         $req->execute(array
         (

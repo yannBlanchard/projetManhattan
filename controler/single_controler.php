@@ -12,7 +12,7 @@ if(isset($_GET['cle'])){
     $classArticle = new article('','','','','');
     $article = $classArticle->recupererArticleParCle($_GET['cle']);
     //print_r($article);
-    include_once('comment_controler.php');
+
     if(empty($article)){
         header("location : index.php?err=1003"); //erreur pas d'article
     }
