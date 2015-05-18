@@ -16,6 +16,7 @@ class Membre{
     public $pseudo;
     public $mdp;
     public $droit;
+    public $bdd;
 
     public function __construct($nom, $prenom, $email,$pseudo, $mdp, $droit){
         $this->nom = $nom;
@@ -24,7 +25,7 @@ class Membre{
         $this->pseudo = $pseudo;
         $this->mdp = $mdp;
         $this->droit = $droit;
-        $this->bdd = bdd();
+        $this->bdd = BDD();
     }
 
     /**
@@ -114,8 +115,10 @@ class Membre{
      * Fonction qui permet à un utilisateur de modifier sa photo de profil(avatar).
      */
     public function updateAvatar($lien,$pseudo){
-        $req = $bdd->prepare('UPDATE membre set avatar = :lien where pseudo = :pseudo');
-        $req->execute(array('lien' => $lien,'pseudo' => $pseudo));
+        $req = $this->bdd->prepare('UPDATE membre set avatar = :lien where pseudo = :pseudo');
+        $req->bindParam(':lien',$lien);
+        $req->bindParam(':pseudo',$pseudo);
+        $req->execute();
     }
 
     /**
