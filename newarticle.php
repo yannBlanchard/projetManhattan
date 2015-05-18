@@ -10,6 +10,13 @@ require_once('header.php');
 <?php
 
 require_once('navigation.php');
+
+if(isset($_GET['cle'])) {
+    require_once('controler/single_controler.php');
+    $titre=$article[0]["titreArticle"];
+    $img=$article[0]["imageArticle"];
+    $corps=$article[0]["corpsArticle"];
+}
 ?>
 
 <div class="container">
@@ -24,18 +31,18 @@ require_once('navigation.php');
                         <div class="form-group">
                             <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
                             <input type="hidden" class="form-control" name="src" value="article">
-                            <input type="titre" class="form-control" name="titrearticle" placeholder="Entrez titre">
+                            <input type="titre" class="form-control" name="titrearticle" value="<?php echo $titre;?>" placeholder="Entrez titre">
                         </div>
                         <div class="form-group">
                             <div class="form-group">
                                 <label>Contenu</label>
-                                <textarea name="contenuarticle" class="form-control" rows="3"  id ="corps" placeholder="..."></textarea>
+                                <textarea name="contenuarticle" class="form-control" rows="3" value="<?php echo $corps;?>" id ="corps" placeholder="..."></textarea>
 
                             </div>
                         </div>
                         <div  class="form-group">
                             <label>Image d'article</label>
-                            <input id="imgInp" type="file" name="imagearticle" value="img/defaut_article.jpg">
+                            <input id="imgInp" type="file" name="imagearticle" value="<?php echo (empty($img)) ? 'img/defaut-article.jpg' : 'img/'+$img;?>">
                             <p class="help-block">Glissez votre image ici</p>
                             <img id="blah" src="img/defaut_article.jpg" width="20%" height="20%"></img>
                         </div>
