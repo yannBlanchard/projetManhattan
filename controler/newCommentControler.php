@@ -22,7 +22,7 @@ if(isset($_POST['submitComment'])){
             $date = date("Y-m-d");
             $classCommentaire = new commentaire('','','','','','');
             $classCommentaire->insertCommentaire($pseudo, $corps, $date, $cle);
-            ("Refresh: 0;URL=../single.php");
+            header("Refresh: 0;URL=../single.php");
         }
         else{
             echo "Code erreur";
