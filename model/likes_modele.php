@@ -4,6 +4,7 @@
  * User: Yann
  * Date: 16/04/2015
  * Time: 21:48
+ * Cette classe comprend les fonctions pour aimer un article.
  */
 include_once "connexion_modele.php";
 class Likes {
@@ -11,6 +12,9 @@ class Likes {
     public $pseudo;
     public $Art_id_article;
 
+    /**
+     * Fonction qui permet de mettre "j'aime" à un article.
+     */
     public function insertLikes(){
 
         $req = $bdd->prepare("insert into Likes (idLikes,pseudo,Art_id_article)
@@ -34,6 +38,10 @@ class Likes {
         ));
     }
 */
+    /**
+     * @param $idLikes
+     * Fonction qui permet d'enlever le "j'aime" d'un article.
+     */
     public function deleteLikes($idLikes){
         $req = $bdd->prepare("delete From Likes where idLikes = ':idLikes'");
         $req->execute(array

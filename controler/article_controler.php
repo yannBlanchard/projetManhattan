@@ -4,6 +4,7 @@
  * User: Yann
  * Date: 18/04/2015
  * Time: 16:38
+ * Ce contôleur réalise des vérifications lors de l'écriture d'un article.
  */
 session_start();
 include_once "../model/article_modele.php";

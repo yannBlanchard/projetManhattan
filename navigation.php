@@ -4,6 +4,9 @@
  * User: thaonzo
  * Date: 13/04/2015
  * Time: 15:22
+ *
+ * Cette vue permet d'avoir le visuel de la barre de navigation.
+ * Elle est composée de plusieurs onglet (accueil, membre, à propos, etc...).
  */
 if (isset($_SESSION['pseudo'])&&($_SESSION['pseudo']!= ""))
     echo '

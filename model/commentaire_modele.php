@@ -4,6 +4,7 @@
  * User: Yann
  * Date: 16/04/2015
  * Time: 20:10
+ * Cette classe prend en compte les fonctions pour un commentaire.
  */
 
 include_once "../model/connexion_modele.php";
@@ -27,6 +28,13 @@ class commentaire {
         $this->bdd = BDD();
     }
 
+    /**
+     * @param $pseudo
+     * @param $corps
+     * @param $date
+     * @param $idArticle
+     * Fonction qui permet d'insérer un commentaire par rapport à un article.
+     */
     public function insertCommentaire($pseudo,$corps,$date,$idArticle){
 
         $req = $this->bdd->prepare("insert into commentaire (titreCommentaire,corpsCommentaire,date_commentaire,etat,Art_id_article)
@@ -40,6 +48,10 @@ class commentaire {
         $req->execute();
     }
 
+    /**
+     * @param $id_commentaire
+     * Fonction qui permet de mettre à jour un commentaire.
+     */
     public function updateCommentaire($id_commentaire){
         $req = $this->bdd->prepare("update commentaire set pseudoCommentaire = :pseudoCommentaire,
                               corpsCommentaire = :corpsCommentaire,date_commentaire = :date_commentaire,etat = :etat where id_commentaire = ':id_commentaire'");
@@ -53,6 +65,10 @@ class commentaire {
         ));
     }
 
+    /**
+     * @param $id_commentaire
+     * Fonction qui permet de supprimer un commentaire.
+     */
     public function deleteCommentaire($id_commentaire){
         $req = $this->bdd->prepare("delete From commentaire where id_commentaire = :id_commentaire");
         $req->execute(array
@@ -61,6 +77,12 @@ class commentaire {
         ));
     }
 
+    /**
+     * @param $cle
+     * @return array
+     * Fonction qui permet de récupérer les commentaires pour un article.
+     * Chaque commentaire est spécifique à un article.
+     */
     public function recupererCommentairesParArticle($cle){
         $req = $this->bdd->prepare("Select * From commentaire where Art_id_article = :cle ORDER BY date_commentaire DESC");
         $key=$cle;
@@ -72,6 +94,14 @@ class commentaire {
         return $row;
     }
 
+    /**
+     * @param $titreCommentaire
+     * @param $corpsCommentaire
+     * @param $date_commentaire
+     * @return int
+     * Fonction qui va émettre à un membre qu'il a eu un commentaire sur un de ses articles.
+     * Pour cela, une notification sera affiché sur son panel.
+     */
     public function notificationCommentaire($titreCommentaire, $corpsCommentaire, $date_commentaire){
 
         $req = $this->bdd->prepare("SELECT titreCommentaire, corpsCommentaire, date_commentaire  FROM commentaire");

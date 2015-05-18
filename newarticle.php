@@ -1,4 +1,9 @@
 <?php
+/**
+ *
+ * Cette vue permet d'avoir le visuel pour la création d'un article.
+ *
+ */
 //if(!(isset($_SESSION)))
 //header("location: index.php");
 require_once('header.php');

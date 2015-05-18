@@ -1,4 +1,10 @@
 <?php
+/**
+ *
+ * Cette vue permet d'avoir le visuel du formulaire d'inscription.
+ *
+ */
+
 require_once('header.php');
 
 ?>

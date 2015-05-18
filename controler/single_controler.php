@@ -4,6 +4,9 @@
  * User: thaonzo
  * Date: 12/05/2015
  * Time: 09:35
+ * Ce contrôleur permet d'afficher un article dans sa totalité.
+ * On utilise la fonction "recupererArticleParCle" de la classe article.
+ * Dans le cas ou il y a un disfonctionnement, il affiche une erreur.
  */
 include_once('model/article_modele.php');
 

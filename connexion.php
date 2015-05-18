@@ -1,4 +1,11 @@
 <?php
+/**
+ *
+ * Cette vue permet d'avoir le visuel du formulaire de connexion.
+ * La connexion se fait avec le pseudo et le mot de passe.
+ *
+ */
+
 require_once('header.php');
 
 ?>
