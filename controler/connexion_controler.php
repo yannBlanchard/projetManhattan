@@ -6,6 +6,7 @@
  * User: Yann
  * Date: 20/04/2015
  * Time: 09:13
+ * Ce contrôleur sert à la connexion d'un membre.
  *
  */
 

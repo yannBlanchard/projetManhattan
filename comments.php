@@ -4,6 +4,7 @@
  * User: thaonzo
  * Date: 14/04/2015
  * Time: 09:20
+ * Cette vue permet d'avoir le visuel pour l'écriture d'un commentaire.
  */
 require_once('controler/comment_controler.php');
 ?>

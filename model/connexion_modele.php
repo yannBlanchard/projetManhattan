@@ -4,7 +4,6 @@
  * User: austepha
  * Date: 13/04/2015
  * Time: 11:10
- *
  * Connexion à la base de données manhattan.
  */
 function BDD()

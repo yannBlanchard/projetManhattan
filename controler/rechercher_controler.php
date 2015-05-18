@@ -4,7 +4,6 @@
  * User: austepha
  * Date: 04/05/2015
  * Time: 09:28
- *
  * Contrôleur de la classe recherche par rapport au moteur de recherche.
  */
 

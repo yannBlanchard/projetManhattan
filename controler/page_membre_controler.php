@@ -4,11 +4,12 @@
  * User: thaonzo
  * Date: 18/05/2015
  * Time: 09:21
+ * Ce contrôleur permet d'afficher les articles sur la page d'un membre.
  */
 
 include_once('model/article_modele.php');
 
-if(isset($_GET['page'])){
+if(1){
 
     $classArticle = new article('','','','','','');
     $articles = $classArticle->recupererArticleParAuteur($_SESSION['pseudo']);
@@ -36,5 +37,5 @@ if(isset($_GET['page'])){
     }
 }
 else{
-    header('location: membre.php');
+    header('location: index.php');
 }

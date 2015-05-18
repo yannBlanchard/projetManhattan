@@ -4,6 +4,8 @@
  * User: thaonzo
  * Date: 12/05/2015
  * Time: 13:49
+ * Ce contrôleur sert à la déconnexion d'un membre.
+ *
  */
 
 session_start();

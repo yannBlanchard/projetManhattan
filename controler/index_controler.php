@@ -4,6 +4,8 @@
  * User: yablanch
  * Date: 20/04/2015
  * Time: 12:14
+ * Ce contrôleur permet d'afficher un article. Avec la fonction "recupererArticle" de la classe article.
+ *
  */
 require_once('model/article_modele.php');
 

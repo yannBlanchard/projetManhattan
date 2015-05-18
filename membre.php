@@ -1,4 +1,7 @@
 <?php
+/**
+ * Cette vue permet d'avoir le visuel du panel d'un membre (lorsqu'il est connecté).
+ */
 //if(!(isset($_SESSION)))
     //header("location: index.php");
 require_once('header.php');
@@ -10,7 +13,7 @@ require_once('header.php');
 <?php
 
 require_once('navigation.php');
-
+require_once('controler/page_membre_controler.php');
 ?>
 
 <div class="container">
@@ -19,15 +22,19 @@ require_once('navigation.php');
         <h1 class="blog-title">Espace Membre</h1>
         <hr>
             <div class="form-group">
-                <label>Changer Avatar</label><br>
-                <span class="btn btn-default btn-file">
-                <input id="imgInp" type="file" name="newavatar" value="img/default.jpg">Importer</input>
-                </span>
-                <p class="help-block">Preview</p>
-                <img id="blah" src="img/default.jpg" width="20%" height="20%"></img>
+                <form action="controler/change_avatar.php" method="POST" enctype="multipart/form-data">
+                    <label>Changer Avatar</label><br>
+                    <span class="btn btn-default btn-file">
+                    <input id="imgInp" type="file" name="newavatar" value="">Importer</input>
+                    </span>
+                    <p class="help-block">Preview</p>
+                    <img id="blah" src="<?php echo file_exists('img/'.$_SESSION['pseudo'].'.jpg')?'img/'.$_SESSION['pseudo'].'.jpg':(file_exists('img/'.$_SESSION['pseudo'].'.png')?'img/'.$_SESSION['pseudo'].'.png':'img/default.jpg');?>" width="20%" height="20%"></img>
+                    <hr>
+                    <input type="submit" class="btn btn-info" name="submit" value="Modifier">
+                </form>
             </div>
         <hr>
-        <p class="lead blog-description">Votre coin perso</p>
+
     </div>
 
     <div class="row">

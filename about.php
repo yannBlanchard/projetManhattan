@@ -4,6 +4,8 @@
  * User: thaonzo
  * Date: 14/04/2015
  * Time: 09:35
+ * Cette vue permet d'avoir le visuel de la partie "à propos".
+ * Elle renseigne sur les créateurs du blog.
  */
 
 ?>

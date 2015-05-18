@@ -37,13 +37,24 @@ create table article
 
 create table commentaire
 (
-	id_commentaire int not null auto_increment,
-	PseudoCommentaire varchar(150) not null,
-	corpsCommentaire TEXT not null,
+  id_commentaire int not null auto_increment,
+  PseudoCommentaire varchar(150) not null,
+  corpsCommentaire TEXT not null,
   date_commentaire DATE not null,
   etat int not null,
   Art_id_article int not null,
-	primary key(id_commentaire)
+  primary key(id_commentaire)
+);
+/*==================================================================*/
+/* Table : Visite                                                   */
+/*==================================================================*/
+
+create table visite
+(
+  IP varchar(20),
+  Date_visite DATETIME,
+  Art_id_article int not null,
+  primary key(IP,Date_visite,Art_id_article)
 );
 
 /*==================================================================*/

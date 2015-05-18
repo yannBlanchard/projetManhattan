@@ -4,6 +4,7 @@
  * User: Yann
  * Date: 16/04/2015
  * Time: 20:12
+ * Cette classe prend en compte les fonctions par rapport à un article.
  */
 
 include_once "connexion_modele.php";
@@ -27,6 +28,14 @@ class article {
         $this->bdd = bdd();
     }
 
+    /**
+     * @param $titre
+     * @param $corps
+     * @param $date
+     * @param $image
+     * @param $pseudo
+     * Fonction qui permet d'insérer un article dans la base de données.
+     */
     public function insertArticle($titre,$corps,$date,$image,$pseudo){
 
         $req = $this->bdd->prepare("insert into article (titreArticle,corpsArticle,date_Article,imageArticle,Mem_pseudo)
@@ -40,6 +49,11 @@ class article {
         $req->execute();
     }
 
+    /**
+     * @param $id_article
+     * Fonction qui permet d'apporter une modification à un article qui existe déjà.
+     */
+    public function updateArticle($id_article){
     public function updateArticle($id_article,$titre,$corps,$image){
 
         $req = $this->bdd->prepare("update article set titreArticle = :titreArticle,
@@ -53,6 +67,10 @@ class article {
         $req->execute();
     }
 
+    /**
+     * @param $id_article
+     * Fonction qui permet de supprimer un article existant.
+     */
     public function deleteArticle($id_article){
 
         $req = $this->bdd->prepare("delete From article where id_article = :id_article");
@@ -62,6 +80,13 @@ class article {
         ));
     }
 
+    /**
+     * @param $limite
+     * @param $limite2
+     * @return array
+     * Fonction qui permet de récupérer les articles.
+     * Puis ils s'affichent sur la page principale.
+     */
     public function recupererArticle($limite,$limite2){
 
         $req = $this->bdd->prepare("select * From article ORDER BY date_Article DESC LIMIT :min , :max");
@@ -88,6 +113,12 @@ class article {
         return $row;
     }
 
+    /**
+     * @param $mois
+     * @param $limite
+     * @return PDOStatement
+     * Fonction qui permet de récuperer les articles triés par mois de publication.
+     */
     public function recupererArticleParMois($mois,$limite){
 
         $req = $this->bdd->query("select * From article where date_Article like '%/'+:mois+'/%' ORDER BY date_Article LIMIT :limite");
@@ -98,6 +129,13 @@ class article {
         ));
         return $req;
     }
+
+    /**
+     * @param $cle
+     * @return array
+     * Fonction qui permet de recuperer les articles en fonction de leur clé.
+     * C'est à dire par rapport à leur id.
+     */
     public function recupererArticleParCle($cle){
 
         $req = $this->bdd->prepare("select * From article where id_article = :cle");
@@ -110,6 +148,11 @@ class article {
         return $row;
     }
 
+    /**
+     * @param $auteur
+     * @return array
+     * Fonction qui permet de recuperer les article en fonction de l'auteur.
+     */
     public function recupererArticleParAuteur($auteur){
 
         $req = $this->bdd->prepare("select * From article where Mem_pseudo = :auteur");
@@ -121,6 +164,12 @@ class article {
         $row = $req->fetchAll();
         return $row;
     }
+
+    /**
+     * @param $titre
+     * @return array
+     * Fonction qui permet de recuperer les articles en fonction de leur titre.
+     */
     public function recupererArticleParTitre($titre){
 
     $req = $this->bdd->prepare("SELECT * FROM `article` WHERE `titreArticle` LIKE :titre");

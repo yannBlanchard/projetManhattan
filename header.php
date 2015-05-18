@@ -4,6 +4,7 @@
  * User: thaonzo
  * Date: 13/04/2015
  * Time: 15:16
+ * Cette vue est le visuel de l'en-tête du blog.
  */
 date_default_timezone_set("Europe/Paris");
 session_start();

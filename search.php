@@ -1,4 +1,7 @@
 <?php
+/**
+ * Cette vue prend en compte le visuel du moteur de recherche.
+ */
 require_once('header.php');
 
 ?>

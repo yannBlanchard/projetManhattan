@@ -4,6 +4,7 @@
  * User: Yann
  * Date: 16/04/2015
  * Time: 21:59
+ * Cette classe prend en compte les fonctions pour "ne pas aimer" un article.
  */
 include_once "connexion_modele.php";
 class Dislike {
@@ -11,6 +12,9 @@ class Dislike {
     public $pseudo;
     public $Art_id_article;
 
+    /**
+     * Fonction qui permet de mettre "j'aime pas" sur un article.
+     */
     public function insertDislike(){
 
         $req = $bdd->prepare("insert into Dislike (idDislike,pseudo,Art_id_article)
@@ -34,6 +38,11 @@ class Dislike {
         ));
     }*/
 
+    /**
+     * @param $Dislike
+     * Fonction qui permet d'enlever un "j'aime pas" sur un article.
+     *
+     */
     public function deleteDislike($Dislike){
         $req = $bdd->prepare("delete From Dislike where idDislike = ':idDislike'");
         $req->execute(array
