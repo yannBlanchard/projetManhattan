@@ -18,7 +18,7 @@ foreach($article as $cle => $article)
 }*/
 
 if(isset($_POST)){
-    echo "ok1";
+
 
     $avatar=$_FILES['newavatar']['name'];
     //image
@@ -35,7 +35,7 @@ if(isset($_POST)){
                 $membreClass = new membre('','','','','','','');
 
                 $membreClass->updateAvatar($_SESSION['pseudo'].substr($_FILES['newavatar']['name'],-4,4),$_SESSION['pseudo']);
-                header ("Refresh: 0;URL=../membre.php");
+                header ("location: ../membre.php");
             }
             else{
                 echo "code erreur";
