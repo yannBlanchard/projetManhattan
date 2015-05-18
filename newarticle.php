@@ -25,7 +25,7 @@ if(isset($_GET['cle'])) {
         <div class="col-sm-8">
             <h1 class="blog-title">Créer un article</h1>
             <hr>
-                <form action = 'controler/article_controler.php' method = "POST">
+                <form action = 'controler/article_controler.php' method = "POST" enctype="multipart/form-data">
                 <!--<form role="form" runat="server" action="controler/article_controler.php" method="POST" enctype= "multipart/form-data">-->
                     <div class="box-body">
                         <div class="form-group">

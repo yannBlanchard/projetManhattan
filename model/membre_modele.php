@@ -82,4 +82,8 @@ class Membre{
         $req->execute(array('lien' => $lien,'pseudo' => $pseudo));
     }
 
+    public function modificationMdp($pseudo, $mdp){
+        $req = $bdd->prepare('UPDATE membre set mdp = :mdp where pseudo = :pseudo');
+        $req->execute(array('$pseudo' => $pseudo, 'mdp' => $mdp));
+    }
 }
