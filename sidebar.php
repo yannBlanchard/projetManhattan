@@ -10,12 +10,14 @@
 
 <div class="sidebar-module sidebar-module-inset">
     <h4>Rechercher</h4>
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="rechercher ...">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-      </span>
-    </div><!-- /input-group -->
+    <form action="search.php" method="GET">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="rechercher ...">
+          <span class="input-group-btn">
+            <input class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+          </span>
+        </div><!-- /input-group -->
+    </form>
 </div>
 <?php
     if(isset($_SESSION['pseudo'])) {

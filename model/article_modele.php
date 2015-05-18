@@ -55,7 +55,7 @@ class article {
 
     public function deleteArticle($id_article){
 
-        $req = $this->bdd->prepare("delete From article where id_article = ':id_article'");
+        $req = $this->bdd->prepare("delete From article where id_article = :id_article");
         $req->execute(array
         (
             'id_article' => $this->id_article
@@ -123,21 +123,13 @@ class article {
     }
     public function recupererArticleParTitre($titre){
 
-    $req = $this->bdd->prepare("select * From article where titrecorps Like '%'+:titre+'%'");
+    $req = $this->bdd->prepare("SELECT * FROM `article` WHERE `titreArticle` LIKE :titre");
     $req->bindParam(':titre',$tit);
 
-    $aut=$auteur;
+    $tit='%'.$titre.'%';
     $req->execute();
     $row = array();
     $row = $req->fetchAll();
     return $row;
-}
-
-
-    public function rechercherArticle($titreArticle){
-
-        $req = $this->bdd->query("select * from article Where titreArticle LIKE ‘%'.$titreArticle.'%’ ");
-        $req->execute();
-        return $req;
     }
 }

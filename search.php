@@ -68,6 +68,6 @@ require_once('controler/search_controler.php');
 </div><!-- /.container -->
 
 <?php
-require_once('footer.php');
+
 require_once('script.php');
 ?>
