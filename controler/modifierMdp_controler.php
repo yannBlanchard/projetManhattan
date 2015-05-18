@@ -4,7 +4,6 @@
  * User: austepha
  * Date: 18/05/2015
  * Time: 09:25
- *
  * Ce contrôleur permet de modifier le mot de passe dans la base de données.
  */
 

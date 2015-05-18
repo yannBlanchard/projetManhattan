@@ -4,6 +4,7 @@
  * User: thaonzo
  * Date: 18/05/2015
  * Time: 10:54
+ * Ce contrôleur prend en compte le changement de la photo (avatar).
  */
 
 session_start();

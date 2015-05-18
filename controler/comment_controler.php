@@ -4,8 +4,8 @@
  * User: austepha
  * Date: 04/05/2015
  * Time: 11:22
- *
  * Controleur par rapport à la classe commentaire, qui permet d'avoir une notification quand on a un commentaire sur un article.
+ *
  */
 
 require_once("model/commentaire_modele.php");

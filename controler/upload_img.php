@@ -5,6 +5,7 @@
  * Date: 11/05/2015
  * Time: 12:09
  * Ce contrôleur vérifie que le téléchargement d'une image c'est bien éffectué.
+ *
  */
 
 function upload($index,$destination,$maxsize=FALSE,$extensions=FALSE)

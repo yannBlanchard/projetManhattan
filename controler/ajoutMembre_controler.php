@@ -6,6 +6,7 @@
  * Time: 22:00
  * Ce contrôleur réalise des vérifications quand il y a une insertion d'un membre dans la base de données.
  * Il utilise les fonctions de la classe membre.
+ *
  */
 
 session_start();

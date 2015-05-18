@@ -4,6 +4,8 @@
  * User: thaonzo
  * Date: 20/04/2015
  * Time: 12:14
+ * Ce contrôleur permet d'éffectuer une recherche dans les articles, en fonction du titre.
+ * POur cela, on appel la fonction "recupererArticleParTitre".
  */
 require_once('model/article_modele.php');
 

@@ -8,6 +8,7 @@
  * Il vérifie que l'adresse mail, l'existance de l'adresse mail, vérifie le pseudo.
  * Pour cela, on utilise les fonctions "VerifierAdresseMail", "VerificationExistanceEmail", "VerificationExistancePseudo" et "InscriptionUti"
  * de la classe membre.
+ *
  */
 include_once('../model/membre_modele.php');
 
