@@ -7,7 +7,7 @@
  * Cette classe prend en compte les fonctions pour un commentaire.
  */
 
-include_once "../model/connexion_modele.php";
+require_once( "connexion_modele.php");
 
 class commentaire {
     public $id_commentaire;

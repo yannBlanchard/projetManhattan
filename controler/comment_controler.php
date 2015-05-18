@@ -8,7 +8,7 @@
  * Controleur par rapport à la classe commentaire, qui permet d'avoir une notification quand on a un commentaire sur un article.
  */
 
-include "../model/commentaire_modele.php";
+require_once("model/commentaire_modele.php");
 
 if(isset($_GET['cle'])){
 

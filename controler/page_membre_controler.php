@@ -1,21 +1,21 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: yablanch
- * Date: 20/04/2015
- * Time: 12:14
- * Ce contrôleur permet d'afficher un article. Avec la fonction "recupererArticle" de la classe article.
+ * User: thaonzo
+ * Date: 18/05/2015
+ * Time: 09:21
  */
-require_once('model/article_modele.php');
+
+include_once('model/article_modele.php');
 
 if(isset($_GET['page'])){
 
     $classArticle = new article('','','','','','');
-    $articles = $classArticle->recupererArticle((($_GET['page']-1)*10),10);
+    $articles = $classArticle->recupererArticleParAuteur($_SESSION['pseudo']);
 
     //print_r($articles);
     if(empty($articles)){
-        header("location : index.php?err=1003"); //erreur pas d'article
+        header("location : membre.php?err=1003"); //erreur pas d'article
     }
     else {
         //$article = recupererArticle((1*$_GET['page'])-1,20*$_GET['page']);
@@ -36,5 +36,5 @@ if(isset($_GET['page'])){
     }
 }
 else{
-    header('location: index.php?page=1');
+    header('location: membre.php');
 }

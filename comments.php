@@ -7,7 +7,7 @@
  *
  * Cette vue permet d'avoir le visuel pour l'écriture d'un commentaire.
  */
-include_once('controler/comment_controler.php');
+require_once('controler/comment_controler.php');
 ?>
 <div class="container" width="50%">
     <div class="row">

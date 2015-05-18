@@ -36,18 +36,19 @@ if(isset($_GET['cle'])) {
                         <div class="form-group">
                             <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
                             <input type="hidden" class="form-control" name="src" value="article">
-                            <input type="titre" class="form-control" name="titrearticle" value="<?php echo $titre;?>" placeholder="Entrez titre">
+                            <?php
+                            echo '<input type="titre" class="form-control" name="titrearticle" value="'.$titre.'" placeholder="Entrez titre">
                         </div>
                         <div class="form-group">
                             <div class="form-group">
                                 <label>Contenu</label>
-                                <textarea name="contenuarticle" class="form-control" rows="3" value="<?php echo $corps;?>" id ="corps" placeholder="..."></textarea>
+                                <textarea name="contenuarticle" class="form-control" rows="3" value="'.$corps.'" id ="corps" placeholder="..."></textarea>
 
                             </div>
                         </div>
                         <div  class="form-group">
-                            <label>Image d'article</label>
-                            <input id="imgInp" type="file" name="imagearticle" value="<?php echo (empty($img)) ? 'img/defaut-article.jpg' : 'img/'+$img;?>">
+                            <label>Image d\'article</label>
+                            <input id="imgInp" type="file" name="imagearticle" value="'.((empty($img)) ? 'img/defaut-article.jpg' : 'img/'+$img).'">
                             <p class="help-block">Glissez votre image ici</p>
                             <img id="blah" src="img/defaut_article.jpg" width="20%" height="20%"></img>
                         </div>
@@ -57,7 +58,8 @@ if(isset($_GET['cle'])) {
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success" name="submitArticle" value="ok" id="submitArticle">Valider</button>
                     </div>
-                </form>
+                </form>';
+                       ?>
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <?php

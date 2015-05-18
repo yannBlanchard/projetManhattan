@@ -1,21 +1,20 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: yablanch
+ * User: thaonzo
  * Date: 20/04/2015
  * Time: 12:14
- * Ce contrôleur permet d'afficher un article. Avec la fonction "recupererArticle" de la classe article.
  */
 require_once('model/article_modele.php');
 
-if(isset($_GET['page'])){
+if(isset($_GET['search'])){
 
     $classArticle = new article('','','','','','');
-    $articles = $classArticle->recupererArticle((($_GET['page']-1)*10),10);
+    $articles = $classArticle->recupererArticleParTitre($_GET['search']);
 
     //print_r($articles);
     if(empty($articles)){
-        header("location : index.php?err=1003"); //erreur pas d'article
+        header("location : search.php?err=1003"); //erreur pas d'article
     }
     else {
         //$article = recupererArticle((1*$_GET['page'])-1,20*$_GET['page']);
