@@ -11,6 +11,10 @@ require_once('header.php');
 
 require_once('navigation.php');
 
+$titre="";
+$img="";
+$corps="";
+
 if(isset($_GET['cle'])) {
     require_once('controler/single_controler.php');
     $titre=$article[0]["titreArticle"];
@@ -32,20 +36,23 @@ if(isset($_GET['cle'])) {
                             <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
                             <input type="hidden" class="form-control" name="src" value="article">
                             <?php
+                            echo '<input type="hidden" class="form-control" name="image" value='.$img.'>';
+
                             echo '<input type="titre" class="form-control" name="titrearticle" value="'.$titre.'" placeholder="Entrez titre">
+                            <input type="hidden" class="form-control" name="cle" value='.(isset($_GET['cle'])?$_GET['cle']:"").'>
                         </div>
                         <div class="form-group">
                             <div class="form-group">
                                 <label>Contenu</label>
-                                <textarea name="contenuarticle" class="form-control" rows="3" value="'.$corps.'" id ="corps" placeholder="..."></textarea>
+                                <textarea name="contenuarticle" class="form-control" rows="3" id ="corps" placeholder="...">'.$corps.'</textarea>
 
                             </div>
                         </div>
                         <div  class="form-group">
                             <label>Image d\'article</label>
-                            <input id="imgInp" type="file" name="imagearticle" value="'.((empty($img)) ? 'img/defaut-article.jpg' : 'img/'+$img).'">
+                            <input id="imgInp" type="file" name="imagearticle" value="'.(($img==="") ? 'img/defaut_article.jpg' : 'img/'.$img).'">
                             <p class="help-block">Glissez votre image ici</p>
-                            <img id="blah" src="img/defaut_article.jpg" width="20%" height="20%"></img>
+                            <img id="blah" src="'.(($img==="") ? 'img/defaut_article.jpg' : 'img/'.$img).'" width="20%" height="20%"></img>
                         </div>
 
                     </div><!-- /.box-body -->

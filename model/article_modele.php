@@ -40,17 +40,17 @@ class article {
         $req->execute();
     }
 
-    public function updateArticle($id_article){
+    public function updateArticle($id_article,$titre,$corps,$image){
 
         $req = $this->bdd->prepare("update article set titreArticle = :titreArticle,
-                              corpsArticle = :corpsArticle,date_Article = :date_Article,imageArticle = :imageArticle where id_article = :id_article");
-        $req->execute(array
-        ('titreArticle' => $this->titreArticle,
-            'corpsArticle' => $this->corpsArticle,
-            'date_Article' => $this->date_Article,
-            'imageArticle' => $this->imageArticle,
-            'id_article' => $id_article,
-        ));
+                              corpsArticle = :corpsArticle,imageArticle = :imageArticle where id_article = :id_article");
+
+        $req->bindParam(':titreArticle',$titre);
+        $req->bindParam(':corpsArticle',$corps);
+        $req->bindParam(':imageArticle',$image);
+        $req->bindParam(':id_article',$id_article);
+
+        $req->execute();
     }
 
     public function deleteArticle($id_article){
@@ -132,4 +132,5 @@ class article {
     $row = $req->fetchAll();
     return $row;
     }
+
 }
