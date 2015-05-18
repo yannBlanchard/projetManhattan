@@ -1,9 +1,7 @@
 <?php
 /**
- *
  * Cette vue permet d'avoir le visuel de la page d'accueil du blog.
  * Elle prend en compte les différents articles sous forme de résumé.
- *
  */
 
 require_once('header.php');

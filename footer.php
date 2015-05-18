@@ -1,7 +1,5 @@
 /**
-*
 * Cette vue permet d'avoir le visuel du pied page du blog.
-*
 */
 
 <footer class="blog-footer">
