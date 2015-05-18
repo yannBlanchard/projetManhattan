@@ -5,7 +5,7 @@
  * Date: 14/04/2015
  * Time: 09:20
  */
-include_once('controler/comment_controler.php');
+require_once('controler/comment_controler.php');
 ?>
 <div class="container" width="50%">
     <div class="row">

@@ -6,7 +6,7 @@
  * Time: 20:10
  */
 
-include_once "../model/connexion_modele.php";
+require_once( "connexion_modele.php");
 
 class commentaire {
     public $id_commentaire;

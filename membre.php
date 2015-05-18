@@ -75,47 +75,51 @@ require_once('navigation.php');
                 <hr>
                 <a class="btn btn-default" href="newarticle.php"><i class="fa fa-plus"> Créer article</i></a>
                 <hr>
-                <div class="well blog">
-                    <a href="#">
-                        <div class="date warning">
-                            <span class="blog-date">Sept</span>
-                            <span class="blog-number">14</span>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                                <div class="image">
-                                    <img src="http://lorempixel.com/800/534/transport/4/" alt="">
+                <?php
+                foreach($articles as $article) {
+                            echo '<div class="well blog">
+                            <a href="#">
+                                <div class="date warning">
+                                    <span class="blog-date">'.date("M",strtotime($article["date_Article"])).'</span>
+                                    <span class="blog-number">'.date("d",strtotime($article["date_Article"])).'</span>
                                 </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <div class="blog-details">
-                                    <h2>Post title 4</h2>
-                                    <p>
-                                        Quisque ac risus nibh. Ut nisi nisi, hendrerit quis malesuada vel, laoreet quis justo. In tincidunt eget est in rhoncus. Sed non tincidunt ipsum. Curabitur commodo tempus metus ut imperdiet. Mauris nec nulla...
-                                    </p>
-                                    <div class="row">
-
-                                        <div class="col-sm-6">
-                                            <div class="alert alert-warning" ><i class="fa fa-eye">120</i></div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                        <div class="image">
+                                            <img src="img/'.$article["imageArticle"].'" alt="">
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="alert alert-purple" ><i class="fa fa-comments-o">40</i></div>
+                                    </div>';
+
+                            echo '<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="blog-details">';
+                            echo '<a href="newarticle.php?cle='.$article["id_article"].'"> <h2>'.$article["titreArticle"].'</h2></a>';
+                            echo '<p>' . $article['corpsArticle'] . '</p>';
+                            echo '<div class="row">
+
+                                                <div class="col-sm-6">
+                                                    <div class="alert alert-warning" ><i class="fa fa-eye">120</i></div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="alert alert-purple" ><i class="fa fa-comments-o">40</i></div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="alert alert-success" ><i class="fa fa-thumbs-o-up">70</i></div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="alert alert-danger" ><i class="fa fa-thumbs-o-down">32</i></div>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="alert alert-success" ><i class="fa fa-thumbs-o-up">70</i></div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="alert alert-danger" ><i class="fa fa-thumbs-o-down">32</i></div>
-                                        </div>
 
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                            </a>
+                        </div>';
+                }
+                ?>
             </div>
         </div><!-- /.blog-main -->
 

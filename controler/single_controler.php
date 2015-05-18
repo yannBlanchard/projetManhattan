@@ -9,7 +9,7 @@ include_once('model/article_modele.php');
 
 if(isset($_GET['cle'])){
 
-    $classArticle = new article('','','','','');
+    $classArticle = new article('','','','','','');
     $article = $classArticle->recupererArticleParCle($_GET['cle']);
     //print_r($article);
 

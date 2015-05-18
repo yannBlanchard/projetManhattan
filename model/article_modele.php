@@ -14,14 +14,16 @@ class article {
     public $corpsArticle;
     public $date_Article;
     public $imageArticle;
+    public $auteur;
     public $bdd;
     //File > Settings (Ctrl+Alt+S) > Project Settings > Inspections > PHP > Undefined > Undefined variable cocher ou decocher pour eviter les erreurs d'include
-    public function __construct($id_article,$titreArticle,$corpsArticle,$date_Article,$imageArticle){
+    public function __construct($id_article,$titreArticle,$corpsArticle,$date_Article,$imageArticle,$auteur){
         $this->id_article = $id_article;
         $this->titreArticle = $titreArticle;
         $this->corpsArticle = $corpsArticle;
         $this->date_Article = $date_Article;
         $this->imageArticle = $imageArticle;
+        $this->auteur = $auteur;
         $this->bdd = bdd();
     }
 
@@ -88,7 +90,7 @@ class article {
 
     public function recupererArticleParMois($mois,$limite){
 
-        $req = $this->bdd->query("select * From article where date_Article like '%/:mois/%' ORDER BY date_Article LIMIT :limite");
+        $req = $this->bdd->query("select * From article where date_Article like '%/'+:mois+'/%' ORDER BY date_Article LIMIT :limite");
         $req->execute(array
         (
             'mois' => $mois,
@@ -107,6 +109,29 @@ class article {
         $row = $req->fetchAll();
         return $row;
     }
+
+    public function recupererArticleParAuteur($auteur){
+
+        $req = $this->bdd->prepare("select * From article where Mem_pseudo = :auteur");
+        $req->bindParam(':auteur',$aut);
+
+        $aut=$auteur;
+        $req->execute();
+        $row = array();
+        $row = $req->fetchAll();
+        return $row;
+    }
+    public function recupererArticleParTitre($titre){
+
+    $req = $this->bdd->prepare("select * From article where titrecorps Like '%'+:titre+'%'");
+    $req->bindParam(':titre',$tit);
+
+    $aut=$auteur;
+    $req->execute();
+    $row = array();
+    $row = $req->fetchAll();
+    return $row;
+}
 
 
     public function rechercherArticle($titreArticle){
