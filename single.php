@@ -2,7 +2,6 @@
 /**
  *
  * Cette vue permet d'avoir le visuel d'un seul article dans sa totalité. Sinon ils sont vu sous forme d'extrait.
- *
  */
 require_once('header.php');
 

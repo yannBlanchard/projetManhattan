@@ -1,8 +1,6 @@
 <?php
 /**
- *
  * Cette vue permet d'avoir le visuel du panel d'un membre (lorsqu'il est connecté).
- *
  */
 //if(!(isset($_SESSION)))
     //header("location: index.php");

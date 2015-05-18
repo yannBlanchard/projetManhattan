@@ -4,7 +4,6 @@
  * User: thaonzo
  * Date: 13/04/2015
  * Time: 16:01
- *
  * Cette vue est le visuel de la partie droite de l'interface.
  * Elle affiche les articles par mois.
  */

@@ -4,9 +4,7 @@
  * User: austepha
  * Date: 18/05/2015
  * Time: 09:08
- *
  * Cette vue permet à l'utilisateur de redéfinir son mot de passe.
- *
  */
 
 require_once('header.php');
