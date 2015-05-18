@@ -53,7 +53,6 @@ class article {
      * @param $id_article
      * Fonction qui permet d'apporter une modification à un article qui existe déjà.
      */
-    public function updateArticle($id_article){
     public function updateArticle($id_article,$titre,$corps,$image){
 
         $req = $this->bdd->prepare("update article set titreArticle = :titreArticle,
