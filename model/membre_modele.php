@@ -131,4 +131,29 @@ class Membre{
         $req = $bdd->prepare('UPDATE membre set mdp = :mdp where pseudo = :pseudo');
         $req->execute(array('$pseudo' => $pseudo, 'mdp' => $mdp));
     }
+    /**
+     * @param $cle
+     * @return array
+     * Fonction qui permet de compter les commentaires pour un auteur.
+     * Chaque commentaire est spécifique à un article.
+     */
+    public function CountCommentairesParAuteur($auteur){
+        $req = $this->bdd->prepare("Select Count(*) From commentaire where Art_id_article IN (Select id_article from article where Mem_pseudo = :auteur)");
+        $aut=$auteur;
+        $req->bindParam(':auteur',$aut);
+
+        $req->execute();
+        $row = array();
+        $row = $req->fetchAll();
+        return $row;
+    }
+    public function Get_Visite_Par_Auteur($auteur){
+        $req = $this->bdd->prepare("Select COUNT(*) from visite where Art_id_article IN (Select id_article from article where Mem_pseudo = :auteur)");
+        $req->bindParam(':auteur',$aut);
+        $aut=$auteur;
+        $req->execute();
+        $row = array();
+        $row = $req->fetchAll();
+        return $row;
+    }
 }

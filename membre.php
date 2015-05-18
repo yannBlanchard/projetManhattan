@@ -46,7 +46,7 @@ require_once('controler/page_membre_controler.php');
                 <hr>
                 <div class="col-sm-2">
                     <div class="alert alert-warning" >
-                        <i class="fa fa-eye fa-3x"><h1 class="alert-link">100</h1></i>
+                        <i class="fa fa-eye fa-3x"><h1 class="alert-link"><?php print_r($visiteauteur[0][0]);?></h1></i>
                     </div>
                 </div>
 
@@ -58,7 +58,7 @@ require_once('controler/page_membre_controler.php');
 
                 <div class="col-sm-2">
                     <div class="alert alert-purple" >
-                        <i class="fa fa-comments-o fa-3x"><h1 class="alert-link">12</h1></i>
+                        <i class="fa fa-comments-o fa-3x"><h1 class="alert-link"><?php print_r($commentaireauteur[0][0]);?></h1></i>
                     </div>
                 </div>
 
@@ -104,10 +104,10 @@ require_once('controler/page_membre_controler.php');
                             echo '<div class="row">
 
                                                 <div class="col-sm-6">
-                                                    <div class="alert alert-warning" ><i class="fa fa-eye">120</i></div>
+                                                    <div class="alert alert-warning" ><i class="fa fa-eye">'.($classArticle->Get_Visite_Par_Article($article["id_article"])[0][0]).'</i></div>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <div class="alert alert-purple" ><i class="fa fa-comments-o">40</i></div>
+                                                    <div class="alert alert-purple" ><i class="fa fa-comments-o">'.($classArticle->CountCommentairesParArticle($article["id_article"])[0][0]).'</i></div>
                                                 </div>
                                             </div>
                                             <div class="row">

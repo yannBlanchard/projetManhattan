@@ -7,12 +7,17 @@
  * Ce contrôleur permet d'afficher les articles sur la page d'un membre.
  */
 
-include_once('model/article_modele.php');
-
+require_once('model/article_modele.php');
+require_once('model/visite_modele.php');
+require_once('model/membre_modele.php');
 if(1){
 
     $classArticle = new article('','','','','','');
     $articles = $classArticle->recupererArticleParAuteur($_SESSION['pseudo']);
+
+    $classAuteur=new Membre('','','','','','');
+    $visiteauteur=$classAuteur->Get_Visite_Par_Auteur($_SESSION['pseudo']);
+    $commentaireauteur=$classAuteur->CountCommentairesParAuteur($_SESSION['pseudo']);
 
     //print_r($articles);
     if(empty($articles)){

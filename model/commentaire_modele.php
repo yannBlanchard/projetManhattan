@@ -96,6 +96,7 @@ class commentaire {
         return $row;
     }
 
+
     /**
      * @param $titreCommentaire
      * @param $corpsCommentaire

@@ -180,5 +180,29 @@ class article {
     $row = $req->fetchAll();
     return $row;
     }
+    /**
+     * @param $cle
+     * @return array
+     * Fonction qui permet de compter les commentaires pour un article.
+     * Chaque commentaire est spécifique à un article.
+     */
+    public function CountCommentairesParArticle($cle){
+        $req = $this->bdd->prepare("Select Count(*) From commentaire where Art_id_article = :cle");
+        $key=$cle;
+        $req->bindParam(':cle',$key);
 
+        $req->execute();
+        $row = array();
+        $row = $req->fetchAll();
+        return $row;
+    }
+    public function Get_Visite_Par_Article($cle){
+        $req = $this->bdd->prepare("Select COUNT(*) from visite where Art_id_article = :cle");
+        $req->bindParam(':cle',$key);
+        $key=$cle;
+        $req->execute();
+        $row = array();
+        $row = $req->fetchAll();
+        return $row;
+    }
 }
