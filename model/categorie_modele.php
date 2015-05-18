@@ -1,8 +1,6 @@
 <?php
 /**
- *
  * Cette classe prend en compte les différentes catégorie possible pour un article.
- *
  */
 
 class categorie{

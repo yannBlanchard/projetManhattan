@@ -101,6 +101,7 @@ class commentaire {
      * @return int
      * Fonction qui va émettre à un membre qu'il a eu un commentaire sur un de ses articles.
      * Pour cela, une notification sera affiché sur son panel.
+     *
      */
     public function notificationCommentaire($titreCommentaire, $corpsCommentaire, $date_commentaire){
 

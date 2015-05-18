@@ -41,6 +41,7 @@ class Likes {
     /**
      * @param $idLikes
      * Fonction qui permet d'enlever le "j'aime" d'un article.
+     *
      */
     public function deleteLikes($idLikes){
         $req = $bdd->prepare("delete From Likes where idLikes = ':idLikes'");

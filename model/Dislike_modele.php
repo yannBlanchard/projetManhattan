@@ -41,6 +41,7 @@ class Dislike {
     /**
      * @param $Dislike
      * Fonction qui permet d'enlever un "j'aime pas" sur un article.
+     *
      */
     public function deleteDislike($Dislike){
         $req = $bdd->prepare("delete From Dislike where idDislike = ':idDislike'");

@@ -4,7 +4,6 @@
  * User: austepha
  * Date: 13/04/2015
  * Time: 12:10
- *
  * Classe membre en orienté objet. Elle prend en compte les différentes fonction qui sont en lien avec l'utilisateur.
  */
 include_once "connexion_modele.php";
