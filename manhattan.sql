@@ -80,7 +80,7 @@ INSERT INTO `categorie` (`nomCategorie`) VALUES
 
 CREATE TABLE IF NOT EXISTS `commentaire` (
 `id_commentaire` int(11) NOT NULL,
-  `titreCommentaire` varchar(150) NOT NULL,
+  `pseudoCommentaire` varchar(150) NOT NULL,
   `corpsCommentaire` text NOT NULL,
   `date_commentaire` date NOT NULL,
   `etat` int(11) NOT NULL,
@@ -91,8 +91,8 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 -- Contenu de la table `commentaire`
 --
 
-INSERT INTO `commentaire` (`id_commentaire`, `titreCommentaire`, `corpsCommentaire`, `date_commentaire`, `etat`, `Art_id_article`) VALUES
-(1, 'test', 'salut', '2018-09-18', 0, 1);
+INSERT INTO `commentaire` (`id_commentaire`, `pseudoCommentaire`, `corpsCommentaire`, `date_commentaire`, `etat`, `Art_id_article`) VALUES
+(1, 'e', 'salut', '2018-09-18', 0, 1);
 
 -- --------------------------------------------------------
 

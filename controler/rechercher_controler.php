@@ -14,7 +14,7 @@ include "../model/article_modele.php";
 
 if(isset($_POST['search'])&& empty ($_POST['search'])){
     $search = $_POST['search'];
-    echo "L'article rechercher n'existe pas";
+    echo "L'article recherché n'existe pas";
 }
 else{
     $RechercheArticle = RechercherArticle($titreArticle);

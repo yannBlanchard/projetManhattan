@@ -25,18 +25,17 @@ class article {
         $this->bdd = bdd();
     }
 
-    public function insertArticle($pseudo){
+    public function insertArticle($titre,$corps,$date,$image,$pseudo){
 
-        $req = $this->bdd->prepare("insert into article (id_article,titreArticle,corpsArticle,date_Article,imageArticle,Mem_pseudo)
-                                  value(:id_article,:titreArticle,:corpsArticle,:date_Article,:imageArticle,:pseudo)");
-        $req->execute(array
-        ('id_article' => $this->id_article,
-            'titreArticle' => $this->titreArticle,
-            'corpsArticle' => $this->corpsArticle,
-            'date_Article' => $this->date_Article,
-            'imageArticle' => $this->imageArticle,
-            'pseudo' => $pseudo
-        ));
+        $req = $this->bdd->prepare("insert into article (titreArticle,corpsArticle,date_Article,imageArticle,Mem_pseudo)
+                                  value(:titreArticle,:corpsArticle,:date_Article,:imageArticle,:pseudo)");
+        $req->bindParam(':titreArticle',$titre);
+        $req->bindParam(':corpsArticle',$corps);
+        $req->bindParam(':date_Article',$date);
+        $req->bindParam(':imageArticle',$image);
+        $req->bindParam(':pseudo',$pseudo);
+
+        $req->execute();
     }
 
     public function updateArticle($id_article){
@@ -97,12 +96,23 @@ class article {
         ));
         return $req;
     }
+    public function recupererArticleParCle($cle){
+
+        $req = $this->bdd->prepare("select * From article where id_article = :cle");
+        $req->bindParam(':cle',$key);
+
+        $key=$cle;
+        $req->execute();
+        $row = array();
+        $row = $req->fetchAll();
+        return $row;
+    }
 
 
     public function rechercherArticle($titreArticle){
 
-        $req = $this->bdd->query("select titreArticle from article");
-        $req->execute(array(
-        'titreArticle' => $titreArticle));
+        $req = $this->bdd->query("select * from article Where titreArticle LIKE ‘%'.$titreArticle.'%’ ");
+        $req->execute();
+        return $req;
     }
 }

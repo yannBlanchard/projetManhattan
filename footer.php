@@ -1,10 +1,13 @@
 <footer class="blog-footer">
     <p>
     <ul class="pager">
-        <li><a href="#">Previous</a></li>
-        <li><a href="#">Next</a></li>
-    </ul>
+        <?php
+            if($_GET['page']>1)
+                echo '<li><a href="index.php?page='.($_GET['page']-1).'">Previous</a></li>';
 
+            echo '<li><a href="index.php?page='.($_GET['page']+1).'">Next</a></li>';
+        ?>
+    </ul>
     <a href="#">Back to top</a>
     </p>
 </footer>

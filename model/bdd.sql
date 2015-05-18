@@ -38,7 +38,7 @@ create table article
 create table commentaire
 (
 	id_commentaire int not null auto_increment,
-	titreCommentaire varchar(150) not null,
+	PseudoCommentaire varchar(150) not null,
 	corpsCommentaire TEXT not null,
   date_commentaire DATE not null,
   etat int not null,

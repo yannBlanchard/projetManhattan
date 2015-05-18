@@ -10,28 +10,41 @@
 
 include "../model/commentaire_modele.php";
 
-if($test >= 1){
-    while($resultat=mysql_fetch_array($req)){
-        if($resultat['etat']==0){
-            $titreCommentaire=$resultat['titreCommentaire'];
-        }
-        else{
-            $TitreCommentaire=$resultat['titreCommentaire'];
-            echo 'Vous etes desormais amie avec '.$pseudoExp.'.<br/>';
-        }
-    }
+if(isset($_GET['cle'])){
+
+    $classCommentaire = new commentaire('','','','','','');
+    $commentaires = $classCommentaire->recupererCommentairesParArticle($_GET['cle']);
+    //print_r($commentaires);
+
+
 }
 else{
-    header("location : connexion.php?err=90"); //erreur il n'y a pas de commentaire
+    //header('location: index.php?page=1');
 }
 
-if($test>=1){
-    $req=mysql_query($mysql);
-    while($resultat=mysql_fetch_array($req)){
-        header('location:  ../index.php'); //redirige vers le commentaire, a changer l'adresse!
+if(isset($_POST['submitComment'])){
+
+    if(isset($_SESSION['pseudo'])){
+
+        $pseudo = $_SESSION['pseudo'];
     }
+    else{
+        $pseudo = "Visiteur";
+    }
+    echo $pseudo;
+    if($corps != "") {
+        echo "ok2";
+        if($_GET['cle'] != "" && is_numeric($_GET['cle'])){
 
-    $mysql="UPDATE commentaire SET etat='1' WHERE titreCommentaire"; // problème
-    $req=mysql_query($mysql);
+            $commentaires = $classCommentaire->insertCommentaire($pseudo, $corps, NOW(), $_GET['cle']);
 
+        }
+        else{
+            echo "Code erreur";
+        }
+    }
+    else{
+        echo "Code erreur";
+    }
 }
+

@@ -64,6 +64,8 @@ require_once('navigation.php');
                                         <input type="password" class="form-control input-lg" name="confirm" id="confirm" placeholder="Confirm Password" required>
                                     </div>
                                 </div>
+                                <div id="captcha" class="form-group">
+                                </div>
                                 <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-primary pull-right">
                             </div>
                         </div>
@@ -81,8 +83,13 @@ require_once('navigation.php');
     </div><!-- /.row -->
 
 </div><!-- /.container -->
+
 <?php
 require_once('script.php');
 ?>
 
+<script type="text/javascript">
+$("#captcha").append("Test : Quel est la capitale de la France <input type='text' name='captcha'/>");
+
+</script>
 
