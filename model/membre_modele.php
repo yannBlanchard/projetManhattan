@@ -111,7 +111,7 @@ class Membre{
     /**
      * @param $lien
      * @param $pseudo
-     * Fonction qui permet à un utilisateur de modifier sa photo de profil (avatar).
+     * Fonction qui permet à un utilisateur de modifier sa photo de profil(avatar).
      */
     public function updateAvatar($lien,$pseudo){
         $req = $bdd->prepare('UPDATE membre set avatar = :lien where pseudo = :pseudo');
