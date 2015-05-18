@@ -22,29 +22,4 @@ else{
     //header('location: index.php?page=1');
 }
 
-if(isset($_POST['submitComment'])){
-
-    if(isset($_SESSION['pseudo'])){
-
-        $pseudo = $_SESSION['pseudo'];
-    }
-    else{
-        $pseudo = "Visiteur";
-    }
-    echo $pseudo;
-    if($corps != "") {
-        echo "ok2";
-        if($_GET['cle'] != "" && is_numeric($_GET['cle'])){
-
-            $commentaires = $classCommentaire->insertCommentaire($pseudo, $corps, NOW(), $_GET['cle']);
-
-        }
-        else{
-            echo "Code erreur";
-        }
-    }
-    else{
-        echo "Code erreur";
-    }
-}
 

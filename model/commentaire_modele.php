@@ -37,12 +37,14 @@ class commentaire {
      */
     public function insertCommentaire($pseudo,$corps,$date,$idArticle){
 
-        $req = $this->bdd->prepare("insert into commentaire (titreCommentaire,corpsCommentaire,date_commentaire,etat,Art_id_article)
-                                  value(:titreCommentaire,:corpsCommentaire,:date_commentaire,'0',:Art_id_article)");
+        $req = $this->bdd->prepare("insert into commentaire (PseudoCommentaire,corpsCommentaire,date_commentaire,etat,Art_id_article)
+                                  value(:pseudoCommentaire,:corpsCommentaire,:date_commentaire,:etat,:Art_id_article)");
 
+        $etat = 0;
         $req->bindParam(':pseudoCommentaire', $pseudo);
         $req->bindParam(':corpsCommentaire', $corps);
         $req->bindParam(':date_commentaire', $date);
+        $req->bindParam(':etat', $etat);
         $req->bindParam(':Art_id_article', $idArticle);
 
         $req->execute();

@@ -49,14 +49,17 @@ require_once('controler/comment_controler.php');
                     }
                     ?>
                     <div class="tab-pane" id="add-comment">
-                        <form action="controler/comment_controler.php" method="post" class="form-horizontal" id="commentForm" role="form">
+                        <form action="controler/newCommentControler.php" method="post" class="form-horizontal" id="commentForm" role="form">
                             <div class="form-group">
                                 <label for="email" class="col-sm-2 control-label">Comment</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" name="addComment" id="addComment" rows="5"></textarea>
                                 </div>
+                                <?php
+                                echo '<input type="hidden" class="form-control" name="cle" value='.(isset($_GET['cle'])?$_GET['cle']:"").'>';
+                                ?>
                             </div>
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label for="uploadMedia" class="col-sm-2 control-label">Upload media</label>
                                 <div class="col-sm-10">
                                     <div class="input-group">
@@ -64,10 +67,10 @@ require_once('controler/comment_controler.php');
                                         <input type="text" class="form-control" name="uploadMedia" id="uploadMedia">
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+                                    <button class="btn btn-success btn-circle text-uppercase" name="submitComment" value="ok" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
                                 </div>
                             </div>
                         </form>
