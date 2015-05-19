@@ -41,18 +41,20 @@ class Visite
         $this->Art_id_article = $idarticle;
         $this->bdd = bdd();
     }
+    public function Delete_Visite($ip,$idarticle){
 
-    public function Set_Visite($ip, $idarticle){
         $ip_user=$ip;
         $idarti=$idarticle;
         $req = $this->bdd->prepare("Delete from visite where IP = :ip AND Art_id_article = :idarticle");
         $req->bindParam(':ip',$ip_user);
         $req->bindParam(':idarticle',$idarti);
         $req->execute();
-
-        $req = $this->bdd->prepare("Insert into visite values(:ip,date('Y-m-d'),:idarticle");
-        $req->bindParam(':ip',$ip_user);
-        $req->bindParam(':idarticle',$idarti);
+    }
+    public function Set_Visite($ip,$date,$idarticle){
+        $req = $this->bdd->prepare("Insert into visite (IP,date_visite,Art_id_article) values(:ip,:datevisite,:idarticle)");
+        $req->bindParam(':ip',$ip);
+        $req->bindParam(':idarticle',$idarticle);
+        $req->bindParam(':datevisite',$date);
         $req->execute();
     }
 

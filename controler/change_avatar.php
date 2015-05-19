@@ -30,6 +30,8 @@ if(isset($_POST)){
         //On vérifie l'extension
         $fichier_ext = substr(strrchr($image, '.'), 1);
         if(in_array($fichier_ext,array('jpg','jpeg','png'))){
+            if(file_exists('img/'.$_SESSION['pseudo'].substr($_FILES['newavatar']['name'],-4,4)))
+                unlink('img/'.$_SESSION['pseudo'].substr($_FILES['newavatar']['name'],-4,4));
             move_uploaded_file($_FILES['newavatar']['tmp_name'],'../img/'.$_FILES['newavatar']['name']);
             rename('../img/'.$_FILES['newavatar']['name'], '../img/'.$_SESSION['pseudo'].substr($_FILES['newavatar']['name'],-4,4));
             if($image != "" ){

@@ -17,7 +17,8 @@ if(isset($_GET['cle'])){
     $article = $classArticle->recupererArticleParCle($_GET['cle']);
     //print_r($article);
     $classVisite=new Visite('','','');
-    $classVisite->Set_Visite(get_client_ip(),$_GET['cle']);
+    $classVisite->Delete_Visite(get_client_ip(),$_GET['cle']);
+    $classVisite->Set_Visite(get_client_ip(),date("Y-m-d H:i:s"),$_GET['cle']);
 
     if(empty($article)){
         header("location : index.php?err=1012"); //erreur pas d'article

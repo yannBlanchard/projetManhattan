@@ -187,22 +187,21 @@ class article {
      * Chaque commentaire est spécifique à un article.
      */
     public function CountCommentairesParArticle($cle){
-        $req = $this->bdd->prepare("Select Count(*) From commentaire where Art_id_article = :cle");
+        $req = $this->bdd->prepare("Select * From commentaire where Art_id_article = :cle");
         $key=$cle;
         $req->bindParam(':cle',$key);
 
         $req->execute();
-        $row = array();
-        $row = $req->fetchAll();
-        return $row;
+        $count = $req->rowCount();
+        return $count;
     }
     public function Get_Visite_Par_Article($cle){
-        $req = $this->bdd->prepare("Select COUNT(*) from visite where Art_id_article = :cle");
-        $req->bindParam(':cle',$key);
-        $key=$cle;
-        $req->execute();
-        $row = array();
-        $row = $req->fetchAll();
-        return $row;
+    $req = $this->bdd->prepare("Select * from visite where Art_id_article = :cle");
+    $req->bindParam(':cle',$key);
+    $key=$cle;
+    $req->execute();
+        $count = $req->rowCount();
+        return $count;
     }
+
 }

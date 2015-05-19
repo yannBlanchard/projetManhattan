@@ -30,10 +30,10 @@ if(isset($_POST['submit'])){
         }
     }
     elseif($_POST['pseudo'] == ""){
-        header("location : ../connexion.php?err=1005#navbar"); //erreur pseudo mot de passe vide
+        header("Location: ../connexion.php?err=1005#navbar"); //erreur pseudo mot de passe vide
     }
     elseif($_POST['mdp'] == ""){
-        header("location : ../connexion.php?err=1005#navbar"); //erreur mot de passe vide
+        header("Location: ../connexion.php?err=1005#navbar"); //erreur mot de passe vide
     }
 }
 

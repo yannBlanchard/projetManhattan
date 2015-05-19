@@ -18,6 +18,8 @@ if(1){
     $classAuteur=new Membre('','','','','','');
     $visiteauteur=$classAuteur->Get_Visite_Par_Auteur($_SESSION['pseudo']);
     $commentaireauteur=$classAuteur->CountCommentairesParAuteur($_SESSION['pseudo']);
+    $imagemembre=$classAuteur->Get_Img_By_Auteur($_SESSION['pseudo']);
+    $nbarticles=$classAuteur->Count_Article_By_Auteur($_SESSION['pseudo']);
 
     //print_r($articles);
     if(empty($articles)){

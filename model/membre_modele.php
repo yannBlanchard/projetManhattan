@@ -140,7 +140,24 @@ class Membre{
      * Chaque commentaire est spécifique à un article.
      */
     public function CountCommentairesParAuteur($auteur){
-        $req = $this->bdd->prepare("Select Count(*) From commentaire where Art_id_article IN (Select id_article from article where Mem_pseudo = :auteur)");
+        $req = $this->bdd->prepare("Select * From commentaire where Art_id_article IN (Select id_article from article where Mem_pseudo = :auteur)");
+        $aut=$auteur;
+        $req->bindParam(':auteur',$aut);
+
+        $req->execute();
+        $count = $req->rowCount();
+        return $count;
+    }
+    public function Get_Visite_Par_Auteur($auteur){
+        $req = $this->bdd->prepare("Select * from visite where Art_id_article IN (Select id_article from article where Mem_pseudo = :auteur)");
+        $req->bindParam(':auteur',$aut);
+        $aut=$auteur;
+        $req->execute();
+        $count = $req->rowCount();
+        return $count;
+    }
+    public function Get_Img_By_Auteur($auteur){
+        $req = $this->bdd->prepare("Select avatar from membre where pseudo = :auteur");
         $aut=$auteur;
         $req->bindParam(':auteur',$aut);
 
@@ -149,13 +166,13 @@ class Membre{
         $row = $req->fetchAll();
         return $row;
     }
-    public function Get_Visite_Par_Auteur($auteur){
-        $req = $this->bdd->prepare("Select COUNT(*) from visite where Art_id_article IN (Select id_article from article where Mem_pseudo = :auteur)");
-        $req->bindParam(':auteur',$aut);
+    public function Count_Article_By_Auteur($auteur){
+        $req = $this->bdd->prepare("Select * from article where Mem_pseudo = :auteur");
         $aut=$auteur;
+        $req->bindParam(':auteur',$aut);
+
         $req->execute();
-        $row = array();
-        $row = $req->fetchAll();
-        return $row;
+        $count = $req->rowCount();
+        return $count;
     }
 }
