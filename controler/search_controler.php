@@ -16,7 +16,7 @@ if(isset($_GET['search'])){
 
     //print_r($articles);
     if(empty($articles)){
-        header("location : search.php?err=1003"); //erreur pas d'article
+        header("location : search.php?err=1012"); //erreur pas d'article
     }
     else {
         //$article = recupererArticle((1*$_GET['page'])-1,20*$_GET['page']);

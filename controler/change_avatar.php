@@ -39,13 +39,13 @@ if(isset($_POST)){
                 header ("location: ../membre.php");
             }
             else{
-                echo "code erreur";
+                header ("location: ../membre.php?err=1009");// Erreur dans le changement d'image
             }
 
         }
         else{
-            echo "Format image non supporté.";
-            echo "Format supporté : jpg,jpeg,png";
+            header ("location: ../membre.php?err=1010");// Format image non supporté, Format supporté : jpg,jpeg,png
+
         }
     }
 

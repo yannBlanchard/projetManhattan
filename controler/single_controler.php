@@ -20,7 +20,7 @@ if(isset($_GET['cle'])){
     $classVisite->Set_Visite(get_client_ip(),$_GET['cle']);
 
     if(empty($article)){
-        header("location : index.php?err=1003"); //erreur pas d'article
+        header("location : index.php?err=1012"); //erreur pas d'article
     }
 
 }

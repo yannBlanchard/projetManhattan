@@ -15,7 +15,7 @@ $Syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
 if (preg_match($Syntaxe, $email)) {
     if (!(empty($_POST))) {
         if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['email']) || empty($_POST['pseudo']) || empty($_POST['mdp']) || empty($_POST['droit'])) {
-            header('Location : inscription.php?err=56 '); // retourne une erreur, si tous les champs ne sont pas rempli
+            header('Location : inscription.php?err=1005'); // retourne une erreur, si tous les champs ne sont pas rempli
         }
         else {
             $VerifExistePseudo = VerificationExistancePseudo($pseudo);
@@ -27,11 +27,11 @@ if (preg_match($Syntaxe, $email)) {
                     header('Location : membre.php '); // dans le cas ou tous est bien rempli.
                 }
                 else{
-                    header('Location : inscription.php?err=58');
+                    header('Location : inscription.php?err=1004');
                 }
             }
             else{
-                header('Location : inscription.php?err=57');
+                header('Location : inscription.php?err=1011');
             }
         }
     }

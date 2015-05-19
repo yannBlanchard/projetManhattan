@@ -25,13 +25,13 @@ if(isset($_POST['submitComment'])){
             header("Refresh: 0;URL=../single.php");
         }
         else{
-            echo "Code erreur";
+            header("Location: ../single.php?err=1013");
         }
     }
     else{
-        echo "Code erreur : corps message vide";
+        header("Location: ../single.php?err=1005");
     }
 }
 else{
-    echo "code erreur";
+    header("Location: ../single.php?err=1002");
 }

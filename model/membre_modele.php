@@ -86,8 +86,10 @@ class Membre{
      * Fonction qui permet de vérifier l'éxistance d'un mail.
      */
     public function VerificationExistanceEmail($email){
-        $req = $bdd->prepare('SELECT * FROM membre WHERE email = :email');
-        $req->execute(array('email' => $email));
+        $req = $this->bdd->prepare('SELECT * FROM membre WHERE email = :email');
+        $mail=$email;
+        $req->bindParam(':email', $mail);
+        $req->execute();
         $count = $req->rowCount();
         return $count;
     }

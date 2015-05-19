@@ -44,7 +44,7 @@
 }
 ?>
 <div class="sidebar-module">
-    <h4>Archives</h4>
+    <h4>Timeline </h4>
     <ol class="list-unstyled">
         <li><a href="#">March 2014</a></li>
         <li><a href="#">February 2014</a></li>
@@ -61,7 +61,7 @@
     </ol>
 </div>
 <div class="sidebar-module">
-    <h4>Elsewhere</h4>
+    <h4>Suivez-nous!</h4>
     <ol class="list-unstyled">
         <li><a href="#">GitHub</a></li>
         <li><a href="#">Twitter</a></li>

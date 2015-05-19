@@ -20,9 +20,9 @@ if(isset($_POST['submit'])){
     $pseudo = addslashes($_POST['pseudo']);
     $mdp = addslashes($_POST['mdp']);
     $confirm = addslashes($_POST['confirm']);
+    $captcha=addslashes($_POST['captcha']);
 
-
-    if($nom!="" && $prenom != "" && $email != "" && $pseudo != "" && $mdp != "" && $confirm != "" && $mdp == $confirm){
+    if($nom!="" && $prenom != "" && $email != "" && $pseudo != "" && $mdp != "" && $confirm != "" && $mdp == $confirm && $captcha== "Paris"){
         $classMembre = new Membre('','','','','','');
         $verif = $classMembre->VerifierAdresseMail($email);
         if($verif == true) {
@@ -42,32 +42,35 @@ if(isset($_POST['submit'])){
             }
         }
         else{
-            header("location : inscription.php?err=1004"); //erreur pb @mail
+            header("location : inscription.php?err=1004"); //erreur pb @mail existant
         }
 
 
     }
     else {
         if ($nom == "") {
-            echo "code erreur";
+            header("location : inscription.php?err=1005"); //erreur remplissage champs
         }
         if ($prenom == "") {
-            echo "code erreur";
+            header("location : inscription.php?err=1005"); //erreur remplissage champs
         }
         if ($email == "") {
-            echo "code erreur";
+            header("location : inscription.php?err=1005"); //erreur remplissage champs
         }
         if ($pseudo == "") {
-            echo "code erreur";
+            header("location : inscription.php?err=1005"); //erreur remplissage champs
         }
         if ($mdp == "") {
-            echo "code erreur";
+            header("location : inscription.php?err=1005"); //erreur remplissage champs
         }
         if ($confirm == "") {
-            echo "code erreur";
+            header("location : inscription.php?err=1005"); //erreur remplissage champs
         }
         if($mdp != $confirm){
-            echo "code erreur";
+            header("location : inscription.php?err=1006"); //erreur mots de passe differents
+        }
+        if($captcha != "Paris"){
+            header("location : inscription.php?err=1007"); //erreur captcha faux
         }
     }
 }

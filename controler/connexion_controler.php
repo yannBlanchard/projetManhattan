@@ -23,18 +23,17 @@ if(isset($_POST['submit'])){
         $res = $membre->connexionMembre($pseudo, $mdp);
         if($res == 1){
             $_SESSION['pseudo'] = $pseudo;
-
             header('location:  ../index.php');
         }
         else{
-            header("location : connexion.php?err=1002"); //erreur pseudo ou mdp invalide
+            header("Location: ../connexion.php?err=1008#navbar"); //erreur pseudo ou mdp invalide
         }
     }
     elseif($_POST['pseudo'] == ""){
-        header("location : connexion.php?err=1000"); //erreur pseudo mot de passe vide
+        header("location : ../connexion.php?err=1005#navbar"); //erreur pseudo mot de passe vide
     }
     elseif($_POST['mdp'] == ""){
-        header("location : connexion.php?err=1001"); //erreur mot de passe vide
+        header("location : ../connexion.php?err=1005#navbar"); //erreur mot de passe vide
     }
 }
 
