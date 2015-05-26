@@ -31,7 +31,7 @@ require_once('controler/comment_controler.php');
                             echo '</a >
                                 <div class="media-body" >
                                     <div class="well well-lg" >
-                                        <h4 class="media-heading text-uppercase reviews" > Inconnu </h4 >
+                                        <h4 class="media-heading text-uppercase reviews" >'.$commentaire["PseudoCommentaire"].'</h4 >
                                         <ul class="media-date text-uppercase reviews list-inline" >
                                             <li class="dd" >'.date("d",strtotime($commentaire["date_commentaire"])).'</li >
                                             <li class="mm" >'.date("m",strtotime($commentaire["date_commentaire"])).'</li >

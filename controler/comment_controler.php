@@ -14,6 +14,7 @@ if(isset($_GET['cle'])){
 
     $classCommentaire = new commentaire('','','','','','');
     $commentaires = $classCommentaire->recupererCommentairesParArticle($_GET['cle']);
+
     //print_r($commentaires);
 
 
