@@ -9,8 +9,8 @@
  */
 
 session_start();
-include_once "../model/likes_modele.php";
-include_once "../model/Dislikes_modele.php";
+require_once("../model/likes_modele.php");
+require_once("../model/Dislikes_modele.php");
 
 if(isset($_POST['type'])){
     if($_POST['type']="up"){
@@ -18,7 +18,8 @@ if(isset($_POST['type'])){
         $LIKES->insertLikes();
     }
     if($_POST['type']="down"){
-
+        $LIKES= new Dislike('', $_SESSION["pseudo"], $_POST["Art_id_article"]);
+        $LIKES->insertDislikes();
     }
 
 

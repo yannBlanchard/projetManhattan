@@ -54,16 +54,16 @@ $(document).ready(function(){
 })
 
 //AJAX REQUEST
-$(".glyphicon-thumbs-up").click(function(){
+$(".up").click(function(){
     request(result,"up");
 });
 
-$(".glyphicon-thumbs-down").click(function(){
+$(".down").click(function(){
     request(result,"down");
 });
 
 function result(sData) {
-
+    location.reload();
 }
 
 function getXMLHttpRequest() {
@@ -93,7 +93,7 @@ function request(callback, tmp) {
             callback(xhr.responseText);
         }
     };
-    xhr.open("POST", "", true);
+    xhr.open("POST", "like_controler.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("type="+tmp+"&pseudo="+$pseudo+"&ip="+$ip+"");
 }

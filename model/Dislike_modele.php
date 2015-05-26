@@ -15,39 +15,44 @@ class Dislike {
     /**
      * Fonction qui permet de mettre "j'aime pas" sur un article.
      */
-    public function insertDislike(){
-
-        $req = $bdd->prepare("insert into Dislike (idDislike,pseudo,Art_id_article)
-                                  value(:idDislike,:pseudo,:Art_id_article)");
-        $req->execute(array
-        ('idDislike' => $this->idLikes,
-            'pseudo' => $this->pseudo,
-            'Art_id_article' => $this->Art_id_article
-        ));
+    public function __construct($pseudo,$artid){
+        $this->pseudo=$pseudo;
+        $this->Art_id_article;
+        $this->bdd = BDD();
     }
 
-    /*public function updateDislike($Dislike){
-        include_once "connexion_modele.php";
-        $req = $bdd->prepare("update Dislike set pseudo = :pseudo,Art_id_article = :Art_id_article
-                              where idDislike = ':idDislike'");
-        $req->execute(array
-        (
-            'pseudo' => $this->pseudo,
-            'Art_id_article' => $this->Art_id_article,
-            'idDislike' => $this->idLikes
-        ));
-    }*/
-
     /**
-     * @param $Dislike
-     * Fonction qui permet d'enlever un "j'aime pas" sur un article.
+     * Fonction qui permet de mettre "j'aime" à un article.
+     */
+    public function insertDislikes(){
+
+        $req = $this->bdd->prepare("insert into Dislikes (pseudo,Art_id_article)
+                                  value(:pseudo,:Art_id_article)");
+        $req->bindParam(':pseudo',$this->pseudo);
+        $req->bindParam(':Art_id_article',$this->Art_id_article);
+        $req->execute();
+
+
+    }
+    /**
+     * @param $idLikes
+     * Fonction qui permet d'enlever le "j'aime" d'un article.
      *
      */
-    public function deleteDislike($Dislike){
-        $req = $bdd->prepare("delete From Dislike where idDislike = ':idDislike'");
-        $req->execute(array
-        (
-            'idDislike' => $this->idDislike,
-        ));
+    public function deleteDislikes(){
+        $req = $bdd->prepare("delete From Dislikes where where pseudo=:pseudo And Art_id_article=:Art_id_article" );
+        $req->bindParam(':pseudo',$this->pseudo);
+        $req->bindParam(':Art_id_article',$this->Art_id_article);
+        $req->execute();
+    }
+    public function DejaVote(){
+
+        $req = $this->bdd->prepare("Select * from Dislikes where pseudo=:pseudo And Art_id_article=:Art_id_article");
+        $req->bindParam(':pseudo',$this->pseudo);
+        $req->bindParam(':Art_id_article',$this->Art_id_article);
+        $req->execute();
+        $count = $req->rowCount();
+        return $count;
+
     }
 }

@@ -27,31 +27,30 @@ class Likes {
         $req = $this->bdd->prepare("insert into Likes (pseudo,Art_id_article)
                                   value(:pseudo,:Art_id_article)");
         $req->bindParam(':pseudo',$this->pseudo);
-        $req->bindParam(':pseudo',$this->pseudo);
+        $req->bindParam(':Art_id_article',$this->Art_id_article);
+        $req->execute();
+
+
     }
-/*
-    public function updateLikes($idLikes){
-        include_once "connexion_modele.php";
-        $req = $bdd->prepare("update Likes set pseudo = :pseudo,Art_id_article = :Art_id_article
-                              where idLikes = ':idLikes'");
-        $req->execute(array
-        (
-            'pseudo' => $this->pseudo,
-            'Art_id_article' => $this->Art_id_article,
-            'idLikes' => $this->idLikes
-        ));
-    }
-*/
     /**
      * @param $idLikes
      * Fonction qui permet d'enlever le "j'aime" d'un article.
      *
      */
-    public function deleteLikes($idLikes){
-        $req = $bdd->prepare("delete From Likes where idLikes = ':idLikes'");
-        $req->execute(array
-        (
-            'idLikes' => $this->idLikes,
-        ));
+    public function deleteLikes(){
+        $req = $bdd->prepare("delete From Likes where where pseudo=:pseudo And Art_id_article=:Art_id_article" );
+        $req->bindParam(':pseudo',$this->pseudo);
+        $req->bindParam(':Art_id_article',$this->Art_id_article);
+        $req->execute();
+    }
+    public function DejaVote(){
+
+        $req = $this->bdd->prepare("Select * from Likes where pseudo=:pseudo And Art_id_article=:Art_id_article");
+        $req->bindParam(':pseudo',$this->pseudo);
+        $req->bindParam(':Art_id_article',$this->Art_id_article);
+        $req->execute();
+        $count = $req->rowCount();
+        return $count;
+
     }
 }
