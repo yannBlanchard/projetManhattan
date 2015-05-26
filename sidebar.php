@@ -44,21 +44,17 @@
 }
 ?>
 <div class="sidebar-module">
-    <h4>Timeline </h4>
+    <h4>Archives</h4>
     <ol class="list-unstyled">
-        <li><a href="#">March 2014</a></li>
-        <li><a href="#">February 2014</a></li>
-        <li><a href="#">January 2014</a></li>
-        <li><a href="#">December 2013</a></li>
-        <li><a href="#">November 2013</a></li>
-        <li><a href="#">October 2013</a></li>
-        <li><a href="#">September 2013</a></li>
-        <li><a href="#">August 2013</a></li>
-        <li><a href="#">July 2013</a></li>
-        <li><a href="#">June 2013</a></li>
-        <li><a href="#">May 2013</a></li>
-        <li><a href="#">April 2013</a></li>
-    </ol>
+        <li><a href="search.php?archive=2015-04">April 2015</a></li>
+        <li><a href="search.php?archive=2015-03">March 2015</a></li>
+        <li><a href="search.php?archive=2015-02">February 2015</a></li>
+        <li><a href="search.php?archive=2015-01">January 2015</a></li>
+        <li><a href="search.php?archive=2014-12">December 2014</a></li>
+        <li><a href="search.php?archive=2014-11">November 2014</a></li>
+
+
+         </ol>
 </div>
 <div class="sidebar-module">
     <h4>Suivez-nous!</h4>

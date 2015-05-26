@@ -15,7 +15,7 @@ class Likes {
 
      public function __construct($pseudo,$artid){
          $this->pseudo=$pseudo;
-         $this->Art_id_article;
+         $this->Art_id_article=$artid;
          $this->bdd = BDD();
      }
 
@@ -24,8 +24,7 @@ class Likes {
      */
     public function insertLikes(){
 
-        $req = $this->bdd->prepare("insert into Likes (pseudo,Art_id_article)
-                                  value(:pseudo,:Art_id_article)");
+        $req = $this->bdd->prepare("insert into likes (pseudo,Art_id_article) values(:pseudo,:Art_id_article)");
         $req->bindParam(':pseudo',$this->pseudo);
         $req->bindParam(':Art_id_article',$this->Art_id_article);
         $req->execute();
@@ -38,16 +37,27 @@ class Likes {
      *
      */
     public function deleteLikes(){
-        $req = $bdd->prepare("delete From Likes where where pseudo=:pseudo And Art_id_article=:Art_id_article" );
-        $req->bindParam(':pseudo',$this->pseudo);
+        $req = $bdd->prepare("delete From likes where pseudo = :pseud And Art_id_article = :Art_id_article" );
+        $req->bindParam(':pseud',$this->pseudo);
         $req->bindParam(':Art_id_article',$this->Art_id_article);
         $req->execute();
     }
     public function DejaVote(){
 
-        $req = $this->bdd->prepare("Select * from Likes where pseudo=:pseudo And Art_id_article=:Art_id_article");
-        $req->bindParam(':pseudo',$this->pseudo);
-        $req->bindParam(':Art_id_article',$this->Art_id_article);
+        $req = $this->bdd->prepare("Select * from likes where pseudo=:pseudo And Art_id_article=:Art_id_article");
+        $pseudo=$this->pseudo;
+        $req->bindParam(':pseudo',$pseudo);
+        $cle=$this->Art_id_article;
+        $req->bindParam(':Art_id_article',$cle);
+        $req->execute();
+        $count = $req->rowCount();
+        return $count;
+
+    }
+    public function getLikesParArticle(){
+        $req = $this->bdd->prepare("Select * from likes where Art_id_article=:Art_id_article");
+        $cle=$this->Art_id_article;
+        $req->bindParam(':Art_id_article',$cle);
         $req->execute();
         $count = $req->rowCount();
         return $count;

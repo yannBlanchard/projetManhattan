@@ -18,24 +18,18 @@ if(isset($_GET['search'])){
     if(empty($articles)){
         header("location : search.php?err=1012"); //erreur pas d'article
     }
-    else {
-        //$article = recupererArticle((1*$_GET['page'])-1,20*$_GET['page']);
 
-        /*while($row = $req->fetch()){
-
-        }*/
-
-
-        /*foreach ($article as $cle => $infosArticle) {
-            /*$articles[$cle]['titreArticle'] = htmlspecialchars($infosArticle['titreArticle']);
-            $articles[$cle]['corpsArticle'] = htmlspecialchars($infosArticle['corpsArticle']);
-            $articles[$cle]['date_Aticle'] = htmlspecialchars($infosArticle['date_Aticle']);
-            $articles[$cle]['imageArticle'] = htmlspecialchars($infosArticle['imageArticle']);
-            $articles[$cle]['Mem_pseudo'] = htmlspecialchars($infosArticle['Mem_pseudo']);
-
-        }*/
-    }
 }
 else{
-    header('location: index.php?page=1');
+    if(isset($_GET['archive'])){
+        $classArticle = new article('','','','','','');
+        $articles = $classArticle->recupererArticleParDate($_GET['archive']);
+
+        //print_r($articles);
+        if(empty($articles)){
+            header("location : search.php?err=1012"); //erreur pas d'article
+        }
+    }
+    else
+        header('location: index.php?page=1');
 }

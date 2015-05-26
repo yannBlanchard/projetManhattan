@@ -55,15 +55,29 @@ $(document).ready(function(){
 
 //AJAX REQUEST
 $(".up").click(function(){
+
     request(result,"up");
 });
 
 $(".down").click(function(){
+
     request(result,"down");
 });
 
 function result(sData) {
-    location.reload();
+    if(sData =="up"){
+        $(".up").children("h3").html(parseInt($(".up").children("h3").html())+1)
+        $(".up").addClass("disabled").removeClass("up");
+        $(".down").addClass("disabled").removeClass("down");
+    }
+    else if(sData=="down"){
+        $(".down").children("h3").html(parseInt($(".down").children("h3").html())+1)
+        $(".up").addClass("disabled").removeClass("up");
+        $(".down").addClass("disabled").removeClass("down");
+    }
+    else
+    $(".errorajax").html("<h3>Erreur de vote</h3>")
+
 }
 
 function getXMLHttpRequest() {
@@ -86,16 +100,20 @@ function getXMLHttpRequest() {
 
     return xhr;
 }
-function request(callback, tmp) {
+function request(callback, $tmp) {
     var xhr = getXMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
             callback(xhr.responseText);
         }
     };
-    xhr.open("POST", "like_controler.php", true);
+
+    xhr.open("POST", "controler/like_controler.php", true);
+
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("type="+tmp+"&pseudo="+$pseudo+"&ip="+$ip+"");
+
+    xhr.send("type="+$tmp+"&pseudo="+$pseudo+"&cle="+$cle);
+
 }
 
 //END AJAX REQUEST

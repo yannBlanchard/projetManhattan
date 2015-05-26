@@ -180,6 +180,17 @@ class article {
     $row = $req->fetchAll();
     return $row;
     }
+    public function recupererArticleParDate($date){
+
+        $req = $this->bdd->prepare("SELECT * FROM `article` WHERE `date_article` LIKE :dat ORDER BY `date_article` DESC");
+        $req->bindParam(':dat',$data);
+
+        $data=$date."%";
+        $req->execute();
+        $row = array();
+        $row = $req->fetchAll();
+        return $row;
+    }
     /**
      * @param $cle
      * @return array
