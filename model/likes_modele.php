@@ -8,22 +8,26 @@
  */
 include_once "connexion_modele.php";
 class Likes {
-    public $idLikes;
     public $pseudo;
     public $Art_id_article;
+    public $bdd;
+
+
+     public function __construct($pseudo,$artid){
+         $this->pseudo=$pseudo;
+         $this->Art_id_article;
+         $this->bdd = BDD();
+     }
 
     /**
      * Fonction qui permet de mettre "j'aime" à un article.
      */
     public function insertLikes(){
 
-        $req = $bdd->prepare("insert into Likes (idLikes,pseudo,Art_id_article)
-                                  value(:idLikes,:pseudo,:Art_id_article)");
-        $req->execute(array
-        ('idLikes' => $this->idLikes,
-            'pseudo' => $this->pseudo,
-            'Art_id_article' => $this->Art_id_article
-        ));
+        $req = $this->bdd->prepare("insert into Likes (pseudo,Art_id_article)
+                                  value(:pseudo,:Art_id_article)");
+        $req->bindParam(':pseudo',$this->pseudo);
+        $req->bindParam(':pseudo',$this->pseudo);
     }
 /*
     public function updateLikes($idLikes){

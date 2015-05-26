@@ -8,10 +8,10 @@
  */
 include_once "connexion_modele.php";
 class Dislike {
-    public $Dislike;
+
     public $pseudo;
     public $Art_id_article;
-
+    public $bdd;
     /**
      * Fonction qui permet de mettre "j'aime pas" sur un article.
      */

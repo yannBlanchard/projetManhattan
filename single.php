@@ -50,8 +50,9 @@ require_once('controler/single_controler.php');
                                 <p>'.$article[0]["corpsArticle"].'</p>
                             </div>
 
-                        </div>
-                    </div>';
+                        </div>';
+                        require_once('like.php');
+                    echo '</div>';
                     ?>
 
                 </div>

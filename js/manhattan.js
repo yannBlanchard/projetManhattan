@@ -54,13 +54,18 @@ $(document).ready(function(){
 })
 
 //AJAX REQUEST
-$(".next").click(function(){
-    request(result);
+$(".glyphicon-thumbs-up").click(function(){
+    request(result,"up");
+});
+
+$(".glyphicon-thumbs-down").click(function(){
+    request(result,"down");
 });
 
 function result(sData) {
 
 }
+
 function getXMLHttpRequest() {
     var xhr = null;
 
@@ -90,7 +95,7 @@ function request(callback, tmp) {
     };
     xhr.open("POST", "", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("variable1="+tmp+"");
+    xhr.send("type="+tmp+"&pseudo="+$pseudo+"&ip="+$ip+"");
 }
 
 //END AJAX REQUEST
