@@ -64,13 +64,17 @@ require_once('controler/page_membre_controler.php');
 
                 <div class="col-sm-2">
                     <div class="alert alert-success" >
-                        <i class="fa fa-thumbs-o-up fa-3x"><h1 class="alert-link">150</h1></i>
+                        <?php
+                        echo '<i class="fa fa-thumbs-o-up fa-3x"><h1 class="alert-link">'.($classLike->countLikeParAuteur($_SESSION['pseudo'])).'</h1></i>';
+                        ?>
                     </div>
                 </div>
 
                 <div class="col-sm-2">
                     <div class="alert alert-danger" >
-                        <i class="fa fa-thumbs-o-down fa-3x"><h1 class="alert-link">50</h1></i>
+                        <?php
+                        echo '<i class="fa fa-thumbs-o-down fa-3x"><h1 class="alert-link">'.($classDislike->countDislikeParAuteur($_SESSION['pseudo'])).'</h1></i>';
+                        ?>
                     </div>
                 </div>
 
@@ -112,10 +116,10 @@ require_once('controler/page_membre_controler.php');
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <div class="alert alert-success" ><i class="fa fa-thumbs-o-up">70</i></div>
+                                                    <div class="alert alert-success" ><i class="fa fa-thumbs-o-up">'.($classLike->getLikesParArticle($article["id_article"])).'</i></div>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <div class="alert alert-danger" ><i class="fa fa-thumbs-o-down">32</i></div>
+                                                    <div class="alert alert-danger" ><i class="fa fa-thumbs-o-down">'.($classDislike->getDislikesParArticle($article["id_article"])).'</i></div>
                                                 </div>
 
                                             </div>

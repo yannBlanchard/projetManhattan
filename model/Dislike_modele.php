@@ -67,4 +67,14 @@ class Dislike {
         return $count;
 
     }
+
+    public function countDislikeParAuteur($auteur){
+        $req = $this->bdd->prepare("Select count(idDislike) from Dislike where pseudo=:auteur");
+        $aut=$auteur;
+        $req->bindParam(':auteur',$aut);
+        $req->execute();
+        $count = $req->rowCount();
+        return $count;
+    }
+
 }

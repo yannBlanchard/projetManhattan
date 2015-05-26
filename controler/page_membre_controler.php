@@ -10,6 +10,8 @@
 require_once('model/article_modele.php');
 require_once('model/visite_modele.php');
 require_once('model/membre_modele.php');
+require_once('model/likes_modele.php');
+require_once('model/Dislike_modele.php');
 if(1){
 
     $classArticle = new article('','','','','','');
@@ -20,6 +22,13 @@ if(1){
     $commentaireauteur=$classAuteur->CountCommentairesParAuteur($_SESSION['pseudo']);
     $imagemembre=$classAuteur->Get_Img_By_Auteur($_SESSION['pseudo']);
     $nbarticles=$classAuteur->Count_Article_By_Auteur($_SESSION['pseudo']);
+    //test Like dislike pour page membre
+    $classLike = new Likes('','');
+    $nbLike=$classLike->getLikesParArticle($_GET['cle']);
+    $nbTotalLike = $classLike->countLikeParAuteur($_SESSION['pseudo']);
+    $classDislike = new Dislike('','');
+    $nbDislike = $classDislike->getDislikesParArticle($_GET['cle']);
+    $nbTotalDislike = $classDislike->countDislikeParAuteur($_SESSION['pseudo']);
 
     //print_r($articles);
     if(empty($articles)){

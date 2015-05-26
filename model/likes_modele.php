@@ -63,4 +63,14 @@ class Likes {
         return $count;
 
     }
+
+    public function countLikeParAuteur($auteur){
+        $req = $this->bdd->prepare("Select count(idLikes) from likes where pseudo=:auteur");
+        $aut=$auteur;
+        $req->bindParam(':auteur',$aut);
+        $req->execute();
+        $count = $req->rowCount();
+        return $count;
+    }
+
 }
