@@ -111,7 +111,7 @@ function request(callback, $tmp) {
     xhr.open("POST", "controler/like_controler.php", true);
 
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
+   
     xhr.send("type="+$tmp+"&pseudo="+$pseudo+"&cle="+$cle);
 
 }

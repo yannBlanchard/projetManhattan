@@ -12,7 +12,17 @@ require_once('header.php');
 <?php
 
 require_once('navigation.php');
-
+function motListe()
+{
+	$liste = array('internet', 'captcha', 'robot','tuque','diamant','pénisiline','anticonstitutionnellement');
+	return $liste[array_rand($liste)];
+}
+function captcha()
+{
+	$mot = motListe();
+	$_SESSION['captcha'] = $mot;
+	return $mot;
+}
 ?>
 
 <div class="container">
@@ -68,8 +78,14 @@ require_once('navigation.php');
                                         <input type="password" class="form-control input-lg" name="confirm" id="confirm" placeholder="Confirm Password" required>
                                     </div>
                                 </div>
-                                <div id="captcha" class="form-group">
+				<div class="form-group">
+                                    <label for="captcha">Recopiez le mot : "<?php echo captcha(); ?>"</label>
+                                    <div class="input-group col-sm-12 col-xs-6 col-sm-8 col-lg-12 col-md-8"> <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                        <input type="text" class="form-control input-lg" name="captcha" id="captcha" /><br />
+                                    </div>
                                 </div>
+					
+                             
                                 <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-primary pull-right">
                             </div>
                         </div>
@@ -92,8 +108,5 @@ require_once('navigation.php');
 require_once('script.php');
 ?>
 
-<script type="text/javascript">
-$("#captcha").append("Test : Quel est la capitale de la France <input type='text' name='captcha'/>");
 
-</script>
 

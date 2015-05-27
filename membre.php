@@ -64,17 +64,13 @@ require_once('controler/page_membre_controler.php');
 
                 <div class="col-sm-2">
                     <div class="alert alert-success" >
-                        <?php
-                        echo '<i class="fa fa-thumbs-o-up fa-3x"><h1 class="alert-link">'.($classLike->countLikeParAuteur($_SESSION['pseudo'])).'</h1></i>';
-                        ?>
+                        <i class="fa fa-thumbs-o-up fa-3x"><h1 class="alert-link"><?php echo $likeauteur;?></h1></i>
                     </div>
                 </div>
 
                 <div class="col-sm-2">
                     <div class="alert alert-danger" >
-                        <?php
-                        echo '<i class="fa fa-thumbs-o-down fa-3x"><h1 class="alert-link">'.($classDislike->countDislikeParAuteur($_SESSION['pseudo'])).'</h1></i>';
-                        ?>
+                        <i class="fa fa-thumbs-o-down fa-3x"><h1 class="alert-link"><?php echo $dislikeauteur;?></h1></i>
                     </div>
                 </div>
 
@@ -116,12 +112,18 @@ require_once('controler/page_membre_controler.php');
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <div class="alert alert-success" ><i class="fa fa-thumbs-o-up">'.($classLike->getLikesParArticle($article["id_article"])).'</i></div>
+                                                    <div class="alert alert-success" ><i class="fa fa-thumbs-o-up">'.($classArticle->Get_Like_Par_Article($article["id_article"])).'</i></div>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <div class="alert alert-danger" ><i class="fa fa-thumbs-o-down">'.($classDislike->getDislikesParArticle($article["id_article"])).'</i></div>
+                                                    <div class="alert alert-danger" ><i class="fa fa-thumbs-o-down">'.($classArticle->Get_Dislike_Par_Article($article["id_article"])).'</i></div>
                                                 </div>
 
+                                            </div>
+                                            <div class="row">
+                                                <form action="membre.php" method="post">
+                                                    <input type="hidden" name="cledelete" value="'.$article["id_article"].'">
+                                                    <input type="submit" class="btn btn-danger" value="Supprimer">
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

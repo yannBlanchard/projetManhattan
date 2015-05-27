@@ -57,6 +57,19 @@ class Visite
         $req->bindParam(':datevisite',$date);
         $req->execute();
     }
-
+	public function Get_Day_Visits($data){
+        $req = $this->bdd->prepare("Select * from visite where date_visite= :datevisite");
+        $dat=$data;
+        $req->bindParam(':datevisite',$dat);
+        $req->execute();
+	$count = $req->rowCount();
+        return $count;
+    }
+	public function Get_All_Visits(){
+        $req = $this->bdd->prepare("Select * from visite");
+        $req->execute();
+	$count = $req->rowCount();
+        return $count;
+    }
 
 }

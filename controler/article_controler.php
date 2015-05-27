@@ -19,7 +19,7 @@ foreach($article as $cle => $article)
 }*/
 
 if(isset($_POST['submitArticle'])){
-    echo "ok1";
+    
     $titre = htmlspecialchars($_POST['titrearticle']);
     $corps = htmlspecialchars($_POST['contenuarticle']);
     $avatar=$_FILES['imagearticle']['name'];
@@ -28,7 +28,7 @@ if(isset($_POST['submitArticle'])){
     //image
     $imageArticle=$_FILES['imagearticle']['name'];
     $imageArticle_tmp=$_FILES['imagearticle']['tmp_name'];
-    if(!empty($imageArticle) || $image != ""){
+    if(1){
         //$fichier_ext=strtolower(end(explode('.',$imageArticle)));
         //On vérifie l'extension
         if(!empty($imageArticle)) {
@@ -42,25 +42,30 @@ if(isset($_POST['submitArticle'])){
             }
         }
         else {
-            $imageArticle = $image;
+            $imageArticle = "defaut_article.jpg";
         }
-            if($titre != "" && $corps != "") {
-                if ($_POST['cle'] == "") {
+        if($titre != "" && $corps != "") {
+            if (empty($_POST['cle'])) {
                     $articleClass = new article('', '', '', '', '', '');
                     $date = date("Y-m-d");
                     $articleClass->insertArticle($titre, $corps, $date, $imageArticle, $_SESSION['pseudo']);
-                }
-                else{
-                    $articleClass = new article('', '', '', '', '', '');
-                    $articleClass->updateArticle($id_article,$titre, $corps,$imageArticle);
-                }
-                header("Refresh: 0;URL=../newarticle.php");
+                    header("Location: ../membre.php");
             }
             else{
-                echo "code erreur";
+                $articleClass = new article('', '', '', '', '', '');
+                $articleClass->updateArticle($_POST['cle'],$titre, $corps,$imageArticle);
+                 header("Location: ../membre.php");
+            }
+
+                
+            }
+            else{
+                echo "code erreur1";
             }
 
         }
+        else
+            echo"grosse erreur";
 
 
 

@@ -23,24 +23,37 @@
 </div>
 <?php
     if(isset($_SESSION['pseudo'])) {
-        echo
-        '<div class="sidebar-module" >
-    <h4 ><i class="fa fa-bell" ></i > Notifications</h4 >
+        require_once("model/membre_modele.php");
+        $classAuteur=new Membre('','','','','','');
+        $comments=$classAuteur->Get_Comments_Par_Auteur($_SESSION['pseudo']);
+       
+        if(!(empty($comments))){
+                echo '<div class="sidebar-module" >
+                <h4 ><i class="fa fa-bell" ></i > Notifications</h4 >';
+                 foreach($comments as $comment){
+                echo
+                    ' <div class="alert alert-purple" role = "alert" >
+                    <h3 > New Comment</h3 >
+                    <div class="pull-right" >
+                        <button class="btn btn-xs btn-success" ><i class="fa fa-check" ></i ></button >
+                        <button class="btn btn-xs btn-danger" ><i class="fa fa-close" ></i ></button >
+                    </div >
+                    <p class="lead" >'.$comment['titreCommentaire'].'</p >
 
-    <div class="alert alert-purple" role = "alert" >
-        <h3 > New Comment</h3 >
-        <div class="pull-right" >
-            <button class="btn btn-xs btn-success" ><i class="fa fa-check" ></i ></button >
-            <button class="btn btn-xs btn-danger" ><i class="fa fa-close" ></i ></button >
-        </div >
-        <p class="lead" > Blabla</p >
+                </div >
+                <div class="alert alert-info" role = "alert" >...</div >
+                <div class="alert alert-warning" role = "alert" >...</div >
+                <div class="alert alert-danger" role = "alert" >...</div >';
+            }
 
-    </div >
-    <div class="alert alert-info" role = "alert" >...</div >
-    <div class="alert alert-warning" role = "alert" >...</div >
-    <div class="alert alert-danger" role = "alert" >...</div >
-
-</div>';
+           echo '</div>';
+        }
+        else{
+            echo '<div class="sidebar-module" >
+                 <h4 ><i class="fa fa-bell" ></i > Notifications</h4 >
+                    <h6>Pas de nouvelles notifications</h6></div>';
+        }
+        
 }
 ?>
 <div class="sidebar-module">

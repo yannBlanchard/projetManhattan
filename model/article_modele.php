@@ -71,12 +71,10 @@ class article {
      * Fonction qui permet de supprimer un article existant.
      */
     public function deleteArticle($id_article){
-
+        $idarticle=$id_article;
         $req = $this->bdd->prepare("delete From article where id_article = :id_article");
-        $req->execute(array
-        (
-            'id_article' => $this->id_article
-        ));
+        $req->bindParam(':id_article',$idarticle);
+        $req->execute();
     }
 
     /**
@@ -208,6 +206,22 @@ class article {
     }
     public function Get_Visite_Par_Article($cle){
     $req = $this->bdd->prepare("Select * from visite where Art_id_article = :cle");
+    $req->bindParam(':cle',$key);
+    $key=$cle;
+    $req->execute();
+        $count = $req->rowCount();
+        return $count;
+    }
+    public function Get_Like_Par_Article($cle){
+    $req = $this->bdd->prepare("Select * from likes where Art_id_article = :cle");
+    $req->bindParam(':cle',$key);
+    $key=$cle;
+    $req->execute();
+        $count = $req->rowCount();
+        return $count;
+    }
+        public function Get_Dislike_Par_Article($cle){
+    $req = $this->bdd->prepare("Select * from dislike where Art_id_article = :cle");
     $req->bindParam(':cle',$key);
     $key=$cle;
     $req->execute();

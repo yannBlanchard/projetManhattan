@@ -9,7 +9,7 @@
 function BDD()
 {
     try {
-        $bdd = new PDO('mysql:host=localhost;dbname=manhattan;charset=utf8', 'root', 'root');
+        $bdd = new PDO('mysql:host=mutusql02.evxonline.net;dbname=manhattan;charset=utf8', 'mktotoy', 'thoma1ss');
     } catch (PDOException $e) {
         print "Erreur dans la base de données ! :" . $e->getMessage() . "<br/>";
         die();

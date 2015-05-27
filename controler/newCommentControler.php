@@ -5,8 +5,10 @@
  * Date: 18/05/2015
  * Time: 11:54
  */
-date_default_timezone_set("Europe/Paris");
+
 require_once("../model/commentaire_modele.php");
+session_start();
+date_default_timezone_set("Europe/Paris");
 if(isset($_POST['submitComment'])){
     $corps = htmlspecialchars($_POST['addComment']);
     $cle = htmlspecialchars($_POST['cle']);

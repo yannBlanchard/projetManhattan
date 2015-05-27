@@ -12,8 +12,14 @@ require_once('model/visite_modele.php');
 require_once('model/membre_modele.php');
 require_once('model/likes_modele.php');
 require_once('model/Dislike_modele.php');
-if(1){
 
+
+
+if(1){
+    if(isset($_POST['cledelete'])){
+        $art=new article('', '', '', '', '', '');
+        $art->deleteArticle($_POST['cledelete']);    
+    }    
     $classArticle = new article('','','','','','');
     $articles = $classArticle->recupererArticleParAuteur($_SESSION['pseudo']);
 
@@ -22,14 +28,9 @@ if(1){
     $commentaireauteur=$classAuteur->CountCommentairesParAuteur($_SESSION['pseudo']);
     $imagemembre=$classAuteur->Get_Img_By_Auteur($_SESSION['pseudo']);
     $nbarticles=$classAuteur->Count_Article_By_Auteur($_SESSION['pseudo']);
-    //test Like dislike pour page membre
-    $classLike = new Likes('','');
-    $nbLike=$classLike->getLikesParArticle($_GET['cle']);
-    $nbTotalLike = $classLike->countLikeParAuteur($_SESSION['pseudo']);
-    $classDislike = new Dislike('','');
-    $nbDislike = $classDislike->getDislikesParArticle($_GET['cle']);
-    $nbTotalDislike = $classDislike->countDislikeParAuteur($_SESSION['pseudo']);
 
+    $likeauteur=$classAuteur->Get_Like_Par_Auteur($_SESSION['pseudo']);
+    $dislikeauteur=$classAuteur->Get_Dislike_Par_Auteur($_SESSION['pseudo']);
     //print_r($articles);
     if(empty($articles)){
         header("location : membre.php?err=1003"); //erreur pas d'article

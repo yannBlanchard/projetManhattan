@@ -52,17 +52,10 @@ class Membre{
      * @param $mdp
      * Fonction qui permet d'insérer l'inscription d'un utilisateur.
      */
-    public function InscriptionUti ($nom, $prenom, $email,$pseudo, $droit, $avatar, $mdp)
+    public function InscriptionUti ($nom,$prenom,$email,$pseudo,$droit,$avatar,$mdp)
     {
-            $req = $this->bdd->prepare('INSERT INTO membre (nom, prenom, pseudo, email, droit, avatar, mdp) VALUES (:nom, :prenom, :pseudo, :email, :droit, :avatar, :mdp)');
-            $req->bindParam(':nom', $nom);
-            $req->bindParam(':prenom', $prenom);
-            $req->bindParam(':pseudo', $pseudo);
-            $req->bindParam(':email', $email);
-            $req->bindParam(':droit', $droit);
-            $req->bindParam(':avatar', $avatar);
-            $req->bindParam(':mdp', $mdp);
-
+            $req = $this->bdd->prepare('INSERT INTO membre (nom, prenom, pseudo, email, droit, avatar, mdp) VALUES ("'.$nom.'","'.$prenom.'","'.$pseudo.'","'.$email.'",'.$droit.',"'.$avatar.'","'.$mdp.'")');
+           
             $req->execute();
 
     }
@@ -72,12 +65,14 @@ class Membre{
      * @return mixed
      * Fonction qui permet de vérifier le pseudo d'un utilisateur.
      */
-    public function VerificationExistancePseudo($pseudo){
-
-        $req = $bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo');
-        $req->execute(array('pseudo' => $pseudo));
-        $count = $req->rowCount();
-       return $count;
+    public function VerificationExistancePseudo($pseud){
+	$pseud=$pseudo;
+        $req = $this->bdd->prepare('SELECT * FROM membre WHERE pseudo = :pseudo');
+        $req->bindParam('pseudo',$pseud);
+	$req->execute();
+       $count = $req->rowCount();
+	return ($count>0)?true:false;
+       	
     }
 
     /**
@@ -174,5 +169,33 @@ class Membre{
         $req->execute();
         $count = $req->rowCount();
         return $count;
+    }
+    public function Get_Dislike_Par_Auteur($auteur){
+    $req = $this->bdd->prepare("Select * from dislike where Art_id_article IN (Select * from article where Mem_pseudo = :auteur)");
+    $aut=$auteur;
+        $req->bindParam(':auteur',$aut);
+
+        $req->execute();
+        $count = $req->rowCount();
+        return $count;
+    }
+        public function Get_Like_Par_Auteur($auteur){
+    $req = $this->bdd->prepare("Select * from likes where Art_id_article IN (Select * from article where Mem_pseudo = :auteur)");
+    $aut=$auteur;
+        $req->bindParam(':auteur',$aut);
+
+        $req->execute();
+        $count = $req->rowCount();
+        return $count;
+    }
+
+    public function Get_Comments_Par_Auteur($auteur){
+    $req = $this->bdd->prepare("Select * from commentaire where etat = 0 AND Art_id_article IN (Select * from article where Mem_pseudo = :auteur)");
+    $aut=$auteur;
+        $req->bindParam(':auteur',$aut);
+        $req->execute();
+        $row = array();
+        $row = $req->fetchAll();
+        return $row;
     }
 }

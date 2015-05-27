@@ -11,7 +11,7 @@
  *
  */
 include_once('../model/membre_modele.php');
-
+session_start();
 
 if(isset($_POST['submit'])){
     $nom = addslashes($_POST['nom']);
@@ -22,58 +22,59 @@ if(isset($_POST['submit'])){
     $confirm = addslashes($_POST['confirm']);
     $captcha=addslashes($_POST['captcha']);
 
-    if($nom!="" && $prenom != "" && $email != "" && $pseudo != "" && $mdp != "" && $confirm != "" && $mdp == $confirm && $captcha== "Paris"){
+    if($nom!="" && $prenom != "" && $email != "" && $pseudo != "" && $mdp != "" && $confirm != "" && $mdp == $confirm && $captcha==$_SESSION['captcha']){
         $classMembre = new Membre('','','','','','');
         $verif = $classMembre->VerifierAdresseMail($email);
         if($verif == true) {
             $verif = $classMembre->VerificationExistanceEmail($email);
-            if($verif == true) {
+            if($verif==0) {
                 $verif = $classMembre->VerificationExistancePseudo($pseudo);
-                if($verif == true) {
+                if(!$verif) {
                     $membre = $classMembre->InscriptionUti($nom, $prenom, $email, $pseudo, 0, 'default.jpg', $mdp);
-                    header("Refresh: 0; URL=../index.php");
+                    header("Location: ../index.php#navbar?page=1&success=1");
                 }
                 else{
-                    echo "code erreur";
+                    header("Location: ../inscription.php?err=1011");
                 }
             }
             else{
-                echo "code erreur";
+                header("Location: ../inscription.php?err=1003");
             }
         }
         else{
-            header("location : inscription.php?err=1004"); //erreur pb @mail existant
+            header("Location: ../inscription.php?err=1004"); //erreur pb @mail existant
         }
 
 
     }
     else {
         if ($nom == "") {
-            header("location : inscription.php?err=1005"); //erreur remplissage champs
+            header("Location: ../inscription.php?err=1005"); //erreur remplissage champs
         }
         if ($prenom == "") {
-            header("location : inscription.php?err=1005"); //erreur remplissage champs
+            header("Location: ../inscription.php?err=1005"); //erreur remplissage champs
         }
         if ($email == "") {
-            header("location : inscription.php?err=1005"); //erreur remplissage champs
+            header("Location: ../inscription.php?err=1005"); //erreur remplissage champs
         }
         if ($pseudo == "") {
-            header("location : inscription.php?err=1005"); //erreur remplissage champs
+            header("Location: ../inscription.php?err=1005"); //erreur remplissage champs
         }
         if ($mdp == "") {
-            header("location : inscription.php?err=1005"); //erreur remplissage champs
+            header("Location: ../inscription.php?err=1005"); //erreur remplissage champs
         }
         if ($confirm == "") {
-            header("location : inscription.php?err=1005"); //erreur remplissage champs
+            header("Location: ../inscription.php?err=1005"); //erreur remplissage champs
         }
         if($mdp != $confirm){
-            header("location : inscription.php?err=1006"); //erreur mots de passe differents
+            header("Location: ../inscription.php?err=1006"); //erreur mots de passe differents
         }
-        if($captcha != "Paris"){
-            header("location : inscription.php?err=1007"); //erreur captcha faux
+        if($captcha==$_SESSION['captcha']){
+            header("Location: ../inscription.php?err=1007"); //erreur captcha faux
         }
     }
 }
 else{
-    echo "Code erreur";
+     header("Location: ../inscription.php?err=1005"); //erreur remplissage champs
+
 }
