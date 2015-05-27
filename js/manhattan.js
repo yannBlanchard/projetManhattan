@@ -2,7 +2,26 @@
  * Created by thaonzo on 13/04/2015.
  */
 
+function getXMLHttpRequest() {
+    var xhr = null;
 
+    if (window.XMLHttpRequest || window.ActiveXObject) {
+        if (window.ActiveXObject) {
+            try {
+                xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch(e) {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        } else {
+            xhr = new XMLHttpRequest();
+        }
+    } else {
+        alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+        return null;
+    }
+
+    return xhr;
+}
 
 
 
@@ -53,7 +72,7 @@ $(document).ready(function(){
 
 })
 
-//AJAX REQUEST
+//AJAX REQUEST LIKE DISLIKE
 $(".up").click(function(){
 
     request(result,"up");
@@ -80,26 +99,7 @@ function result(sData) {
 
 }
 
-function getXMLHttpRequest() {
-    var xhr = null;
 
-    if (window.XMLHttpRequest || window.ActiveXObject) {
-        if (window.ActiveXObject) {
-            try {
-                xhr = new ActiveXObject("Msxml2.XMLHTTP");
-            } catch(e) {
-                xhr = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-        } else {
-            xhr = new XMLHttpRequest();
-        }
-    } else {
-        alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
-        return null;
-    }
-
-    return xhr;
-}
 function request(callback, $tmp) {
     var xhr = getXMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -111,9 +111,46 @@ function request(callback, $tmp) {
     xhr.open("POST", "controler/like_controler.php", true);
 
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-   
+
     xhr.send("type="+$tmp+"&pseudo="+$pseudo+"&cle="+$cle);
 
 }
 
-//END AJAX REQUEST
+//END AJAX REQUEST LIKE DISLIKE
+
+//AJAX ACCEPT DELETE COMMENT
+
+(".yes").click(function(){
+    $commentkey=$(this).children("div").html().parseInt();
+    requestcomment(resultcomment,"yes",$commentkey);
+});
+
+$(".no").click(function(){
+    $commentkey=$(this).children("div").html().parseInt();
+    requestcomment(resultcomment(),"no",$commentkey);
+});
+
+function resultcomment(sData) {
+
+        $(this).children("div").html(sData);
+
+
+
+}
+
+
+function requestcomment(callback, $tmp,$key) {
+    var xhr = getXMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+            callback(xhr.responseText);
+        }
+    };
+
+    xhr.open("POST", "controler/controler_valider_comment.php", true);
+
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.send("action="+$tmp+"&key="+$key);
+
+}

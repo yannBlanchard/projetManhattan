@@ -66,17 +66,21 @@ class commentaire {
             'id_commentaire' => $this->id_commentaire
         ));
     }
-
+    public function ValiderCommentaire($id_commentaire){
+        $id=$id_commentaire;
+        $req = $this->bdd->prepare("update commentaire set etat = 1 where id_commentaire = :id_commentaire");
+        $req->bindParam(':id_commentaire',$id);
+        $req->execute();
+    }
     /**
      * @param $id_commentaire
      * Fonction qui permet de supprimer un commentaire.
      */
     public function deleteCommentaire($id_commentaire){
+        $id=$id_commentaire;
         $req = $this->bdd->prepare("delete From commentaire where id_commentaire = :id_commentaire");
-        $req->execute(array
-        (
-            'id_commentaire' => $this->id_commentaire,
-        ));
+        $req->bindParam(':id_commentaire',$id);
+        $req->execute();
     }
 
     /**

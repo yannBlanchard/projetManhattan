@@ -43,10 +43,10 @@ $classVisite=new Visite('','','');
                  foreach($comments as $comment){
                 echo
                     ' <div class="alert alert-purple" role = "alert" >
-                    <h3 > New Comment</h3 >
+                    <h3 >Nouveau commentaire</h3 >
                     <div class="pull-right" >
-                        <button class="btn btn-xs btn-success" ><i class="fa fa-check" ></i ></button >
-                        <button class="btn btn-xs btn-danger" ><i class="fa fa-close" ></i ></button >
+                        <button class="btn btn-xs btn-success yes" ><i class="fa fa-check" ></i ><div style="display:none;">'.$comment['id_commentaire'].'</div></button >
+                        <button class="btn btn-xs btn-danger no" ><i class="fa fa-close" ></i ><div style="display:none;">'.$comment['id_commentaire'].'</div></button >
                     </div >
                     <p class="lead" ><a href="single.php?cle='.$comment['corpsCommentaire'].'">Article n°'.$comment['Art_id_article'].'</a></p>
                     <p class="lead">'.$comment['corpsCommentaire'].'</p>
