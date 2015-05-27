@@ -5,15 +5,14 @@
  * Date: 18/05/2015
  * Time: 11:54
  */
-
-require_once("../model/commentaire_modele.php");
 session_start();
+require_once("../model/commentaire_modele.php");
 date_default_timezone_set("Europe/Paris");
+
 if(isset($_POST['submitComment'])){
     $corps = htmlspecialchars($_POST['addComment']);
     $cle = htmlspecialchars($_POST['cle']);
     if(isset($_SESSION['pseudo'])){
-
         $pseudo = $_SESSION['pseudo'];
     }
     else{

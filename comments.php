@@ -7,6 +7,7 @@
  * Cette vue permet d'avoir le visuel pour l'écriture d'un commentaire.
  */
 require_once('controler/comment_controler.php');
+require_once('model/membre_modele.php');
 ?>
 <div class="container" width="50%">
     <div class="row">
@@ -22,16 +23,17 @@ require_once('controler/comment_controler.php');
                 </ul>
                 <div class="tab-content">
                     <?php
+                        $classmembre=new Membre('','','','','','');
                         foreach($commentaires as $commentaire) {
                            echo '<div class="tab-pane active" id = "comments-logout" >
                         <ul class="media-list" >
                             <li class="media" >
                                 <a class="pull-left" href = "#" >';
-                            echo '<img class="media-object img-circle" src = "img/default.jpg" alt = "profile" >';
+                            echo '<img class="media-object img-circle" src = "img/'.(($commentaire["PseudoCommentaire"]!="Inconnu")?($classmembre->Get_Img_By_Auteur($commentaire["PseudoCommentaire"])[0][0]):'default.jpg').'" alt = "profile" >';
                             echo '</a >
                                 <div class="media-body" >
                                     <div class="well well-lg" >
-                                        <h4 class="media-heading text-uppercase reviews" >'.((empty($commentaire["pseudoCommentaire"]))?'Inconnu':$commentaire["pseudoCommentaire"]).'</h4 >
+                                        <h4 class="media-heading text-uppercase reviews" >'.$commentaire["PseudoCommentaire"].'</h4 >
                                         <ul class="media-date text-uppercase reviews list-inline" >
                                             <li class="dd" >'.date("d",strtotime($commentaire["date_commentaire"])).'</li >
                                             <li class="mm" >'.date("m",strtotime($commentaire["date_commentaire"])).'</li >

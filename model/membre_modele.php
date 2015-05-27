@@ -198,4 +198,12 @@ class Membre{
         $row = $req->fetchAll();
         return $row;
     }
+    public function Get_Auteur_img($auteur){
+        $req = $this->bdd->prepare("Select avatar from membre where pseudo = :auteur)");
+        $aut=$auteur;
+        $req->bindParam(':auteur',$aut);
+        $req->execute();
+
+        return $req->fetchAll();
+    }
 }
