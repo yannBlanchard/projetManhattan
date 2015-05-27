@@ -90,10 +90,11 @@ class commentaire {
      * Chaque commentaire est spécifique à un article.
      */
     public function recupererCommentairesParArticle($cle){
-        $req = $this->bdd->prepare("Select * From commentaire where Art_id_article = :cle ORDER BY date_commentaire DESC");
+        $req = $this->bdd->prepare("Select * From commentaire where Art_id_article = :cle AND etat = :etat ORDER BY date_commentaire DESC");
         $key=$cle;
+        $etat=1;
         $req->bindParam(':cle',$key);
-
+        $req->bindParam(':etat',$etat);
         $req->execute();
         $row = array();
         $row = $req->fetchAll();
@@ -110,17 +111,17 @@ class commentaire {
      * Pour cela, une notification sera affiché sur son panel.
      *
      */
-    public function notificationCommentaire($titreCommentaire, $corpsCommentaire, $date_commentaire){
+    public function notificationCommentaire($pseudo){
 
-        $req = $this->bdd->prepare("SELECT titreCommentaire, corpsCommentaire, date_commentaire  FROM commentaire");
-
-        $req->execute(array
-        (
-            'titreCommentaire' => $this->titreCommentaire,
-            'corpsCommentaire' => $this->corpsCommentaire,
-            'date_commentaire' => $this->date_commentaire,
-        ));
-       return $req->rowCount();
+        $req = $this->bdd->prepare("SELECT * FROM commentaire where etat= :etat AND Art_id_article IN (Select id_article from article Where Mem_pseudo = :pseudo)");
+       $pseud=$pseudo;
+        $etat=0;
+        $req->bindParam(':pseudo',$pseud);
+        $req->bindParam(':etat',$etat);
+        $req->execute();
+        $row = array();
+        $row = $req->fetchAll();
+        return $row;
         }
 
 }

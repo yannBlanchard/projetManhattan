@@ -32,10 +32,10 @@ $classVisite=new Visite('','','');
 
 <?php
     if(isset($_SESSION['pseudo'])) {
-        require_once("model/membre_modele.php");
+        require_once("model/commentaire_modele.php");
 
-        $classAuteur=new Membre('','','','','','');
-        $comments=$classAuteur->Get_Comments_Par_Auteur($_SESSION['pseudo']);
+        $classCommentaire=new commentaire('','','','','','');
+        $comments=$classCommentaire->notificationCommentaire($_SESSION['pseudo']);
        
         if(!(empty($comments))){
                 echo '<div class="sidebar-module" >
