@@ -42,7 +42,7 @@ $classVisite=new Visite('','','');
                 <h4 ><i class="fa fa-bell" ></i > Notifications</h4 >';
                  foreach($comments as $comment){
                 echo
-                    ' <div class="alert alert-purple" role = "alert" >
+                    '<div class="alert alert-purple" id="'.$comment['id_commentaire'].'" role = "alert" >
                     <h3 >Nouveau commentaire</h3 >
                     <div class="pull-right" >
                         <button class="btn btn-xs btn-success yes" ><i class="fa fa-check" ></i ><div style="display:none;">'.$comment['id_commentaire'].'</div></button >

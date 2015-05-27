@@ -120,22 +120,20 @@ function request(callback, $tmp) {
 
 //AJAX ACCEPT DELETE COMMENT
 
-(".yes").click(function(){
-    $commentkey=$(this).children("div").html().parseInt();
+$(".yes").click(function(){
+    var $commentkey=parseInt($(this).children("div").html());
+    alert($commentkey);
     requestcomment(resultcomment,"yes",$commentkey);
 });
 
 $(".no").click(function(){
-    $commentkey=$(this).children("div").html().parseInt();
-    requestcomment(resultcomment(),"no",$commentkey);
+    var $commentkey=parseInt($(this).children("div").html());
+    alert($commentkey);
+    requestcomment(resultcomment,"no",$commentkey);
 });
 
 function resultcomment(sData) {
-
-        $(this).children("div").html(sData);
-
-
-
+    $("#"+sData).remove();
 }
 
 
