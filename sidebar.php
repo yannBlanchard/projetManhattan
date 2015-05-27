@@ -7,7 +7,8 @@
  * Cette vue est le visuel de la partie droite de l'interface.
  * Elle affiche les articles par mois.
  */
-
+require_once("model/visite_modele.php");
+$classVisite=new Visite('','','');
 ?>
 
 <div class="sidebar-module sidebar-module-inset">
@@ -21,9 +22,18 @@
         </div><!-- /input-group -->
     </form>
 </div>
+
+<div class="sidebar-module sidebar-module-inset">
+    <h4>Informations</h4>
+    <p><i class="fa fa-eye"></i> Visites aujourd'hui : <?php echo $classVisite->Get_Day_Visits(date("Y-m-d")); ?> </p>
+    <p><i class="fa fa-eye"></i> Visites totales : <?php echo $classVisite->Get_All_Visits(); ?> </p>
+</div>
+
+
 <?php
     if(isset($_SESSION['pseudo'])) {
         require_once("model/membre_modele.php");
+
         $classAuteur=new Membre('','','','','','');
         $comments=$classAuteur->Get_Comments_Par_Auteur($_SESSION['pseudo']);
        
@@ -38,12 +48,11 @@
                         <button class="btn btn-xs btn-success" ><i class="fa fa-check" ></i ></button >
                         <button class="btn btn-xs btn-danger" ><i class="fa fa-close" ></i ></button >
                     </div >
-                    <p class="lead" >'.$comment['titreCommentaire'].'</p >
+                    <p class="lead" ><a href="single.php?cle='.$comment['corpsCommentaire'].'">Article n°'.$comment['Art_id_article'].'</a></p>
+                    <p class="lead">'.$comment['corpsCommentaire'].'</p>
 
-                </div >
-                <div class="alert alert-info" role = "alert" >...</div >
-                <div class="alert alert-warning" role = "alert" >...</div >
-                <div class="alert alert-danger" role = "alert" >...</div >';
+                </div >';
+
             }
 
            echo '</div>';

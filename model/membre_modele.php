@@ -180,7 +180,7 @@ class Membre{
         return $count;
     }
         public function Get_Like_Par_Auteur($auteur){
-    $req = $this->bdd->prepare("Select * from likes where Art_id_article IN (Select * from article where Mem_pseudo = :auteur)");
+    $req = $this->bdd->prepare("Select * from likes where Art_id_article IN (Select id_article from article where Mem_pseudo = :auteur)");
     $aut=$auteur;
         $req->bindParam(':auteur',$aut);
 
@@ -190,7 +190,7 @@ class Membre{
     }
 
     public function Get_Comments_Par_Auteur($auteur){
-    $req = $this->bdd->prepare("Select * from commentaire where etat = 0 AND Art_id_article IN (Select * from article where Mem_pseudo = :auteur)");
+    $req = $this->bdd->prepare("Select * from commentaire where etat = 0 AND Art_id_article IN (Select id_article from article where Mem_pseudo = :auteur)");
     $aut=$auteur;
         $req->bindParam(':auteur',$aut);
         $req->execute();

@@ -58,8 +58,8 @@ class Visite
         $req->execute();
     }
 	public function Get_Day_Visits($data){
-        $req = $this->bdd->prepare("Select * from visite where date_visite= :datevisite");
-        $dat=$data;
+        $req = $this->bdd->prepare("Select * from visite where date_visite LIKE :datevisite");
+        $dat=$data."%";
         $req->bindParam(':datevisite',$dat);
         $req->execute();
 	$count = $req->rowCount();
